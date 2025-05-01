@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level 5 - Leaderboards & Playstyle - FinPlay Course</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+         @font-face {
+            font-family: 'Gilroy';
+            src: url("fonts/fonnts.com-Gilroy-Heavy.ttf") format('truetype'); 
+            font-weight: bolder;
+            font-style: normal; 
+        }
+        @font-face {
+            font-family: 'Mortise Bold';
+            src: url("fonts/mortisetest-bold.otf") format('opentype');
+            font-weight: bold;
+            font-style: normal; 
+        }
+         @font-face {
+            font-family: 'Mortise Medium';
+            src: url("fonts/mortisetest-medium.otf") format('opentype'); 
+            font-weight: 500; 
+            font-style: normal;
+        }
+
+        body {
+            /* Using 'Gilroy' first if loaded, otherwise Tailwind's default sans-serif */
+            font-family: 'Gilroy', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            background-color: #EDEDED; /* Light grey background (acts as fallback) */
+
+            /* --- Background Image Setup --- */
+            /* IMPORTANT: Replace 'images/Asset 126.jpg' with the correct path to your image file */
+            background-image: url('images/Asset\ 126.png');
+
+            /* How the background image repeats */
+            background-repeat: repeat; /* Use 'repeat' if you want the image to tile */
+                                       /* Use 'no-repeat' if you want it to show only once */
+
+            /* How the background image is sized */
+            /* background-size: cover; */ /* Stretches image to cover the entire area */
+            /* background-size: contain; */ /* Scales image to fit without cropping */
+             background-size: cover; /* Displays the image at its original size */
+
+            /* Starting position of the background image */
+            background-position: center center; /* Centers the image */
+
+            /* Whether the background scrolls with the page or stays fixed */
+            background-attachment: fixed; /* Keeps the background fixed during scroll */
+                                         /* Use 'scroll' to make it scroll with content */
+        }
+
+        /* --- Custom Font Classes --- */
+        .font-heading {
+            /* Use 'Gilroy' (Bold) if loaded, otherwise fallback */
+            font-family: 'Gilroy', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+             /* Ensure font-weight matches the loaded font if needed */
+             /* font-weight: 700; */
+        }
+
+        .font-subheading {
+             /* Use 'Mortise Bold' if loaded, otherwise fallback */
+             font-family: 'Mortise Bold', 'Segoe UI Semibold', 'Helvetica Neue', sans-serif;
+             /* Ensure font-weight matches the loaded font if needed */
+             /* font-weight: 700; */
+        }
+
+        .font-body-text {
+             /* Use 'Mortise Medium' if loaded, otherwise fallback */
+             font-family: 'Mortise Medium', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+             /* Ensure font-weight matches the loaded font if needed */
+             /* font-weight: 500; */
+        }
+        /* --- End Custom Font Classes --- */ 
+
+        /* Header styles */
+        header {
+            background-color: rgba(237, 237, 237, 0.8); /* Semi-transparent background */
+            backdrop-filter: blur(5px); /* Blur effect */
+        }
+
+        /* Ensure main content takes up available space */
+        main {
+            flex-grow: 1;
+        }
+
+        /* Style for content boxes */
+        .content-box {
+             background-color: rgba(255, 255, 255, 0.6); /* Slightly transparent white */
+             padding: 1.5rem; /* p-6 */
+             border-radius: 0.75rem; /* rounded-xl */
+             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-md */
+             margin-bottom: 2rem; /* mb-8 */
+        }
+
+         /* Style for definition terms (reusing from level 3) */
+        .term-box {
+            background-color: #EDEDED; /* Light background */
+            padding: 1rem; /* p-4 */
+            border-radius: 0.5rem; /* rounded-lg */
+            border-left: 4px solid #294DFF; /* Blue accent border */
+            margin-bottom: 1rem; /* mb-4 */
+        }
+         .term-box dt { /* Definition Term */
+            font-weight: 700; /* bold */
+            color: #294DFF; /* Blue color */
+            font-size: 1.125rem; /* text-lg */
+            margin-bottom: 0.25rem; /* mb-1 */
+         }
+         .term-box dd { /* Definition Description */
+            font-size: 0.875rem; /* text-sm */
+            line-height: 1.5; /* leading-relaxed */
+            color: #161616; /* Dark text */
+         }
+         .term-box dd ul { /* Lists within definitions */
+             list-style: disc;
+             padding-left: 1.5rem; /* pl-6 */
+             margin-top: 0.5rem; /* mt-2 */
+         }
+         .term-box dd ol { /* Ordered Lists */
+             list-style: decimal;
+             padding-left: 1.5rem; /* pl-6 */
+             margin-top: 0.5rem; /* mt-2 */
+         }
+
+        /* Custom list style for leaderboards */
+        .leaderboard-list {
+            list-style: none;
+            padding-left: 1rem;
+        }
+        .leaderboard-list li {
+            position: relative;
+            margin-bottom: 0.5rem;
+            padding-left: 1rem; /* Space for icon */
+            font-size: 0.875rem; /* text-sm */
+        }
+        .leaderboard-list li::before {
+            content: '🏆'; /* Trophy emoji */
+            position: absolute;
+            left: -0.5rem;
+            top: 0.1rem;
+        }
+         .leaderboard-list li strong {
+            font-weight: 600; /* semibold */
+            color: #00B295; /* Teal */
+         }
+
+        /* Playstyle list styling */
+        .playstyle-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        .playstyle-list > li { /* Top level (1. Trader, 2. Investor) */
+            margin-bottom: 1.5rem; /* space between Trader and Investor */
+        }
+        .playstyle-list h4 { /* Trader/Investor Title */
+            font-size: 1.25rem; /* text-xl */
+            font-weight: 700; /* bold */
+            color: #294DFF; /* Blue */
+            margin-bottom: 0.75rem; /* mb-3 */
+        }
+        .playstyle-list ul { /* Sub-list for characteristics */
+            list-style: none;
+            padding-left: 1rem; /* Indent characteristics */
+            margin-bottom: 0.75rem; /* mb-3 */
+        }
+         .playstyle-list ul li {
+            font-size: 0.875rem; /* text-sm */
+            line-height: 1.5;
+            margin-bottom: 0.25rem;
+            position: relative;
+            padding-left: 1rem; /* Space for bullet */
+         }
+          .playstyle-list ul li::before {
+            content: '•';
+            color: #00B295; /* Teal bullet */
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            top: 0.1rem;
+          }
+
+         .playstyle-list .types-list { /* List for types of traders/investors */
+             list-style: disc;
+             padding-left: 2rem; /* Further indent */
+             margin-top: 0.5rem;
+         }
+         .playstyle-list .types-list li {
+             padding-left: 0; /* Reset padding */
+             margin-bottom: 0.5rem;
+         }
+         .playstyle-list .types-list li::before {
+             content: none; /* Remove custom bullet */
+         }
+         .playstyle-list .types-list strong { /* Type name */
+            font-weight: 600;
+            color: #161616;
+         }
+
+        /* Tips list styling */
+        .tips-list {
+            list-style: none;
+            padding-left: 1rem;
+        }
+         .tips-list li {
+            position: relative;
+            margin-bottom: 0.5rem;
+            padding-left: 1rem; /* Space for icon */
+            font-size: 0.875rem; /* text-sm */
+            line-height: 1.5;
+        }
+        .tips-list li::before {
+            content: '💡'; /* Lightbulb emoji */
+            position: absolute;
+            left: -0.5rem;
+            top: 0.1rem;
+        }
+
+        /* Final Advice Box */
+        .final-advice {
+            background-color: #294DFF; /* Blue background */
+            color: #EDEDED; /* Light text */
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            text-align: center;
+            font-size: 1rem; /* text-base */
+            line-height: 1.6;
+        }
+
+
+        /* Custom button styles */
+         .btn-teal {
+            background-color: #00B295; /* Teal background */
+            color: #FFFFFF; /* White text */
+            padding: 0.6rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            text-align: center;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .btn-teal:hover {
+            background-color: #008a75; /* Darker teal on hover */
+        }
+         .btn-blue {
+            background-color: #294DFF; /* Primary blue */
+            color: #EDEDED;
+            padding: 0.6rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            text-align: center;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .btn-blue:hover {
+            background-color: #1a3fdb; /* Darker blue on hover */
+        }
+
+
+    </style>
+</head>
+<body class="text-[#161616]">
+
+    <header class="sticky top-0 z-50 shadow-md">
+        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold flex items-center text-[#161616]">
+                 <svg class="w-10 h-10 mr-2" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#294DFF;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#00B295;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <path fill="url(#grad1)" d="M10 10 H 90 V 90 H 10 Z M 20 20 H 80 V 80 H 20 Z M 50 30 L 70 50 L 50 70 L 30 50 Z" />
+                    <text x="50" y="60" font-family="Arial, sans-serif" font-size="30" fill="#EDEDED" text-anchor="middle" dy=".3em">FP</text>
+                </svg>
+            </a>
+
+            <div class="hidden md:flex space-x-6 items-center">
+                <a href="index.html#about-section" class="text-[#161616] hover:text-[#294DFF] transition duration-300">About</a>
+                <a href="game.html" class="text-[#161616] hover:text-[#294DFF] transition duration-300">Game</a>
+                <a href="profile.html" class="text-[#161616] hover:text-[#294DFF] transition duration-300">Profile</a>
+                <button class="bg-[#00B295] text-white p-2 rounded-full hover:bg-opacity-80 transition duration-300" aria-label="AI Chat">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                    </svg>
+                </button>
+            </div>
+
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-[#161616] focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </button>
+            </div>
+        </nav>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-white bg-opacity-90">
+            <a href="index.html#about-section" class="block px-4 py-2 text-[#161616] hover:bg-[#294DFF] hover:text-white">About</a>
+            <a href="game.html" class="block px-4 py-2 text-[#161616] hover:bg-[#294DFF] hover:text-white">Game</a>
+            <a href="profile.html" class="block px-4 py-2 text-[#161616] hover:bg-[#294DFF] hover:text-white">Profile</a>
+             <button class="w-full text-left px-4 py-2 text-[#161616] hover:bg-[#00B295] hover:text-white flex items-center space-x-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                </svg>
+                <span>AI Chat</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+
+        <h1 class="text-4xl md:text-5xl font-bold text-[#00B295] mb-6 text-center"> Level Five
+        </h1>
+        <h2 class="text-2xl md:text-3xl font-semibold text-[#161616] mb-10 text-center">
+            Using Leaderboards & Finding Your Playstyle
+        </h2>
+
+        <section class="content-box">
+            <h3 class="text-2xl font-semibold text-[#294DFF] mb-4">Understanding Market Leaderboards <br class="sm:hidden">(Stock Indices Revisited)</h3>
+            <p class="text-sm leading-relaxed mb-4">
+                Remember the Stock Market Indices (like NIFTY 50, Sensex)? We called it the game's leaderboard earlier. Let's dive a bit deeper:
+            </p>
+            <ul class="list-disc list-inside space-y-2 text-sm leading-relaxed mb-6">
+                <li><span class="font-semibold">What it is:</span> A score calculated from a selected group of top stocks, giving a snapshot of the overall market's performance.</li>
+                <li><span class="font-semibold">Why we need it:</span> It quickly tells us the market's general direction (up, down, sideways), helps compare our own performance, and simplifies complex market movements. It's like checking the game's overall status screen.</li>
+            </ul>
+
+            <h4 class="text-lg font-semibold text-[#161616] mb-3">Major Indian Leaderboards:</h4>
+            <ul class="leaderboard-list">
+                <li><strong>NIFTY 50 (NSE):</strong> Tracks 50 of the largest and most frequently traded stocks on the National Stock Exchange. Covers many different industries (banks, IT, energy, etc.).</li>
+                <li><strong>SENSEX (BSE):</strong> Tracks 30 large, financially strong companies on the Bombay Stock Exchange. It's the older index.</li>
+            </ul>
+             <h4 class="text-lg font-semibold text-[#161616] mt-4 mb-3">Other Important Leaderboards:</h4>
+             <ul class="leaderboard-list">
+                 <li><strong>NIFTY Next 50:</strong> Tracks the 50 companies just below the main NIFTY 50 - potential future stars.</li>
+                 <li><strong>NIFTY Midcap:</strong> Focuses on medium-sized companies.</li>
+                 <li><strong>NIFTY Bank / NIFTY IT / etc.:</strong> Sector-specific leaderboards tracking only banking or IT companies, etc.</li>
+             </ul>
+        </section>
+
+        <section class="content-box">
+             <h3 class="text-2xl font-semibold text-[#294DFF] mb-4">How Are Leaderboard Scores Calculated? <br class="sm:hidden">(Index Construction)</h3>
+             <p class="text-sm leading-relaxed mb-4">
+                 There are different ways, but the most common method used by NIFTY and Sensex is <span class="font-semibold">Market Capitalization Weighted</span>. The score is based on the total market value of each company in the index (Market Cap = Share Price x Total Shares).
+             </p>
+             <div class="term-box">
+                 <dt>Free-Float Adjustment:</dt>
+                 <dd>This is important! Instead of using all the company's shares, the calculation only uses the shares that are actually available for public trading (the <span class="font-semibold">free float</span>). It excludes shares held tightly by founders, governments, or other locked-in groups. This gives a more realistic picture of the market value that players can actually trade.
+                 <br><span class="italic text-xs">(Why? It prevents a company from looking overly influential on the index just because its founders hold a huge, non-tradable chunk of shares).</span></dd>
+             </div>
+              <p class="text-sm leading-relaxed mt-4 text-gray-700">
+                 (Other less common methods exist, like Price-Weighted where higher share prices matter more, or Equal-Weighted where every company counts the same regardless of size).
+             </p>
+        </section>
+
+        <section class="content-box">
+            <h3 class="text-2xl font-semibold text-[#294DFF] mb-4">How Players Use Leaderboards <br class="sm:hidden">(Uses of Indices):</h3>
+            <ol class="list-decimal list-inside space-y-3 text-sm leading-relaxed">
+                <li><span class="font-semibold">Get Market Info:</span> Is the NIFTY up 1% today? It tells you the general mood and direction of the big players. Crossing a major milestone (like NIFTY 20,000) often signals strong confidence.</li>
+                <li><span class="font-semibold">Benchmark Performance:</span> Did your collection of shares (portfolio) go up 12% last year? How did that compare to the NIFTY 50, which maybe went up 14%? The index acts as a benchmark to see if your strategy is beating the average market return.</li>
+                <li><span class="font-semibold">Trading & Investment:</span>
+                    <ul class="list-disc list-inside pl-4 mt-1">
+                        <li><span class="font-semibold text-[#00B295]">Index Funds & ETFs:</span> You can actually invest in the index itself! These funds automatically buy shares of all the companies in the index (like NIFTY 50) in the correct proportions. It's a simple way to get average market returns, often with low fees. This is called <span class="italic">passive investing</span>.</li>
+                    </ul>
+                </li>
+                 <li><span class="font-semibold">Risk Management / Hedging:</span> Advanced players can use index-based tools (like Index Futures & Options in the F&O arena) to protect their portfolio. If they think the whole market might fall, they can place a bet that the index will go down. If it does, the profit from that bet can offset losses in their individual shares. It's like buying insurance for your game items.</li>
+            </ol>
+        </section>
+
+        <section class="content-box">
+            <h3 class="text-2xl font-semibold text-[#294DFF] mb-3 text-center">Finding Your Playstyle: Trader vs. Investor</h3>
+            <p class="text-sm leading-relaxed text-center mb-6">
+                Now that you know the basics, think about how you want to play the stock market game. There are two main styles:
+            </p>
+
+            <ol class="playstyle-list">
+                <li>
+                    <h4>1. The Trader: The Fast-Paced Player</h4>
+                    <ul>
+                        <li><strong>Goal:</strong> Make profits from short-term price movements.</li>
+                        <li><strong>Time Horizon:</strong> Short (minutes, hours, days, maybe weeks).</li>
+                        <li><strong>Focus:</strong> Predicting the next price move, technical chart patterns, market news.</li>
+                        <li><strong>Activity:</strong> Buys and sells frequently, needs to be alert during market hours.</li>
+                    </ul>
+                    <h5 class="text-base font-semibold text-[#161616] mt-4 mb-2 ml-4">Types of Traders:</h5>
+                    <ul class="types-list">
+                        <li><strong>Day Trader:</strong> Buys and sells within the same day. Closes all positions before the market shuts. Like playing one intense game round.</li>
+                        <li><strong>Scalper:</strong> Makes tons of super-fast trades, aiming for tiny profits on each. High frequency, low profit per trade. Like landing many small hits very quickly.</li>
+                        <li><strong>Swing Trader:</strong> Holds positions for a few days or weeks, trying to capture a price "swing" up or down. More patient than a day trader. Like planning a move over several game turns.</li>
+                    </ul>
+                </li>
+                 <li>
+                    <h4>2. The Investor: The Patient Strategist</h4>
+                     <ul>
+                        <li><strong>Goal:</strong> Build wealth gradually over the long term.</li>
+                        <li><strong>Time Horizon:</strong> Long (years, decades).</li>
+                        <li><strong>Focus:</strong> Company's fundamental health, long-term growth potential, management quality.</li>
+                        <li><strong>Activity:</strong> Buys and holds, less frequent trading, less need for constant monitoring.</li>
+                    </ul>
+                    <h5 class="text-base font-semibold text-[#161616] mt-4 mb-2 ml-4">Types of Investors:</h5>
+                    <ul class="types-list">
+                        <li><strong>Growth Investor:</strong> Looks for companies expected to grow much faster than average (e.g., in new technology). Willing to pay a higher price now for expected future growth. Like betting on a rookie player with huge potential.</li>
+                        <li><strong>Value Investor:</strong> Looks for solid, established companies whose shares seem temporarily cheap or undervalued by the market. Buys good quality on sale. Like finding a powerful item overlooked by others in the auction house.</li>
+                    </ul>
+                </li>
+            </ol>
+        </section>
+
+        <section class="content-box">
+             <h3 class="text-2xl font-semibold text-[#294DFF] mb-4">Calculating Your Score (Returns Revisited):</h3>
+             <dl>
+                 <div class="term-box">
+                     <dt>Absolute Return:</dt>
+                     <dd>Simple gain percentage: [(Sell Price - Buy Price) / Buy Price] x 100. Good for single trades.</dd>
+                 </div>
+                 <div class="term-box">
+                     <dt>CAGR (Compounded Annual Growth Rate):</dt>
+                     <dd>Calculates the average annual growth rate over multiple years, considering the effect of compounding (earning returns on your returns!). Much better for comparing long-term investments.</dd>
+                 </div>
+             </dl>
+        </section>
+
+        <section class="content-box">
+            <h3 class="text-2xl font-semibold text-[#294DFF] mb-4">Tips for Beginners</h3>
+            <ul class="tips-list">
+                <li><strong>Know Yourself:</strong> Are you patient or impatient? How much risk makes you uncomfortable?</li>
+                <li><strong>Start Small:</strong> Don't jump in with all your savings. Learn with smaller amounts.</li>
+                <li><strong>Learn Continuously:</strong> Read, watch videos, understand what you're buying.</li>
+                <li><strong>Don't Panic:</strong> Markets go up and down. Avoid emotional decisions.</li>
+                <li><strong>Diversify:</strong> Don't put all your eggs (money) in one basket (share).</li>
+            </ul>
+        </section>
+
+        <section class="final-advice">
+            The stock market is a learning journey. Whether you become a trader, an investor, or a mix of both, your strategy will evolve as you gain experience and knowledge. Good luck in the game!
+        </section>
+        <nav class="mt-10 flex justify-between items-center">
+            <a href="level 4.html" class="btn-blue inline-flex items-center"> <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+                </svg>
+                Level 4
+            </a>
+            <a href="quiz.html" class="btn-teal inline-flex items-center"> Quiz Time!
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                   <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
+            </a>
+        </nav>
+
+    </main>
+
+    <footer class="bg-[#161616] text-[#EDEDED] py-4 mt-16">
+        <div class="container mx-auto px-6 text-center text-xs">
+             &copy; 2025 FinPlay. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        // Basic Mobile Menu Toggle
+        const menuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu if clicking on a link
+        mobileMenu.addEventListener('click', (event) => {
+            if (event.target.tagName === 'A') {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+    </script>
+     <!-- AI Chat Modal -->
+ <div id="chat-modal" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center hidden z-50">
+    <div class="bg-white w-full max-w-md rounded-lg shadow-lg p-4 flex flex-col">
+      <div class="flex justify-between items-center border-b pb-2 mb-4">
+        <h2 class="text-lg font-bold text-[#161616]">Finbot</h2>
+        <button id="close-chat" class="text-gray-500 hover:text-gray-800 text-2xl">&times;</button>
+      </div>
+      <div id="chat-output" class="flex-1 overflow-y-auto mb-4 max-h-64 text-sm text-[#161616]">
+        <!-- Messages will appear here -->
+      </div>
+      <div class="flex space-x-2">
+        <input id="user-input" type="text" placeholder="Ask me anything..." class="flex-1 px-3 py-2 border rounded-md focus:outline-none focus:ring">
+        <button id="send-btn" class="bg-[#294DFF] text-white px-4 py-2 rounded-md hover:bg-[#1a3fdb]">Send</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="chatbot.js" defer></script>
+
+</body>
+</html>

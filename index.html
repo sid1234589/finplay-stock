@@ -1,0 +1,661 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinPlay - Learn Stock Market Trading</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @font-face {
+        font-family: 'Gilroy'; /* Give it a descriptive name */
+        src: url("C:\Users\vardh\OneDrive\Desktop\gemini code\fonnts.com-Gilroy-Heavy.ttf") format('truetype'); /* Correct path and format */
+        font-weight: bolder; /* Adjust if you have different weights */
+        font-style: bolder;  /* Adjust if you have italic styles */
+    }
+
+    /* Define the second custom font (e.g., for body text) */
+    @font-face {
+        font-family: 'Mortise Bold'; /* Give it a different descriptive name */
+        src: url("C:\Users\vardh\OneDrive\Desktop\gemini code\fonts\mortisetest-bold.otf") format('opentype'); /* Correct path and format */
+        font-weight: bold;
+        font-style: bold;
+    }
+
+    /* Define the third custom font (e.g., for body text) */
+    @font-face {
+        font-family: 'Mortise Medium'; /* Give it a different descriptive name */
+        src: url("C:\Users\vardh\OneDrive\Desktop\gemini code\fonts\mortisetest-medium.otf") format('opentype'); /* Correct path and format */
+        font-weight: medium;
+        font-style: medium;
+    }
+        body {
+            font-family: 'Gilroy'; /* Use CustomFont, fallback to Inter */
+            background-color: #EDEDED; /* Light grey background */
+            /* Grid background effect */
+            background-image: url("images/Asset\ 126.png");
+            background-repeat: repeat;     /* Or 'no-repeat' if you don't want it to tile */
+            background-size: cover;         /* Or 'cover', 'contain' depending on desired effect */
+            background-position: center center; /* Or 'top left', etc. */
+            background-attachment: fixed; /* Optional: Makes background stay fixed when scrolling */
+            }
+
+        /* Custom styles for speech bubbles */
+        .speech-bubble {
+            font-family: 'Mortise Medium';
+            position: relative;
+            background: #294DFF; /* Primary blue */
+            color: #EDEDED; /* Light text on dark background */
+            border-radius: .4em;
+            padding: 1rem 2rem; /* Adjust padding */
+            font-size: 0.875rem; /* Smaller font size */
+            line-height: 1.25rem;
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        /* Speech bubble tails (adjust positioning as needed) */
+        .speech-bubble-right::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 100%;
+            width: 0;
+            height: 0;
+            border: 10px solid transparent;
+            border-left-color: #294DFF;
+            border-right: 0;
+            margin-top: -10px;
+            margin-right: -10px;
+        }
+
+        .speech-bubble-left::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 0;
+            height: 0;
+            border: 10px solid transparent;
+            border-right-color: #294DFF;
+            border-left: 0;
+            margin-top: -10px;
+            margin-left: -10px;
+        }
+
+        /* Custom button style */
+        .btn-primary {
+            background-color: #294DFF; /* Primary blue */
+            color: #EDEDED;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem; /* Rounded corners */
+            font-weight: 600;
+            text-align: center;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        .btn-primary:hover {
+            background-color: #1a3fdb; /* Darker blue on hover */
+        }
+
+        /* Header styles */
+        header {
+            background-color: rgba(237, 237, 237, 0.8); /* Semi-transparent background */
+            backdrop-filter: blur(5px); /* Blur effect */
+        }
+
+        /* Mascot Placeholder Style */
+        .mascot-placeholder {
+            width: 100px; /* Adjust size as needed */
+            height: 100px; /* Adjust size as needed */
+            background-color: #294DFF; /* Primary blue */
+            border-radius: 50%; /* Make it circular or adjust as needed */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #EDEDED;
+            font-size: 2rem;
+            font-weight: bold;
+            /* Simple Bear Face - adjust lines as needed */
+            border: 3px solid #161616;
+            position: relative;
+        }
+        .mascot-placeholder::before, .mascot-placeholder::after {
+             content: '';
+             position: absolute;
+             width: 15px;
+             height: 15px;
+             background: #161616;
+             border-radius: 50%;
+             top: 30px;
+        }
+        .mascot-placeholder::before { left: 30px; }
+        .mascot-placeholder::after { right: 30px; }
+        /* Add a simple nose */
+        .mascot-placeholder > div {
+            width: 10px;
+            height: 8px;
+            background: #161616;
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            position: absolute;
+            top: 50px;
+        }
+
+
+    </style>
+</head>
+<body class="text-[#161616]"> <header class="sticky top-0 z-50 shadow-md">
+        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold flex items-center text-[#161616]">
+                 <svg class="w-10 h-10 mr-2" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <image href="images\Asset 121.png" width="50" height="50" x="0" y="0" />
+                    <defs>
+                        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#294DFF;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#00B295;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <path fill="url(#grad1)" d="M10 10 H 90 V 90 H 10 Z M 20 20 H 80 V 80 H 20 Z M 50 30 L 70 50 L 50 70 L 30 50 Z" />
+                    <text x="50" y="60" font-family="Arial, sans-serif" font-size="30" fill="#EDEDED" text-anchor="middle" dy=".3em">FP</text>
+                </svg>
+                </a>
+
+            <div class="hidden md:flex space-x-6 items-center">
+                <a href="#about-section" class="text-[#161616] hover:text-[#294DFF] transition duration-300">About</a>
+                <a href="login.html" class="text-[#161616] hover:text-[#294DFF] transition duration-300">Game</a>
+                <a href="profile.html" class="text-[#161616] hover:text-[#294DFF] transition duration-300">Profile</a>
+                <button class="bg-[#00B295] text-white p-2 rounded-full hover:bg-opacity-80 transition duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                    </svg>
+                </button>
+            </div>
+
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-[#161616] focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </button>
+            </div>
+        </nav>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-white bg-opacity-90">
+            <a href="#about-section" class="block px-4 py-2 text-[#161616] hover:bg-[#294DFF] hover:text-white">About</a>
+            <a href="login.html" class="block px-4 py-2 text-[#161616] hover:bg-[#294DFF] hover:text-white">Game</a>
+            <a href="profile.html" class="block px-4 py-2 text-[#161616] hover:bg-[#294DFF] hover:text-white">Profile</a>
+             <button class="w-full text-left px-4 py-2 text-[#161616] hover:bg-[#00B295] hover:text-white flex items-center space-x-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                </svg>
+                <span>AI Chat</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+
+        <section class="text-center mb-16 mt-8 flex flex-col items-center">
+             <svg class="w-32 h-32 md:w-48 md:h-48 mb-4" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="gradLarge" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#294DFF;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#00B295;stop-opacity:1" />
+                    </linearGradient>
+                </defs>
+                <path fill="#294DFF" d="M20 50 L50 20 L80 50 L50 80 Z" transform="rotate(45 50 50)"/>
+                 <path fill="#00B295" d="M30 60 L50 40 L70 60 L50 80 Z" transform="rotate(45 50 50) scale(0.8) translate(5 5)"/>
+                 <path fill="#294DFF" d="M50 30 L70 50 L50 70 L30 50 Z" transform="scale(0.5) translate(50 5)"/>
+                 <path fill="#00B295" d="M50 35 L65 50 L50 65 L35 50 Z" transform="scale(0.4) translate(75 10)"/>
+                 <path fill="#294DFF" d="M60 10 L70 20 L65 20 L65 35 L55 35 L55 20 L50 20 Z" />
+                 <path fill="#00B295" d="M75 25 L85 35 L80 35 L80 50 L70 50 L70 35 L65 35 Z" />
+            </svg>
+            </section>
+
+        <section class="mb-20 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-10 text-[#161616]">Is this you?</h2>
+            <div class="flex flex-col items-center space-y-6">
+                <div class="relative w-full max-w-xl mx-auto">
+                     <div class="mascot-placeholder mx-auto mb-6">
+                        <div></div> </div>
+
+                    <div class="absolute top-0 left-0 transform -translate-x-1/4 -translate-y-1/2 md:-translate-x-1/3">
+                        <p class="speech-bubble speech-bubble-right">What is Stock Market?</p>
+                    </div>
+                    <div class="absolute top-0 right-0 transform translate-x-1/4 -translate-y-1/2 md:translate-x-1/3">
+                        <p class="speech-bubble speech-bubble-left">I'm embarrassed that I know nothing about it</p>
+                    </div>
+                     <div class="absolute top-1/4 left-0 transform -translate-x-1/2 md:-translate-x-2/3">
+                        <p class="speech-bubble speech-bubble-right">It's sooo overwhelming to understand!</p>
+                    </div>
+                     <div class="absolute top-1/4 right-0 transform translate-x-1/2 md:translate-x-2/3">
+                        <p class="speech-bubble speech-bubble-left">Why even bother?</p>
+                    </div>
+                     <div class="absolute bottom-1/4 left-0 transform -translate-x-1/3 md:-translate-x-1/2">
+                        <p class="speech-bubble speech-bubble-right">Ah... I'm too scared to invest!</p>
+                    </div>
+                    <div class="absolute bottom-1/4 right-0 transform translate-x-1/3 md:translate-x-1/2">
+                        <p class="speech-bubble speech-bubble-left">I have no time to go through so many websites!</p>
+                    </div>
+                </div>
+
+                <div class="h-32 md:h-40"></div>
+
+                <p class="text-2xl md:text-3xl font-semibold text-[#161616] mt-8">
+                    Then this website <br class="md:hidden"> is for <span class="text-[#294DFF]">YOU!</span>
+                </p>
+            </div>
+        </section>
+
+        <section class="text-center mb-20">
+            <h1 class="text-5xl md:text-7xl font-bold mb-4 text-[#161616]">
+                Fin<span class="text-[#294DFF]">Play</span><span class="text-[#00B295]">.</span>
+            </h1>
+            <p class="text-lg md:text-xl text-[#161616]">
+                is a <span class="font-semibold text-[#00B295]">fun</span>, <span class="font-semibold text-[#00B295]">interactive</span> and <span class="font-semibold text-[#00B295]">risk-free</span> way <br> to learn about the Stock Market!
+            </p>
+        </section>
+
+        <section id="about-section" class="mb-16 scroll-mt-20"> <div class="grid md:grid-cols-2 gap-12 items-start">
+                <div>
+                    <h2 class="text-3xl font-bold mb-4 text-[#294DFF]">Who are we?</h2>
+                    <p class="text-lg text-[#161616] leading-relaxed">
+                        We are a group of university students dedicated to simplifying stock market education and making it accessible to all.
+                    </p>
+                </div>
+
+                <div>
+                     <h2 class="text-3xl font-bold mb-4 text-[#294DFF] text-right">Our Vision</h2>
+                     <p class="text-lg text-[#161616] leading-relaxed text-right">
+                        To become the ultimate financial literacy tool, that caters to anyone interested in learning, exploring and mastering the stock market, in a fun and risk-free way.
+                     </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="text-center mt-12 mb-12">
+             <p class="mb-4 text-lg text-[#161616]">Don't believe it? <br> Take a tour for yourself!</p>
+             <a href="login.html" class="btn-primary inline-block">
+                 Let's Go!
+             </a>
+        </section>
+
+    </main>
+
+    <footer class="bg-[#161616] text-[#EDEDED] py-6 mt-16">
+        <div class="container mx-auto px-6 text-center text-sm">
+            &copy; 2025 FinPlay. All rights reserved. | Placeholder Footer
+        </div>
+    </footer>
+
+    <script>
+        // Basic Mobile Menu Toggle
+        const menuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu if clicking on a link (optional)
+        mobileMenu.addEventListener('click', (event) => {
+            if (event.target.tagName === 'A') {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+    </script>
+
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinPlay - Learn Stock Market Trading</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /*
+         IMPORTANT: @font-face rules using local file paths (like C:\...)
+         will NOT work on a website or for other users.
+         You need to:
+         1. Host the font files online and use URLs.
+         2. Or, place font files in a relative path on your web server (e.g., /fonts/)
+            and update the src url() accordingly.
+         3. Or, use web fonts (e.g., Google Fonts).
+
+         For now, I've commented out the local paths and added standard fallbacks.
+        */
+        @font-face {
+            font-family: 'Gilroy';
+            src: url("fonts/fonnts.com-Gilroy-Heavy.ttf") format('truetype'); 
+            font-weight: bolder;
+            font-style: normal; 
+        }
+        @font-face {
+            font-family: 'Mortise Bold';
+            src: url("fonts/mortisetest-bold.otf") format('opentype');
+            font-weight: bold;
+            font-style: normal; 
+        }
+         @font-face {
+            font-family: 'Mortise Medium';
+            src: url("fonts/mortisetest-medium.otf") format('opentype'); 
+            font-weight: 500; 
+            font-style: normal;
+        }
+
+        body {
+            /* Using 'Gilroy' first if loaded, otherwise Tailwind's default sans-serif */
+            font-family: 'Gilroy', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            background-color: #EDEDED; /* Light grey background (acts as fallback) */
+
+            /* --- Background Image Setup --- */
+            /* IMPORTANT: Replace 'images/Asset 126.jpg' with the correct path to your image file */
+            background-image: url('images/Asset\ 126.png');
+
+            /* How the background image repeats */
+            background-repeat: repeat; /* Use 'repeat' if you want the image to tile */
+                                       /* Use 'no-repeat' if you want it to show only once */
+
+            /* How the background image is sized */
+            /* background-size: cover; */ /* Stretches image to cover the entire area */
+            /* background-size: contain; */ /* Scales image to fit without cropping */
+             background-size: cover; /* Displays the image at its original size */
+
+            /* Starting position of the background image */
+            background-position: center center; /* Centers the image */
+
+            /* Whether the background scrolls with the page or stays fixed */
+            background-attachment: fixed; /* Keeps the background fixed during scroll */
+                                         /* Use 'scroll' to make it scroll with content */
+        }
+
+        /* --- Custom Font Classes --- */
+        .font-heading {
+            /* Use 'Gilroy' (Bold) if loaded, otherwise fallback */
+            font-family: 'Gilroy', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+             /* Ensure font-weight matches the loaded font if needed */
+             /* font-weight: 700; */
+        }
+
+        .font-subheading {
+             /* Use 'Mortise Bold' if loaded, otherwise fallback */
+             font-family: 'Mortise Bold', 'Segoe UI Semibold', 'Helvetica Neue', sans-serif;
+             /* Ensure font-weight matches the loaded font if needed */
+             /* font-weight: 700; */
+        }
+
+        .font-body-text {
+             /* Use 'Mortise Medium' if loaded, otherwise fallback */
+             font-family: 'Mortise Medium', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+             /* Ensure font-weight matches the loaded font if needed */
+             /* font-weight: 500; */
+        }
+        /* --- End Custom Font Classes --- */ 
+
+        /* Container for the mascot and bubble columns */
+        .mascot-bubble-area {
+            display: inline-flex;
+            justify-content: center; /* Center items horizontally */
+            align-items: center; /* Align items vertically */
+            gap: 5rem; /* Space between bubble columns and mascot */
+            flex-wrap: wrap; /* Allow wrapping on smaller screens */
+        }
+
+        /* Container for vertical bubbles */
+        .bubble-column {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem; /* Space BETWEEN bubbles vertically */
+            width: 200px; /* Give columns a width */
+            align-items: stretch; /* Make bubbles fill width */
+        }
+
+        /* Align right column bubbles to the start (left) */
+         .bubble-column.right-column {
+             align-items: flex-start; /* Bubbles align left within this column */
+         }
+         /* Align left column bubbles to the end (right) */
+         .bubble-column.left-column {
+             align-items: flex-end; /* Bubbles align right within this column */
+         }
+
+
+        /* Custom styles for speech bubbles */
+        .speech-bubble {
+            /* Using 'Mortise Medium' if loaded, otherwise fallback */
+            font-family: 'Mortise Medium', sans-serif;
+            position: relative;
+            background: #294DFF; /* Primary blue */
+            color: #EDEDED; /* Light text on dark background */
+            border-radius: 0.4em;
+            padding: 0.75rem 1.25rem; /* Adjusted padding */
+            font-size: 0.875rem; /* 14px */
+            line-height: 1.25rem; /* 20px */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            max-width: 100%; /* Prevent bubbles from exceeding column width */
+            text-align: left; /* Default text align */
+        }
+
+        /* Speech bubble tails (using side tails from previous example) */
+        /* Tail for bubbles pointing right (typically on the left side of mascot) */
+        .speech-bubble.tail-right::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            width: 0;
+            height: 0;
+            border: 10px solid transparent;
+            border-left-color: #294DFF; /* Points right */
+            border-right: 0;
+            margin-top: -10px;
+            margin-right: -10px;
+        }
+
+        /* Tail for bubbles pointing left (typically on the right side of mascot) */
+        .speech-bubble.tail-left::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 0;
+            height: 0;
+            border: 10px solid transparent;
+            border-right-color: #294DFF; /* Points left */
+            border-left: 0;
+            margin-top: -10px;
+            margin-left: -10px;
+        }
+
+        /* Custom button style */
+        .btn-primary {
+            background-color: #294DFF; /* Primary blue */
+            color: #EDEDED;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem; /* Rounded corners */
+            font-family: 'Mortise Medium', sans-serif;
+            font-weight: 0;
+            text-align: center;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            display: inline-block; /* Ensure it behaves like a block for margin/padding but flows inline */
+        }
+
+        .btn-primary:hover {
+            background-color: #1a3fdb; /* Darker blue on hover */
+        }
+
+        /* Header styles */
+        header {
+            background-color: rgba(237, 237, 237, 0.8); /* Semi-transparent background */
+            backdrop-filter: blur(5px); /* Blur effect */
+        }
+
+        /* Mascot Image Style */
+        /* Styles for the <img> tag replacing the placeholder */
+        .mascot-placeholder { /* Keep class name for layout consistency */
+            width: 200px; /* Desired width */
+            height: 200px; /* Desired height */
+            object-fit: contain; /* Or 'cover', scales image nicely */
+            /* Removed background, border, flex properties etc. */
+            position: relative; /* Keep if needed for absolute positioning of other elements relative to it */
+            flex-shrink: 0; /* Prevent mascot from shrinking in flex layout */
+    }
+
+    </style>
+</head>
+<body class="text-[#161616]">
+
+    <header class="sticky top-0 z-50 shadow-md">
+        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold flex items-center text-[#161616]">
+                <img src="images/Asset 121.png" alt="FinPlay Logo" class="w-10 h-10 mr-2">
+                <span>FinPlay</span>
+            </a>
+
+            <div class="hidden md:flex space-x-6 items-center">
+                <a href="#about-section" class="text-[#161616] hover:text-[#294DFF] transition duration-300">About</a>
+                <a href="login.html" class="text-[#161616] hover:text-[#294DFF] transition duration-300">Game</a>
+                <a href="profile.html" class="text-[#161616] hover:text-[#294DFF] transition duration-300">Profile</a>
+                <button class="bg-[#00B295] text-white p-2 rounded-full hover:bg-opacity-80 transition duration-300" aria-label="AI Chat">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                    </svg>
+                </button>
+            </div>
+
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-[#161616] focus:outline-none" aria-label="Open Menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </button>
+            </div>
+        </nav>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-white bg-opacity-90">
+            <a href="#about-section" class="block px-4 py-2 text-[#161616] hover:bg-[#294DFF] hover:text-white">About</a>
+            <a href="login.html" class="block px-4 py-2 text-[#161616] hover:bg-[#294DFF] hover:text-white">Game</a>
+            <a href="profile.html" class="block px-4 py-2 text-[#161616] hover:bg-[#294DFF] hover:text-white">Profile</a>
+             <button class="w-full text-left px-4 py-2 text-[#161616] hover:bg-[#00B295] hover:text-white flex items-center space-x-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                </svg>
+                <span>AI Chat</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+
+        <section class="text-center mb-16 mt-8 flex flex-col items-center">
+             <img src="images/Asset 121.png" alt="FinPlay Large Logo" class="w-32 h-32 md:w-48 md:h-48 mb-4 object-contain">
+        </section>
+
+        <section class="mb-20 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-10 text-[#161616]">Is this you?</h2>
+
+            <div class="mascot-bubble-area">
+
+                <div class="bubble-column left-column">
+                    <p class="speech-bubble tail-right">What is Stock Market?</p>
+                    <p class="speech-bubble tail-right">It's sooo overwhelming to understand!</p>
+                    <p class="speech-bubble tail-right">Ah... I'm too scared to invest!</p>
+                </div>
+
+                <img src="images/Asset 35.png" alt="FinPlay Mascot" class="mascot-placeholder mx-auto my-6 order-first md:order-none">
+
+
+                <div class="bubble-column right-column">
+                    <p class="speech-bubble tail-left">I'm embarrassed that I know nothing about it</p>
+                    <p class="speech-bubble tail-left">Why even bother?</p>
+                    <p class="speech-bubble tail-left">I have no time to go through so many websites!</p>
+                </div>
+
+            </div>
+
+            <p class="text-2xl md:text-3xl font-semibold text-[#161616] mt-16">
+                Then this website <br class="md:hidden"> is for <span class="text-[#294DFF]">YOU!</span>
+            </p>
+        </section>
+
+        <section class="text-center mb-20">
+            <h1 class="text-5xl md:text-7xl font-bold mb-4 text-[#1a3fdb]">
+                Fin<span class="text-[#294DFF]">Play</span>
+            </h1>
+            <p class="text-lg md:text-xl text-[#161616] font-body-text">
+                is a <span class="font-semibold text-[#00B295] font-body-text">fun</span>, <span class="font-semibold text-[#00B295] font-body-text">interactive</span> and <span class="font-semibold text-[#00B295] font-body-text">risk-free</span> way <br> to learn about the Stock Market!
+            </p>
+        </section>
+
+        <section id="about-section" class="mb-16 scroll-mt-20">
+            <div class="grid md:grid-cols-2 gap-12 items-start">
+                <div>
+                    <h2 class="text-3xl font-bold mb-4 text-[#294DFF] ">Who are we?</h2>
+                    <p class="text-lg text-[#161616] leading-relaxed font-body-text">
+                        We are a group of university students dedicated to simplifying stock market education and making it accessible to all.
+                    </p>
+                </div>
+                <div>
+                     <h2 class="text-3xl font-bold mb-4 text-[#294DFF] md:text-right">Our Vision</h2>
+                     <p class="text-lg text-[#161616] leading-relaxed md:text-right font-body-text">
+                        To become the ultimate financial literacy tool, that caters to anyone interested in learning, exploring and mastering the stock market, in a fun and risk-free way.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="text-center mt-12 mb-12">
+             <p class="mb-4 text-lg text-[#161616] font-body-text">Don't believe it? <br> Take a tour for yourself!</p>
+             <a href="login.html" class="btn-primary">
+                Let's Go!
+            </a>
+        </section>
+
+    </main>
+
+    <footer class="bg-[#161616] text-[#EDEDED] py-6 mt-16">
+        <div class="container mx-auto px-6 text-center text-sm">
+            &copy; 2025 FinPlay. All rights reserved. | Placeholder Footer
+        </div>
+    </footer>
+
+    <script>
+        // Basic Mobile Menu Toggle
+        const menuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu if clicking on a link (optional)
+        mobileMenu.addEventListener('click', (event) => {
+            // Check if the clicked element is a link or inside a button that's not the main toggle
+            if (event.target.tagName === 'A' || event.target.closest('button:not(#mobile-menu-button)')) {
+                 mobileMenu.classList.add('hidden');
+            }
+        });
+    </script>
+ <!-- AI Chat Modal -->
+ <div id="chat-modal" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center hidden z-50">
+    <div class="bg-white w-full max-w-md rounded-lg shadow-lg p-4 flex flex-col">
+      <div class="flex justify-between items-center border-b pb-2 mb-4">
+        <h2 class="text-lg font-bold text-[#161616]">Finbot</h2>
+        <button id="close-chat" class="text-gray-500 hover:text-gray-800 text-2xl">&times;</button>
+      </div>
+      <div id="chat-output" class="flex-1 overflow-y-auto mb-4 max-h-64 text-sm text-[#161616]">
+        <!-- Messages will appear here -->
+      </div>
+      <div class="flex space-x-2">
+        <input id="user-input" type="text" placeholder="Ask me anything..." class="flex-1 px-3 py-2 border rounded-md focus:outline-none focus:ring">
+        <button id="send-btn" class="bg-[#294DFF] text-white px-4 py-2 rounded-md hover:bg-[#1a3fdb]">Send</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="chatbot.js" defer></script>
+</body>
+</html>

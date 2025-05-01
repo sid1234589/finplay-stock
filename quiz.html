@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Time! - FinPlay</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @font-face {
+            font-family: 'Gilroy';
+            src: url("fonts/fonnts.com-Gilroy-Heavy.ttf") format('truetype'); 
+            font-weight: bolder;
+            font-style: normal; 
+        }
+        @font-face {
+            font-family: 'Mortise Bold';
+            src: url("fonts/mortisetest-bold.otf") format('opentype');
+            font-weight: bold;
+            font-style: normal; 
+        }
+         @font-face {
+            font-family: 'Mortise Medium';
+            src: url("fonts/mortisetest-medium.otf") format('opentype'); 
+            font-weight: 500; 
+            font-style: normal;
+        }
+
+        body {
+            /* Using 'Gilroy' first if loaded, otherwise Tailwind's default sans-serif */
+            font-family: 'Gilroy', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            background-color: #EDEDED; /* Light grey background (acts as fallback) */
+
+            /* --- Background Image Setup --- */
+            /* IMPORTANT: Replace 'images/Asset 126.jpg' with the correct path to your image file */
+            background-image: url('images/Asset\ 126.png');
+
+            /* How the background image repeats */
+            background-repeat: repeat; /* Use 'repeat' if you want the image to tile */
+                                       /* Use 'no-repeat' if you want it to show only once */
+
+            /* How the background image is sized */
+            /* background-size: cover; */ /* Stretches image to cover the entire area */
+            /* background-size: contain; */ /* Scales image to fit without cropping */
+             background-size: cover; /* Displays the image at its original size */
+
+            /* Starting position of the background image */
+            background-position: center center; /* Centers the image */
+
+            /* Whether the background scrolls with the page or stays fixed */
+            background-attachment: fixed; /* Keeps the background fixed during scroll */
+                                         /* Use 'scroll' to make it scroll with content */
+        }
+
+        /* --- Custom Font Classes --- */
+        .font-heading {
+            /* Use 'Gilroy' (Bold) if loaded, otherwise fallback */
+            font-family: 'Gilroy', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+             /* Ensure font-weight matches the loaded font if needed */
+             /* font-weight: 700; */
+        }
+
+        .font-subheading {
+             /* Use 'Mortise Bold' if loaded, otherwise fallback */
+             font-family: 'Mortise Bold', 'Segoe UI Semibold', 'Helvetica Neue', sans-serif;
+             /* Ensure font-weight matches the loaded font if needed */
+             /* font-weight: 700; */
+        }
+
+        .font-body-text {
+             /* Use 'Mortise Medium' if loaded, otherwise fallback */
+             font-family: 'Mortise Medium', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+             /* Ensure font-weight matches the loaded font if needed */
+             /* font-weight: 500; */
+        }
+        /* --- End Custom Font Classes --- */ 
+        /* Header styles */
+        header {
+            background-color: rgba(237, 237, 237, 0.8); /* Semi-transparent background */
+            backdrop-filter: blur(5px); /* Blur effect */
+        }
+
+        /* Ensure main content takes up available space */
+        main {
+            flex-grow: 1;
+        }
+
+        /* Style for quiz question boxes */
+        .question-box {
+             background-color: rgba(255, 255, 255, 0.7); /* Slightly transparent white */
+             padding: 1.5rem; /* p-6 */
+             border-radius: 0.75rem; /* rounded-xl */
+             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-md */
+             margin-bottom: 2rem; /* mb-8 */
+             border-left: 5px solid #294DFF; /* Blue accent */
+        }
+        .question-text {
+            font-weight: 600; /* semibold */
+            color: #161616; /* Dark text */
+            margin-bottom: 1rem; /* mb-4 */
+        }
+        .options-list label {
+            display: block;
+            background-color: #EDEDED;
+            padding: 0.75rem 1rem;
+            border-radius: 0.375rem;
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            transition: background-color 0.2s ease, border-color 0.2s ease;
+        }
+         .options-list label:hover {
+             background-color: #d1d1d1;
+         }
+        .options-list input[type="radio"] {
+            margin-right: 0.75rem;
+            accent-color: #00B295; /* Teal accent for radio */
+        }
+        /* Style for selected option */
+        .options-list input[type="radio"]:checked + span {
+             font-weight: 600;
+        }
+         .options-list label.selected { /* Optional: Add styling for selected label */
+            border-color: #00B295;
+            background-color: #e0f2f1; /* Light teal background */
+         }
+
+        /* Feedback styles */
+        .feedback {
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+            padding: 0.5rem;
+            border-radius: 0.375rem;
+            display: none; /* Hidden by default */
+        }
+        .feedback.correct {
+            color: #004d40; /* Dark teal */
+            background-color: #b2dfdb; /* Light teal */
+            border: 1px solid #00796b; /* Teal border */
+            display: block;
+        }
+         .feedback.incorrect {
+            color: #b71c1c; /* Dark red */
+            background-color: #ffcdd2; /* Light red */
+            border: 1px solid #d32f2f; /* Red border */
+            display: block;
+        }
+
+         /* Score display */
+         #score-display {
+            background-color: #161616;
+            color: #EDEDED;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            font-size: 1.25rem;
+            margin-top: 2rem;
+            display: none; /* Hidden initially */
+         }
+          #score-display span {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #00B295; /* Teal score */
+          }
+
+
+        /* Custom button styles */
+        .btn-teal {
+            background-color: #00B295; /* Teal background */
+            color: #FFFFFF; /* White text */
+            padding: 0.75rem 2rem; /* Larger padding */
+            border-radius: 0.5rem;
+            font-weight: 600;
+            text-align: center;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            cursor: pointer;
+        }
+        .btn-teal:hover {
+            background-color: #008a75; /* Darker teal on hover */
+        }
+         .btn-teal:disabled {
+            background-color: #999;
+            cursor: not-allowed;
+         }
+
+
+    </style>
+</head>
+<body class="text-[#161616]">
+
+    <header class="sticky top-0 z-50 shadow-md">
+        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold flex items-center text-[#161616]">
+                 <svg class="w-10 h-10 mr-2" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#294DFF;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#00B295;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <path fill="url(#grad1)" d="M10 10 H 90 V 90 H 10 Z M 20 20 H 80 V 80 H 20 Z M 50 30 L 70 50 L 50 70 L 30 50 Z" />
+                    <text x="50" y="60" font-family="Arial, sans-serif" font-size="30" fill="#EDEDED" text-anchor="middle" dy=".3em">FP</text>
+                </svg>
+            </a>
+
+            <div class="hidden md:flex space-x-6 items-center">
+                <a href="index.html#about-section" class="text-[#161616] hover:text-[#294DFF] transition duration-300">About</a>
+                <a href="game.html" class="text-[#161616] hover:text-[#294DFF] transition duration-300">Game</a>
+                <a href="profile.html" class="text-[#161616] hover:text-[#294DFF] transition duration-300">Profile</a>
+                <button class="bg-[#00B295] text-white p-2 rounded-full hover:bg-opacity-80 transition duration-300" aria-label="AI Chat">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                    </svg>
+        </button>
+            </div>
+
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-[#161616] focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </button>
+            </div>
+        </nav>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-white bg-opacity-90">
+            <a href="index.html#about-section" class="block px-4 py-2 text-[#161616] hover:bg-[#294DFF] hover:text-white">About</a>
+            <a href="game.html" class="block px-4 py-2 text-[#161616] hover:bg-[#294DFF] hover:text-white">Game</a>
+            <a href="profile.html" class="block px-4 py-2 text-[#161616] hover:bg-[#294DFF] hover:text-white">Profile</a>
+             <button class="w-full text-left px-4 py-2 text-[#161616] hover:bg-[#00B295] hover:text-white flex items-center space-x-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                </svg>
+                <span>AI Chat</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+
+        <h1 class="text-3xl md:text-4xl font-bold text-[#00B295] mb-10 text-center"> Final Quiz Challenge!
+        </h1>
+
+        <form id="quiz-form">
+
+            <div class="question-box">
+                <p class="question-text">1. What does IPO stand for?</p>
+                <div class="options-list">
+                    <label>
+                        <input type="radio" name="q1" value="a" required> <span>Important Public Offer</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="q1" value="b"> <span>Initial Public Offering</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="q1" value="c"> <span>Investment Portfolio Opportunity</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="q1" value="d"> <span>Index Performance Obligation</span>
+                    </label>
+                </div>
+                <div id="feedback-q1" class="feedback"></div>
+            </div>
+
+            <div class="question-box">
+                <p class="question-text">2. Which term describes a market where prices are generally falling?</p>
+                <div class="options-list">
+                    <label>
+                        <input type="radio" name="q2" value="a" required> <span>Bull Market</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="q2" value="b"> <span>Sideways Market</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="q2" value="c"> <span>Bear Market</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="q2" value="d"> <span>Volatile Market</span>
+                    </label>
+                </div>
+                 <div id="feedback-q2" class="feedback"></div>
+            </div>
+
+            <div class="question-box">
+                <p class="question-text">3. NIFTY 50 and SENSEX are examples of:</p>
+                <div class="options-list">
+                    <label>
+                        <input type="radio" name="q3" value="a" required> <span>Types of Company Shares</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="q3" value="b"> <span>Government Bonds</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="q3" value="c"> <span>Stock Market Indices</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="q3" value="d"> <span>Brokerage Firms</span>
+                    </label>
+                </div>
+                 <div id="feedback-q3" class="feedback"></div>
+            </div>
+
+             <div class="question-box">
+                <p class="question-text">4. An investor who buys shares and holds them for many years, believing in the company's long-term growth, is typically called a:</p>
+                <div class="options-list">
+                    <label>
+                        <input type="radio" name="q4" value="a" required> <span>Day Trader</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="q4" value="b"> <span>Scalper</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="q4" value="c"> <span>Long-Term Investor</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="q4" value="d"> <span>Swing Trader</span>
+                    </label>
+                </div>
+                 <div id="feedback-q4" class="feedback"></div>
+            </div>
+
+             <div class="question-box">
+                <p class="question-text">5. What is the primary role of SEBI in the Indian stock market?</p>
+                <div class="options-list">
+                    <label>
+                        <input type="radio" name="q5" value="a" required> <span>To guarantee profits for investors</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="q5" value="b"> <span>To regulate the market and protect investors</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="q5" value="c"> <span>To directly trade stocks for the government</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="q5" value="d"> <span>To set the price of all stocks</span>
+                    </label>
+                </div>
+                 <div id="feedback-q5" class="feedback"></div>
+            </div>
+
+            <div class="question-box">
+                <p class="question-text">6. How is the stock market described?</p>
+                <div class="options-list">
+                    <label>
+                        <input type="radio" name="q6" value="a" required> <span>A place where companies sell products directly to consumers.</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="q6" value="b"> <span>A multiplayer game where players trade shares (ownership pieces of companies).</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="q6" value="c"> <span>A savings account with guaranteed returns.</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="q6" value="d"> <span>A system for betting on company success.</span>
+                    </label>
+                </div>
+                <div id="feedback-q6" class="feedback"></div>
+            </div>
+        
+            <div class="question-box">
+                <p class="question-text">7. What is the main reason to Invest?</p>
+                <div class="options-list">
+                    <label>
+                        <input type="radio" name="q7" value="a" required> <span>To avoid paying taxes on savings.</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="q7" value="b"> <span>To guarantee quick and easy wealth.</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="q7" value="c"> <span>To make your money work for you and grow faster, hopefully beating inflation.</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="q7" value="d"> <span>To spend money quickly.</span>
+                    </label>
+                </div>
+                <div id="feedback-q7" class="feedback"></div>
+            </div>
+        
+            <div class="question-box">
+                <p class="question-text">8. What does a &quot;Bull Market&quot; mean?</p>
+                <div class="options-list">
+                    <label>
+                        <input type="radio" name="q8" value="a" required> <span>The market is pessimistic, and prices are generally going down.</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="q8" value="b"> <span>The original price tag the company put on the share when it was first created.</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="q8" value="c"> <span>The market is optimistic, and prices are generally going UP.</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="q8" value="d"> <span>The general direction the market (or a specific share) is moving downwards.</span>
+                    </label>
+                </div>
+                <div id="feedback-q8" class="feedback"></div>
+            </div>
+        
+            <div class="question-box">
+                <p class="question-text">9. What is one reason why a company might choose to launch an IPO?</p>
+                <div class="options-list">
+                    <label>
+                        <input type="radio" name="q9" value="a" required> <span>To decrease its brand visibility.</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="q9" value="b"> <span>To raise capital (get money).</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="q9" value="c"> <span>To avoid having to follow any rules.</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="q9" value="d"> <span>To become a private company.</span>
+                    </label>
+                </div>
+                <div id="feedback-q9" class="feedback"></div>
+            </div>
+        
+            <div class="question-box">
+                <p class="question-text">10. Which of the following is better for comparing long-term investments?</p>
+                <div class="options-list">
+                    <label>
+                        <input type="radio" name="q10" value="a" required> <span>Absolute Return</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="q10" value="b"> <span>CAGR (Compounded Annual Growth Rate)</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="q10" value="c"> <span>Sell Price - Buy Price</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="q10" value="d"> <span>Buy Price / Sell Price x 100</span>
+                    </label>
+                </div>
+                <div id="feedback-q10" class="feedback"></div>
+            </div>
+
+            <div class="text-center mt-10">
+                <button type="submit" id="submit-quiz" class="btn-teal">Submit Quiz</button>
+            </div>
+
+        </form>
+
+        <div id="score-display">
+            Your Score: <span id="score">0</span> / <span id="total-questions">5</span>
+            <p id="score-message" class="text-sm mt-2"></p>
+        </div>
+
+        <div class="text-center mt-8">
+             <a href="courses.html" class="text-sm text-[#294DFF] hover:underline">Back to Courses</a>
+         </div>
+
+    </main>
+
+    <footer class="bg-[#161616] text-[#EDEDED] py-4 mt-16">
+        <div class="container mx-auto px-6 text-center text-xs">
+             &copy; 2025 FinPlay. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        // Basic Mobile Menu Toggle
+        const menuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileMenu.addEventListener('click', (event) => {
+            if (event.target.tagName === 'A') {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+
+        // --- Basic Quiz Logic ---
+        const quizForm = document.getElementById('quiz-form');
+        const scoreDisplay = document.getElementById('score-display');
+        const scoreElement = document.getElementById('score');
+        const totalQuestionsElement = document.getElementById('total-questions');
+        const scoreMessageElement = document.getElementById('score-message');
+        const submitButton = document.getElementById('submit-quiz');
+
+        // Define correct answers
+        const correctAnswers = {
+            q1: 'b',
+            q2: 'c',
+            q3: 'c',
+            q4: 'c',
+            q5: 'b',
+            q6: 'b',  
+            q7: 'c',  
+            q8: 'c',  
+            q9: 'b',  
+            q10: 'b'
+        };
+
+        const totalQuestions = Object.keys(correctAnswers).length;
+        totalQuestionsElement.textContent = totalQuestions;
+
+        quizForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            let score = 0;
+            const formData = new FormData(quizForm);
+
+            // Disable further submissions
+            submitButton.disabled = true;
+            submitButton.textContent = 'Submitted';
+
+            // Loop through each question
+            for (const [question, correctAnswer] of Object.entries(correctAnswers)) {
+                const userAnswer = formData.get(question);
+                const feedbackElement = document.getElementById(`feedback-${question}`);
+                const questionBox = feedbackElement.closest('.question-box'); // Find parent box
+                const labels = questionBox.querySelectorAll('.options-list label');
+
+                // Disable radio buttons for this question
+                 questionBox.querySelectorAll(`input[name="${question}"]`).forEach(input => {
+                    input.disabled = true;
+                 });
+
+                if (userAnswer === correctAnswer) {
+                    score++;
+                    feedbackElement.textContent = 'Correct!';
+                    feedbackElement.className = 'feedback correct'; // Show correct feedback
+                     // Highlight correct answer label
+                     labels.forEach(label => {
+                        if (label.querySelector(`input[value="${correctAnswer}"]`)) {
+                            label.classList.add('!bg-green-200', '!border-green-500'); // Force style
+                        }
+                    });
+                } else {
+                    feedbackElement.textContent = `Incorrect. The correct answer was option ${correctAnswer.toUpperCase()}.`;
+                    feedbackElement.className = 'feedback incorrect'; // Show incorrect feedback
+                    // Highlight user's wrong answer and the correct answer
+                    labels.forEach(label => {
+                        const input = label.querySelector('input');
+                        if (input.value === userAnswer) { // User's wrong choice
+                            label.classList.add('!bg-red-200', '!border-red-500');
+                        }
+                        if (input.value === correctAnswer) { // The actual correct answer
+                             label.classList.add('!bg-green-200', '!border-green-500');
+                        }
+                    });
+                }
+            }
+
+            // Display final score
+            scoreElement.textContent = score;
+            scoreDisplay.style.display = 'block';
+
+            // Display score message
+            let message = '';
+            const percentage = (score / totalQuestions) * 100;
+            if (percentage === 100) {
+                message = "Excellent! You aced the quiz!";
+            } else if (percentage >= 80) {
+                message = "Great job! You know your stuff!";
+            } else if (percentage >= 60) {
+                message = "Good effort! Keep learning!";
+            } else {
+                message = "Keep practicing! Review the levels to improve.";
+            }
+            scoreMessageElement.textContent = message;
+
+             // Scroll to score
+             scoreDisplay.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        });
+
+         // Optional: Add visual feedback when selecting an option
+         const radioLabels = document.querySelectorAll('.options-list label');
+         radioLabels.forEach(label => {
+            label.addEventListener('click', (e) => {
+                // Find the radio button within the clicked label
+                const radio = label.querySelector('input[type="radio"]');
+                if (radio && !radio.disabled) {
+                    // Remove 'selected' class from sibling labels for the same question
+                    const questionName = radio.name;
+                    document.querySelectorAll(`input[name="${questionName}"]`).forEach(siblingRadio => {
+                       siblingRadio.closest('label').classList.remove('selected');
+                    });
+                    // Add 'selected' class to the clicked label
+                    label.classList.add('selected');
+                }
+            });
+         });
+
+    </script>
+     <!-- AI Chat Modal -->
+ <div id="chat-modal" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center hidden z-50">
+    <div class="bg-white w-full max-w-md rounded-lg shadow-lg p-4 flex flex-col">
+      <div class="flex justify-between items-center border-b pb-2 mb-4">
+        <h2 class="text-lg font-bold text-[#161616]">Finbot</h2>
+        <button id="close-chat" class="text-gray-500 hover:text-gray-800 text-2xl">&times;</button>
+      </div>
+      <div id="chat-output" class="flex-1 overflow-y-auto mb-4 max-h-64 text-sm text-[#161616]">
+        <!-- Messages will appear here -->
+      </div>
+      <div class="flex space-x-2">
+        <input id="user-input" type="text" placeholder="Ask me anything..." class="flex-1 px-3 py-2 border rounded-md focus:outline-none focus:ring">
+        <button id="send-btn" class="bg-[#294DFF] text-white px-4 py-2 rounded-md hover:bg-[#1a3fdb]">Send</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="chatbot.js" defer></script>
+
+</body>
+</html>

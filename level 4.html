@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level 4 - Understanding IPOs - FinPlay Course</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+         @font-face {
+            font-family: 'Gilroy';
+            src: url("fonts/fonnts.com-Gilroy-Heavy.ttf") format('truetype'); 
+            font-weight: bolder;
+            font-style: normal; 
+        }
+        @font-face {
+            font-family: 'Mortise Bold';
+            src: url("fonts/mortisetest-bold.otf") format('opentype');
+            font-weight: bold;
+            font-style: normal; 
+        }
+         @font-face {
+            font-family: 'Mortise Medium';
+            src: url("fonts/mortisetest-medium.otf") format('opentype'); 
+            font-weight: 500; 
+            font-style: normal;
+        }
+
+        body {
+            /* Using 'Gilroy' first if loaded, otherwise Tailwind's default sans-serif */
+            font-family: 'Gilroy', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            background-color: #EDEDED; /* Light grey background (acts as fallback) */
+
+            /* --- Background Image Setup --- */
+            /* IMPORTANT: Replace 'images/Asset 126.jpg' with the correct path to your image file */
+            background-image: url('images/Asset\ 126.png');
+
+            /* How the background image repeats */
+            background-repeat: repeat; /* Use 'repeat' if you want the image to tile */
+                                       /* Use 'no-repeat' if you want it to show only once */
+
+            /* How the background image is sized */
+            /* background-size: cover; */ /* Stretches image to cover the entire area */
+            /* background-size: contain; */ /* Scales image to fit without cropping */
+             background-size: cover; /* Displays the image at its original size */
+
+            /* Starting position of the background image */
+            background-position: center center; /* Centers the image */
+
+            /* Whether the background scrolls with the page or stays fixed */
+            background-attachment: fixed; /* Keeps the background fixed during scroll */
+                                         /* Use 'scroll' to make it scroll with content */
+        }
+
+        /* --- Custom Font Classes --- */
+        .font-heading {
+            /* Use 'Gilroy' (Bold) if loaded, otherwise fallback */
+            font-family: 'Gilroy', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+             /* Ensure font-weight matches the loaded font if needed */
+             /* font-weight: 700; */
+        }
+
+        .font-subheading {
+             /* Use 'Mortise Bold' if loaded, otherwise fallback */
+             font-family: 'Mortise Bold', 'Segoe UI Semibold', 'Helvetica Neue', sans-serif;
+             /* Ensure font-weight matches the loaded font if needed */
+             /* font-weight: 700; */
+        }
+
+        .font-body-text {
+             /* Use 'Mortise Medium' if loaded, otherwise fallback */
+             font-family: 'Mortise Medium', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+             /* Ensure font-weight matches the loaded font if needed */
+             /* font-weight: 500; */
+        }
+        /* --- End Custom Font Classes --- */ 
+        /* Header styles */
+        header {
+            background-color: rgba(237, 237, 237, 0.8); /* Semi-transparent background */
+            backdrop-filter: blur(5px); /* Blur effect */
+        }
+
+        /* Ensure main content takes up available space */
+        main {
+            flex-grow: 1;
+        }
+
+        /* Style for content boxes */
+        .content-box {
+             background-color: rgba(255, 255, 255, 0.6); /* Slightly transparent white */
+             padding: 1.5rem; /* p-6 */
+             border-radius: 0.75rem; /* rounded-xl */
+             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-md */
+             margin-bottom: 2rem; /* mb-8 */
+        }
+
+        /* Style for definition terms */
+        .term-box {
+            background-color: #EDEDED; /* Light background */
+            padding: 1rem; /* p-4 */
+            border-radius: 0.5rem; /* rounded-lg */
+            border-left: 4px solid #00B295; /* Teal accent border */
+            margin-bottom: 1rem; /* mb-4 */
+        }
+         .term-box dt { /* Definition Term */
+            font-weight: 700; /* bold */
+            color: #00B295; /* Teal color */
+            font-size: 1.125rem; /* text-lg */
+            margin-bottom: 0.25rem; /* mb-1 */
+         }
+         .term-box dd { /* Definition Description */
+            font-size: 0.875rem; /* text-sm */
+            line-height: 1.5; /* leading-relaxed */
+            color: #161616; /* Dark text */
+         }
+         .term-box dd ol { /* Ordered Lists within definitions */
+             list-style: decimal;
+             padding-left: 1.5rem; /* pl-6 */
+             margin-top: 0.5rem; /* mt-2 */
+         }
+         .term-box dd ul { /* Unordered Lists within definitions */
+             list-style: disc;
+             padding-left: 1.5rem; /* pl-6 */
+             margin-top: 0.5rem; /* mt-2 */
+         }
+
+
+        /* Placeholder for IPO visual */
+        .ipo-visual {
+            width: 150px; /* Adjust size */
+            height: 100px; /* Adjust size */
+            background-color: #EDEDED;
+            border: 2px dashed #294DFF;
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-around; /* Space out elements */
+            padding: 0.5rem;
+            margin: 1rem auto; /* Center it */
+        }
+         .ipo-visual .mascot-placeholder-sm { /* Small mascot */
+            width: 40px; height: 40px; background-color: #294DFF; border-radius: 50%; border: 1px solid #161616;
+         }
+         .ipo-visual .hexagon-placeholder-sm { /* Small hexagon */
+            width: 45px; height: 52px; background-color: #161616; clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+         }
+         .ipo-visual .arrow { /* Arrow between */
+            font-size: 1.5rem; color: #161616; font-weight: bold;
+         }
+
+        /* IPO Process Steps Styling - Updated */
+        .ipo-process-container {
+            display: grid;
+            grid-template-columns: 1fr; /* Default single column */
+            gap: 2rem; /* Space between columns */
+        }
+        /* On medium screens and up, use two columns */
+        @media (min-width: 768px) {
+            .ipo-process-container {
+                grid-template-columns: 1fr 1fr; /* Two columns: Text | Blank */
+            }
+        }
+
+        .ipo-steps {
+            list-style: none;
+            padding-left: 2.5rem; /* Indent list for number positioning */
+            position: relative;
+            counter-reset: step-counter; /* Initialize counter */
+        }
+        .ipo-steps li {
+            /* Removed background, border, shadow, margin-left, max-width */
+            padding: 0.5rem 0; /* Vertical padding */
+            margin-bottom: 1rem; /* Space between steps */
+            position: relative;
+        }
+        .ipo-steps li::before { /* Step number */
+            content: counter(step-counter);
+            counter-increment: step-counter;
+            position: absolute;
+            left: -2.5rem; /* Position number to the left */
+            top: 0.1rem; /* Align with first line of text */
+            background-color: #294DFF; /* Blue background for number */
+            color: #EDEDED; /* Light text */
+            width: 1.75rem; /* Slightly smaller */
+            height: 1.75rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.875rem; /* Smaller font */
+            border: 1px solid #161616;
+        }
+
+         .ipo-steps h4 { /* Step Title */
+            font-weight: 700; /* bold */
+            font-size: 1rem; /* text-base */
+            margin-bottom: 0.25rem; /* mb-1 */
+            color: #294DFF; /* Blue title */
+         }
+         .ipo-steps p { /* Step Description */
+            font-size: 0.875rem; /* text-sm */
+            line-height: 1.5; /* leading-relaxed */
+            color: #161616; /* Dark text */
+         }
+
+        /* Key IPO Terms List */
+        .key-terms-list {
+            list-style: disc;
+            padding-left: 1.5rem;
+            margin-top: 0.5rem;
+            font-size: 0.875rem; /* text-sm */
+            line-height: 1.6;
+        }
+        .key-terms-list li strong {
+            color: #00B295; /* Teal for term */
+        }
+
+        /* Quick Recap List */
+         .recap-list {
+            list-style: none; /* Remove default bullets */
+            padding-left: 1rem; /* Space for custom bullet */
+            font-size: 0.875rem; /* text-sm */
+            line-height: 1.6;
+         }
+         .recap-list li {
+            position: relative;
+            margin-bottom: 0.5rem; /* space between items */
+         }
+         .recap-list li::before {
+            content: '•'; /* Bullet character */
+            color: #294DFF; /* Blue bullet */
+            font-weight: bold;
+            display: inline-block;
+            position: absolute;
+            left: -1rem; /* Position bullet */
+            top: 0;
+         }
+
+
+        /* Custom button styles */
+         .btn-black {
+            background-color: #161616; /* Black */
+            color: #EDEDED; /* Light text */
+            padding: 0.6rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            text-align: center;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .btn-black:hover {
+            background-color: #333; /* Darker grey on hover */
+        }
+        .btn-teal {
+            background-color: #00B295; /* Teal background */
+            color: #FFFFFF; /* White text */
+            padding: 0.6rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            text-align: center;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .btn-teal:hover {
+            background-color: #008a75; /* Darker teal on hover */
+        }
+
+    </style>
+</head>
+<body class="text-[#161616]">
+
+    <header class="sticky top-0 z-50 shadow-md">
+        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold flex items-center text-[#161616]">
+                 <svg class="w-10 h-10 mr-2" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#294DFF;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#00B295;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <path fill="url(#grad1)" d="M10 10 H 90 V 90 H 10 Z M 20 20 H 80 V 80 H 20 Z M 50 30 L 70 50 L 50 70 L 30 50 Z" />
+                    <text x="50" y="60" font-family="Arial, sans-serif" font-size="30" fill="#EDEDED" text-anchor="middle" dy=".3em">FP</text>
+                </svg>
+            </a>
+
+            <div class="hidden md:flex space-x-6 items-center">
+                <a href="index.html#about-section" class="text-[#161616] hover:text-[#294DFF] transition duration-300">About</a>
+                <a href="game.html" class="text-[#161616] hover:text-[#294DFF] transition duration-300">Game</a>
+                <a href="profile.html" class="text-[#161616] hover:text-[#294DFF] transition duration-300">Profile</a>
+                <button class="bg-[#00B295] text-white p-2 rounded-full hover:bg-opacity-80 transition duration-300" aria-label="AI Chat">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                    </svg>
+                </button>
+            </div>
+
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-[#161616] focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </button>
+            </div>
+        </nav>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-white bg-opacity-90">
+            <a href="index.html#about-section" class="block px-4 py-2 text-[#161616] hover:bg-[#294DFF] hover:text-white">About</a>
+            <a href="game.html" class="block px-4 py-2 text-[#161616] hover:bg-[#294DFF] hover:text-white">Game</a>
+            <a href="profile.html" class="block px-4 py-2 text-[#161616] hover:bg-[#294DFF] hover:text-white">Profile</a>
+             <button class="w-full text-left px-4 py-2 text-[#161616] hover:bg-[#00B295] hover:text-white flex items-center space-x-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                </svg>
+                <span>AI Chat</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+
+        <h1 class="text-4xl md:text-5xl font-bold text-[#00B295] mb-6 text-center"> Level Four
+        </h1>
+        <h2 class="text-2xl md:text-3xl font-semibold text-[#161616] mb-10 text-center">
+            Understanding IPOs
+        </h2>
+
+        <section class="content-box">
+            <div class="flex flex-col md:flex-row items-center gap-6">
+                <div class="flex-grow">
+                    <h3 class="text-2xl font-semibold text-[#294DFF] mb-3">What's an IPO?</h3>
+                    <p class="text-base leading-relaxed mb-3 font-semibold">(A New Player Enters the Game!)</p>
+                    <p class="text-sm leading-relaxed mb-3">
+                        Imagine a really cool character or item developed outside the main game world. Now, the creators want to bring it into the main game arena (the stock market) for everyone to trade.
+                    </p>
+                    <p class="text-sm leading-relaxed">
+                        An <span class="font-semibold">Initial Public Offering (IPO)</span> is exactly that! It's when a private company (one whose shares aren't traded publicly) decides to sell its shares to the public (that's us!) for the very first time. After the IPO, the company becomes publicly traded, and its shares can be bought and sold freely in the stock market arena.
+                    </p>
+                </div>
+                 <div class="ipo-visual flex-shrink-0">
+                    <div class="mascot-placeholder-sm"></div>
+                    <div class="arrow">→</div>
+                    <div class="hexagon-placeholder-sm"></div>
+                 </div>
+            </div>
+        </section>
+
+        <section class="content-box">
+             <h3 class="text-2xl font-semibold text-[#294DFF] mb-4">How Do Companies Grow Before an IPO? <br class="sm:hidden">(Leveling Up in Private)</h3>
+             <p class="text-sm leading-relaxed mb-4">
+                 Before a company is big or famous enough for an IPO, it needs funding to grow, just like a game character needs resources to level up:
+             </p>
+             <dl>
+                 <div class="term-box">
+                     <dt>1. Seed Funding:</dt>
+                     <dd>The founders use their own money or get small amounts from friends, family, or <span class="font-semibold">Angel Investors</span> (wealthy individuals who invest in brand new ideas), like sponsoring a rookie player. Risk is high here!</dd>
+                 </div>
+                  <div class="term-box">
+                     <dt>2. Venture Capital (VC) Funding:</dt>
+                     <dd>Once the company proves its idea works a bit, <span class="font-semibold">Venture Capital firms</span> (groups specializing in funding growing companies) invest larger amounts for a piece of the company (equity). They're like professional team scouts investing in promising talent.</dd>
+                 </div>
+                  <div class="term-box">
+                     <dt>3. Private Equity (PE) Funding:</dt>
+                     <dd>When the company is more established but needs big money to expand significantly, <span class="font-semibold">Private Equity firms</span> might invest very large sums, often taking a bigger chunk of ownership. They act like major league team owners.</dd>
+                 </div>
+                  <div class="term-box">
+                     <dt>4. Bank Loans:</dt>
+                     <dd>Companies can also borrow money, but they have to pay it back with interest.</dd>
+                 </div>
+             </dl>
+        </section>
+
+        <section class="content-box border-l-4 border-[#294DFF]">
+            <h4 class="text-lg font-semibold text-[#294DFF] mb-2">Example:</h4>
+            <p class="text-sm italic leading-relaxed">
+                A small startup making eco-friendly T-shirts might get initial money from an Angel Investor. If it grows, a VC firm might invest millions to help it scale up production. Later, needing much more for international expansion, finally needing huge funds, the company decides to launch an IPO.
+            </p>
+        </section>
+
+        <section class="content-box">
+             <h3 class="text-2xl font-semibold text-[#294DFF] mb-4">Why Go Public? <br class="sm:hidden">(Why Join the Main Game Arena?)</h3>
+             <p class="text-sm leading-relaxed mb-4">
+                 Companies launch IPOs for several reasons:
+             </p>
+              <ol class="list-decimal list-inside space-y-2 text-sm leading-relaxed">
+                  <li><span class="font-semibold">Raise Capital (Get Resources):</span> To get a large amount of money to build new factories, develop new products, buy other companies, or expand globally.</li>
+                  <li><span class="font-semibold">Reduce Debt (Pay Off Loans):</span> Using IPO money to pay back loans means no more interest payments.</li>
+                  <li><span class="font-semibold">Liquidity for Early Investors (Let Sponsors Cash Out):</span> The Angel, VC, and PE investors who funded the company early on can now sell their shares to the public (via the IPO or later in the market) and make a profit on their investment.</li>
+                  <li><span class="font-semibold">Brand Visibility (Become Famous):</span> Being listed on a stock exchange makes the company more well-known and respected.</li>
+                  <li><span class="font-semibold">Employee Benefits (Reward the Team):</span> Companies can give shares or stock options to their employees, which become valuable if the company does well after the IPO.</li>
+              </ol>
+        </section>
+
+        <section class="content-box">
+             <h3 class="text-2xl font-semibold text-[#294DFF] mb-4 text-center">The IPO Process: Step-by-Step Launch Sequence</h3>
+             <p class="text-sm leading-relaxed mb-6 text-center">
+                 Launching an IPO is a complex process, like planning a major game character release:
+             </p>
+             <div class="ipo-process-container">
+                 <ol class="ipo-steps">
+                     <li>
+                         <h4>1. Hire Launch Managers (Merchant Bankers):</h4>
+                         <p>The company hires expert firms called Merchant Bankers or Book Running Lead Managers) to manage the entire IPO process.</p>
+                     </li>
+                     <li>
+                         <h4>2. Create the Character Profile (Draft Red Herring Prospectus - DRHP):</h4>
+                         <p>They prepare a detailed document explaining everything about the company: its business, finances, risks, future plans, etc. This is for potential investors (players) to study.</p>
+                     </li>
+                      <li>
+                         <h4>3. Get Game Master Approval (SEBI Approval):</h4>
+                         <p>The DRHP and IPO plan must be submitted to and approved by the market referee, SEBI.</p>
+                     </li>
+                     <li>
+                         <h4>4. Decide the Price Range (Price Band):</h4>
+                         <p>The company and bankers decide on a price range (e.g., ₹100 to ₹120 per share) at which they will try to sell the shares.</p>
+                     </li>
+                     <li>
+                         <h4>5. Promote the Launch (Roadshow):</h4>
+                         <p>They advertise the IPO and meet with big potential investors to generate excitement.</p>
+                     </li>
+                     <li>
+                         <h4>6. Open the Bidding (Public Subscription / Book Building):</h4>
+                         <p>The IPO opens for a few days, and interested players like you can bid for shares, saying how many shares they want and at what price within the price band.</p>
+                     </li>
+                      <li>
+                         <h4>7. Set the Final Launch Price (Cut-Off Price):</h4>
+                         <p>Based on the demand seen during bidding, the company sets the final price at which shares will be sold to everyone. Often, it's the highest price that still gets enough buyers.</p>
+                     </li>
+                      <li>
+                         <h4>8. Distribute Shares & Start Trading (Allotment & Listing):</h4>
+                         <p>Shares are given out (allotted) to the successful bidders. Soon after, the shares officially start trading on the stock exchange (like NSE, BSE). The company has now moved from the Primary Market (the IPO launch event) to the Secondary Market (the regular trading arena).</p>
+                     </li>
+                 </ol>
+                 <div class="hidden md:block">
+                     </div>
+             </div>
+        </section>
+
+        <section class="content-box border-t-4 border-[#00B295]">
+             <h3 class="text-xl font-semibold text-[#00B295] mb-3">Key IPO Terms:</h3>
+             <ul class="key-terms-list">
+                 <li><strong>Under Subscription:</strong> Not enough players wanted to buy the shares offered. Bad sign.</li>
+                 <li><strong>Over Subscription:</strong> Way more players wanted shares than were available. Good sign (high demand!).</li>
+                 <li><strong>Green Shoe Option:</strong> If demand is very high, the company might sell a few extra shares than originally planned.</li>
+                 <li><strong>Fixed Price IPO:</strong> Sometimes, shares are offered at just one single price, not a price band.</li>
+                 <li><strong>Price Band & Cut-Off Price:</strong> The range you bid in (e.g., ₹100-120) and the final price everyone pays (e.g., ₹115).</li>
+             </ul>
+        </section>
+
+        <section class="content-box">
+            <h3 class="text-2xl font-semibold text-[#294DFF] mb-4 text-center">What Happens After the IPO?</h3>
+            <p class="text-sm leading-relaxed mb-4">
+                Once the shares are listed and trading in the secondary market:
+            </p>
+            <ul class="list-disc list-inside space-y-2 text-sm leading-relaxed">
+                <li>The share price will go up and down based on market demand, company performance, news, and player sentiment.</li>
+                <li>Players who got shares in the IPO can decide to sell them quickly (maybe for a listing pop profit) or hold them for the long term if they believe in the company.</li>
+            </ul>
+        </section>
+
+        <section class="content-box border-l-4 border-[#294DFF]"> <h3 class="text-xl font-semibold text-[#294DFF] mb-3">Quick Recap:</h3>
+             <ul class="recap-list">
+                 <li>IPO = Private company selling shares to the public for the first time.</li>
+                 <li>Companies do IPOs to raise money, pay debt, reward early investors, etc.</li>
+                 <li>The process involves bankers, detailed documents (DRHP), SEBI approval, bidding (book building), and finally listing on the exchange.</li>
+                 <li>After listing, shares trade freely in the secondary market.</li>
+             </ul>
+        </section>
+        <nav class="mt-10 flex justify-between items-center">
+            <a href="level 3.html" class="btn-black inline-flex items-center"> <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+                </svg>
+                Level 3
+            </a>
+            <a href="level 5.html" class="btn-teal inline-flex items-center"> Level 5
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                   <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
+            </a>
+        </nav>
+
+    </main>
+
+    <footer class="bg-[#161616] text-[#EDEDED] py-4 mt-16">
+        <div class="container mx-auto px-6 text-center text-xs">
+             &copy; 2025 FinPlay. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        // Basic Mobile Menu Toggle
+        const menuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu if clicking on a link
+        mobileMenu.addEventListener('click', (event) => {
+            if (event.target.tagName === 'A') {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+    </script>
+ <!-- AI Chat Modal -->
+ <div id="chat-modal" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center hidden z-50">
+    <div class="bg-white w-full max-w-md rounded-lg shadow-lg p-4 flex flex-col">
+      <div class="flex justify-between items-center border-b pb-2 mb-4">
+        <h2 class="text-lg font-bold text-[#161616]">Finbot</h2>
+        <button id="close-chat" class="text-gray-500 hover:text-gray-800 text-2xl">&times;</button>
+      </div>
+      <div id="chat-output" class="flex-1 overflow-y-auto mb-4 max-h-64 text-sm text-[#161616]">
+        <!-- Messages will appear here -->
+      </div>
+      <div class="flex space-x-2">
+        <input id="user-input" type="text" placeholder="Ask me anything..." class="flex-1 px-3 py-2 border rounded-md focus:outline-none focus:ring">
+        <button id="send-btn" class="bg-[#294DFF] text-white px-4 py-2 rounded-md hover:bg-[#1a3fdb]">Send</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="chatbot.js" defer></script>
+
+</body>
+</html>

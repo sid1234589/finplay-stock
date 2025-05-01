@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Market Simulator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        <div class="logo">Stock Market Simulator</div>
+        <div class="nav-links">
+            <a href="signup.html">Sign Up</a>
+            <a href="login.html">Login</a>
+        </div>
+        <div class="nav-balance">Available Cash: $<span id="userBalance">100000.00</span></div>
+    </nav>
+
+    <div class="container">
+        <div class="market-overview">
+            <h2>Live Market Overview</h2>
+            <div class="stock-list" id="stockList">
+                <!-- Stock items will be populated by JavaScript -->
+            </div>
+        </div>
+
+        <div class="portfolio">
+            <h2>Your Investment Portfolio</h2>
+            <div class="portfolio-summary">
+                <div class="total-value">Total Portfolio Value: $<span id="portfolioValue">0.00</span></div>
+                <div class="total-gain">Total Gain/Loss: <span id="totalGain">0.00</span>%</div>
+            </div>
+            <div class="portfolio-list" id="portfolioList">
+                <!-- Portfolio items will be populated by JavaScript -->
+            </div>
+        </div>
+
+        <div class="trading-panel" id="tradingPanel">
+            <h2>Trade Stocks</h2>
+            <div class="trade-form">
+                <select id="stockSelect">
+                    <option value="">Select a stock to trade</option>
+                </select>
+                <input type="number" id="shareAmount" placeholder="Enter number of shares">
+                <div class="stock-info" id="stockInfo">
+                    <!-- Current stock info will be shown here -->
+                </div>
+                <div class="trade-buttons">
+                    <button onclick="buyStock()">Buy Shares</button>
+                    <button onclick="sellStock()">Sell Shares</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

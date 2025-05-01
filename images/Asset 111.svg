@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2661.15 543.02">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #ededed;
+      }
+
+      .cls-1, .cls-2 {
+        stroke: #161616;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 14px;
+      }
+
+      .cls-3 {
+        font-family: Gilroy-Heavy, Gilroy;
+        font-size: 200px;
+        font-weight: 800;
+      }
+
+      .cls-3, .cls-2 {
+        fill: #294dff;
+      }
+    </style>
+  </defs>
+  <g id="Layer_2-2" data-name="Layer 2">
+    <g>
+      <rect class="cls-2" x="7" y="64.19" width="2592.33" height="471.83" rx="64.34" ry="64.34"/>
+      <rect class="cls-1" x="61.82" y="7" width="2592.33" height="471.83" rx="64.34" ry="64.34"/>
+      <text class="cls-3" transform="translate(219.43 318.57)"><tspan x="0" y="0">What’s your Game Plan?</tspan></text>
+    </g>
+  </g>
+</svg>

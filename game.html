@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Arena - FinPlay</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @font-face {
+            font-family: 'Gilroy';
+            src: url("fonts/fonnts.com-Gilroy-Heavy.ttf") format('truetype'); 
+            font-weight: bolder;
+            font-style: normal; 
+        }
+        @font-face {
+            font-family: 'Mortise Bold';
+            src: url("fonts/mortisetest-bold.otf") format('opentype');
+            font-weight: bold;
+            font-style: normal; 
+        }
+         @font-face {
+            font-family: 'Mortise Medium';
+            src: url("fonts/mortisetest-medium.otf") format('opentype'); 
+            font-weight: 500; 
+            font-style: normal;
+        }
+
+        body {
+            /* Using 'Gilroy' first if loaded, otherwise Tailwind's default sans-serif */
+            font-family: 'Gilroy', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            background-color: #EDEDED; /* Light grey background (acts as fallback) */
+
+            /* --- Background Image Setup --- */
+            /* IMPORTANT: Replace 'images/Asset 126.jpg' with the correct path to your image file */
+            background-image: url('images/Asset\ 126.png');
+
+            /* How the background image repeats */
+            background-repeat: repeat; /* Use 'repeat' if you want the image to tile */
+                                       /* Use 'no-repeat' if you want it to show only once */
+
+            /* How the background image is sized */
+            /* background-size: cover; */ /* Stretches image to cover the entire area */
+            /* background-size: contain; */ /* Scales image to fit without cropping */
+             background-size: cover; /* Displays the image at its original size */
+
+            /* Starting position of the background image */
+            background-position: center center; /* Centers the image */
+
+            /* Whether the background scrolls with the page or stays fixed */
+            background-attachment: fixed; /* Keeps the background fixed during scroll */
+                                         /* Use 'scroll' to make it scroll with content */
+        }
+
+        /* --- Custom Font Classes --- */
+        .font-heading {
+            /* Use 'Gilroy' (Bold) if loaded, otherwise fallback */
+            font-family: 'Gilroy', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+             /* Ensure font-weight matches the loaded font if needed */
+             /* font-weight: 700; */
+        }
+
+        .font-subheading {
+             /* Use 'Mortise Bold' if loaded, otherwise fallback */
+             font-family: 'Mortise Bold', 'Segoe UI Semibold', 'Helvetica Neue', sans-serif;
+             /* Ensure font-weight matches the loaded font if needed */
+             /* font-weight: 700; */
+        }
+
+        .font-body-text {
+             /* Use 'Mortise Medium' if loaded, otherwise fallback */
+             font-family: 'Mortise Medium', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+             /* Ensure font-weight matches the loaded font if needed */
+             /* font-weight: 500; */
+        }
+        /* --- End Custom Font Classes --- */ 
+        /* Header styles */
+        header {
+            background-color: rgba(237, 237, 237, 0.889); /* Semi-transparent background */
+            backdrop-filter: blur(5px); /* Blur effect */
+        }
+
+        /* Ensure main content takes up available space */
+        main {
+            flex-grow: 1;
+        }
+
+        /* Style for the disclaimer box */
+        .disclaimer-box {
+            background-color: #294DFF; /* Black background */
+            color: #EDEDED; /* Light text */
+            padding: 2rem;
+            margin-bottom: 2rem;
+            font-size: 0.875rem; /* Smaller text */
+            line-height: 1.5;
+        }
+
+        /* Style for the blue mascot section */
+        .mascot-section {
+            background-color: #294DFF; /* Primary blue */
+            color: #EDEDED; /* Light text */
+            padding: 2rem 1rem; /* Vertical padding, less horizontal */
+            border-radius: 0.75rem;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Mascot Placeholder Style (similar to homepage but adjusted) */
+        .mascot-placeholder-game {
+            width: 120px; /* Adjust size */
+            height: 120px; /* Adjust size */
+            background-color: #EDEDED; /* Light background */
+            border: 3px solid #161616; /* Dark border */
+            border-radius: 15px; /* Slightly rounded square */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #161616; /* Dark color for elements */
+            font-size: 2rem;
+            font-weight: bold;
+            position: relative;
+            /* Simple Bear Face with Sunglasses */
+        }
+        /* Sunglasses */
+        .mascot-placeholder-game .glasses {
+            position: absolute;
+            top: 35%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70%;
+            height: 25px;
+            background: #161616;
+            border-radius: 12px 12px 5px 5px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .mascot-placeholder-game .glasses::before, .mascot-placeholder-game .glasses::after {
+            content: '';
+            width: 25px;
+            height: 25px;
+            background: #161616;
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
+        }
+        .mascot-placeholder-game .glasses::before { left: 10px; }
+        .mascot-placeholder-game .glasses::after { right: 10px; }
+        /* Bridge */
+        .mascot-placeholder-game .glasses span {
+             width: 10px;
+             height: 5px;
+             background: #161616;
+             position: absolute;
+             left: 50%;
+             transform: translateX(-50%);
+             top: 10px;
+             border-radius: 2px;
+        }
+        /* Nose */
+        .mascot-placeholder-game .nose {
+            width: 15px;
+            height: 10px;
+            background: #161616;
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            position: absolute;
+            top: 65%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Style for +10 icon placeholder */
+        .plus-ten {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #294DFF; /* Blue background */
+            color: #EDEDED; /* Light text */
+            font-weight: bold;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            font-size: 0.75rem;
+            margin-left: 0.5rem;
+            border: 2px solid #00B295; /* Teal border */
+        }
+
+        /* Placeholder for hexagon icon */
+        .hexagon-icon {
+            width: 50px;
+            height: 58px; /* Adjust height for hexagon */
+            background-color: #294DFF;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            color: #EDEDED;
+            font-weight: bold;
+        }
+
+        /* Placeholder for arrow icons */
+        .arrow-icon {
+            width: 40px;
+            height: 40px;
+            background-color: #294DFF;
+            color: #EDEDED;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem; /* Adjusted for emojis */
+            border-radius: 0.25rem;
+            line-height: 1; /* Ensure emoji centers vertically */
+        }
+
+        /* Placeholder for graph line */
+        .graph-placeholder {
+            width: 100%;
+            height: 100px; /* Adjust height */
+            border: 2px dashed #294DFF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #294DFF;
+            font-size: 1.5rem;
+            font-weight: bold;
+            border-radius: 0.5rem;
+            margin-top: 1rem;
+            position: relative; /* For the question mark */
+        }
+        .graph-placeholder svg { /* Basic line path */
+            width: 80%;
+            height: 80%;
+            stroke: #294DFF;
+            stroke-width: 3;
+            fill: none;
+        }
+         .graph-placeholder .question-mark {
+            position: absolute;
+            right: 10%;
+            top: 10%;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #294DFF;
+        }
+
+
+        /* Placeholder for NSE/BSE icons */
+        .exchange-icon {
+            width: 60px;
+            height: 60px;
+            background-color: #EDEDED;
+            border: 2px solid #161616;
+            border-radius: 0.375rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #161616;
+            font-size: 1rem;
+        }
+
+        /* Custom button style */
+        .btn-primary {
+            background-color: #294DFF; /* Primary blue */
+            color: #EDEDED;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem; /* Rounded corners */
+            font-weight: 600;
+            text-align: center;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .btn-primary:hover {
+            background-color: #1a3fdb; /* Darker blue on hover */
+        }
+
+        /* Teal button style */
+        .btn-teal {
+            background-color: #00B295; /* Teal background */
+            color: #FFFFFF; /* White text */
+            padding: 0.6rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            text-align: center;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .btn-teal:hover {
+            background-color: #008a75; /* Darker teal on hover */
+        }
+
+        /* Teal outline button style */
+        .btn-teal-outline {
+            background-color: transparent;
+            color: #00B295; /* Teal text */
+            border: 2px solid #00B295; /* Teal border */
+            padding: calc(0.6rem - 2px) calc(1.5rem - 2px); /* Adjust padding for border */
+            border-radius: 0.5rem;
+            font-weight: 600;
+            text-align: center;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .btn-teal-outline:hover {
+            background-color: #00B295; /* Teal background on hover */
+            color: #FFFFFF; /* White text on hover */
+        }
+
+        /* Style for input fields inside the setup box */
+        .setup-input {
+            background-color: #FFFFFF; /* White background */
+            color: #161616; /* Dark text */
+            border: 1px solid #00B295; /* Teal border */
+            border-radius: 0.375rem; /* Rounded corners */
+            padding: 0.5rem 0.75rem;
+            width: 100%;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .setup-input:focus, .setup-select:focus {
+            outline: none;
+            border-color: #294DFF; /* Blue focus border */
+            box-shadow: 0 0 0 2px rgba(41, 77, 255, 0.3); /* Subtle blue glow on focus */
+        }
+        /* Style for select dropdown */
+        .setup-select {
+            background-color: #FFFFFF;
+            color: #161616;
+            border: 1px solid #00B295;
+            border-radius: 0.375rem;
+            padding: 0.5rem 0.75rem;
+            width: 100%;
+            appearance: none; /* Remove default arrow */
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%2300B295' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3E%3C/svg%3E"); /* Custom arrow */
+            background-position: right 0.5rem center;
+            background-repeat: no-repeat;
+            background-size: 1.5em 1.5em;
+        }
+
+
+    </style>
+</head>
+<body class="text-[#161616]"> <header class="sticky top-0 z-50 shadow-md">
+        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="Trade.html" class="text-2xl font-bold flex items-center text-[#161616]">
+                <img src="images/Asset 121.png" alt="FinPlay Logo" class="w-10 h-10 mr-2">
+                    <defs>
+                        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#294DFF;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#00B295;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <path fill="url(#grad1)" d="M10 10 H 90 V 90 H 10 Z M 20 20 H 80 V 80 H 20 Z M 50 30 L 70 50 L 50 70 L 30 50 Z" />
+                    <text x="50" y="60" font-family="Arial, sans-serif" font-size="30" fill="#EDEDED" text-anchor="middle" dy=".3em">FP</text>
+                </svg>
+            </a>
+
+            <div class="hidden md:flex space-x-6 items-center">
+                <a href="index.html#about-section" class="text-[#161616] hover:text-[#294DFF] transition duration-300">About</a>
+                <a href="game.html" class="text-[#161616] hover:text-[#294DFF] transition duration-300">Game</a>
+                <a href="profile.html" class="text-[#161616] hover:text-[#294DFF] transition duration-300">Profile</a>
+                <button class="bg-[#00B295] text-white p-2 rounded-full hover:bg-opacity-80 transition duration-300" aria-label="AI Chat">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                    </svg>
+        </button>
+            </div>
+
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-[#161616] focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </button>
+            </div>
+        </nav>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-white bg-opacity-90">
+            <a href="Trade.html#about-section" class="block px-4 py-2 text-[#161616] hover:bg-[#294DFF] hover:text-white">About</a>
+            <a href="game.html" class="block px-4 py-2 text-[#294DFF] bg-gray-200 font-semibold">Game</a> <a href="profile.html" class="block px-4 py-2 text-[#161616] hover:bg-[#294DFF] hover:text-white">Profile</a>
+             <button class="w-full text-left px-4 py-2 text-[#161616] hover:bg-[#00B295] hover:text-white flex items-center space-x-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                </svg>
+                <span>AI Chat</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+
+        <section class="disclaimer-box">
+            <h2 class="text-lg font-semibold mb-2 text-center text-[#ffffff] ">DISCLAIMER:</h2>
+            <p class= font-heading-text>
+                I am not a SEBI-registered Investment Advisor. All content on this website is strictly for educational purposes and should not be construed as investment advice, financial recommendations, or guarantees of returns. Users are advised to consult a certified financial professional before making any investment decisions.
+            </p>
+        </section>
+
+        <section class="mb-8 p-6 bg-white/50 rounded-lg shadow relative overflow-hidden">
+            <div class="relative z-0">
+                <h2 class="text-2xl font-bold mb-4 text-center text-[#294DFF] font-subheading">What is Stock Market?</h2>
+        
+                <div class="absolute inset-0 flex items-center justify-center z-10 pointer-events-none" aria-hidden="true">
+                    <span class="text-[80pt] font-bold text-[#294DFF] leading-none whitespace-nowrap font-heading">
+                        BLAH BLAH BLAH...
+                    </span>
+                </div>
+        
+                <p class="text-base leading-relaxed text-[#161616] font-body-text">
+                    The stock market is a complex ecosystem where investors buy and sell ownership shares in publicly traded companies. It serves as the backbone of modern capitalism, providing individuals and institutions opportunities to build wealth through investment. Let me where stock trading occurs, such as the New York Stock Exchange (NYSE) and Nasdaq. These exchanges provide a regulated platform where buyers and sellers negotiate prices and execute trades, primarily through electronic systems in today's digital age. While exchanges facilitate trading, market indices like the S&P 500 or Dow Jones Industrial Average serve as benchmarks, tracking the performance of a specific group of stocks to gauge overall market health. It's actually just a tracking mechanism that 
+                    At its core, the stock market operates on the principles of supply and demand. When more investors want to buy a particular stock than sell it, the price rises; conversely, when more want to sell than buy, the price falls. This constant tug-of-war is fundamental to how the market functions, as it helps determine fair value based on collective sentiment and available information. If investors believe in a company's future prospects, buyers might be willing to pay more for its shares, driving the price upward. Companies initially offer shares to the public through an Initial Public Offering (IPO), when they first issue shares on the primary market. A bank typically underwrites the IPO, helping the company set the initial share price and find institutional investors like banks or large funds. This process raises capital for the company, which can be used for expansion, product development, debt reduction, or other business needs. After the IPO, these shares begin circulating in the secondary market—the stock exchanges—where everyday retail investors and institutions can buy and sell them without the company's direct involvement. This is where most daily trading activity occurs, with millions of shares changing hands each day. The stock market offers two main types of stocks: common and preferred. Common stockholders typically have voting rights and can influence company decisions, such as electing board members. Preferred stockholders usually don't have voting rights but have priority when it comes to dividend payments—receiving their share of company profits before common stockholders—and also have a higher claim on assets if the company liquidates.taking place electronically... older meetings and... each day.
+                </p>
+            </div>
+        </section>
+
+        <section class="mascot-section flex flex-col md:flex-row items-center justify-center text-center md:text-left gap-6 md:gap-10">
+            <img src="images/Asset 71.png"></img>
+                <div class="glasses"><span></span></div>
+                <div class="nose"></div>
+            </div>
+            <h2 class="text-[50pt] font-bold f">
+                Let's Make It <br> Easy For You!
+            </h2>
+        </section>
+
+        <section class="mt-8 mb-12 p-6 bg-white/50 rounded-lg shadow">
+            <img src="images/Asset 73.svg" class="w-60 h-60 mr-auto"></img>
+            <h3 class="text-2xl font-bold mb-4 text-[#161616] text-center font-body-text">
+                Welcome to the Stock Market Arena! <br> Think of it as a <span class="text-[#294DFF]">GAME</span>.
+            </h3>
+            <div class="space-y-4 text-[10pt] text-[#161616] text-left font-body-text">
+                <p>
+                    You wouldn't go into a boss fight without upgrading your gear, right?
+                <p>
+                    The same goes for life - if you don't invest, your <span class="font-semibold text-[#294DFF] text-[20pt]">financial health</span><br> stays stuck at Level 1.
+                 <p>
+                    If you want to beat <span class="font-semibold text-[#294DFF] text-[20pt]">inflation</span> and secure your future, investing is the ultimate power-up!
+            </div>
+        </section>
+
+        <section class="mb-12 p-6 bg-white/50 rounded-lg shadow flex flex-col md:flex-row items-center gap-6">
+            <div class="flex-shrink-0 flex flex-col items-center gap-4">
+                 <div class="mascot-placeholder-game">
+                    <div class="glasses"><span></span></div>
+                    <div class="nose"></div>
+                </div>
+                <div class="hexagon-icon">M</div>
+            </div>
+            <div class="text-[#161616] text-base leading-relaxed">
+                <p class="mb-2">The Stock market is a digital battlefield where shares are bought and sold, just like trading rare items in a game.</p>
+                <p class="mb-2"><span class="font-semibold text-[#294DFF]">Players:</span> Include everyday people like you and me, big investors like banks or funds, and even companies themselves. Some players hold onto their stocks for a long time, hoping the value grows over time (long-term investing). Others trade frequently, trying to make quick profits by buying low and selling high (like flipping rare items in the game).</p>
+                <p>It works a bit like a strategy game: sometimes you <span class="font-semibold text-[#00B295]">WIN</span>, sometimes you <span class="font-semibold text-red-600">LOSE</span>, but with knowledge and patience, you can improve your chances over time.</p>
+            </div>
+        </section>
+
+        <section class="mb-12 p-6 bg-white/50 rounded-lg shadow">
+             <h2 class="text-2xl font-bold mb-6 text-center text-[#294DFF]">Why Do Share Prices Change?</h2>
+             <p class="text-center text-lg mb-6">Just like the value of a rare game item can go up or down, the price of a company's shares changes based on many things:</p>
+             <div class="grid md:grid-cols-2 gap-8">
+                 <div class="space-y-6">
+                     <div class="flex items-start gap-4">
+                         <div class="arrow-icon flex-shrink-0">📈</div> <div>
+                             <h3 class="font-semibold text-[#00B295] mb-1">Player Mood (Investor Emotion)</h3>
+                             <p class="text-sm leading-relaxed">Sometimes players get really excited (greedy) and buy a lot, pushing prices up. Other times, they get scared (fearful) and sell, pushing prices down.</p>
+                         </div>
+                     </div>
+                      <div class="flex items-start gap-4">
+                         <div class="arrow-icon flex-shrink-0">📰</div> <div>
+                             <h3 class="font-semibold text-[#00B295] mb-1">Game News (Company News)</h3>
+                             <p class="text-sm leading-relaxed">Did the company announce amazing profits? The share price might go up. Did something bad happen, like the CEO quitting? The price might drop.</p>
+                         </div>
+                     </div>
+                      <div class="flex items-start gap-4">
+                         <div class="arrow-icon flex-shrink-0">🌍</div> <div>
+                             <h3 class="font-semibold text-[#00B295] mb-1">World Events (Global Events)</h3>
+                             <p class="text-sm leading-relaxed">Big events outside the company, like changes in government rules, oil prices, or even wars, can affect the whole market - like a game-wide event changing item values.</p>
+                         </div>
+                     </div>
+                      <div class="flex items-start gap-4">
+                         <div class="arrow-icon flex-shrink-0">🤔</div> <div>
+                             <h3 class="font-semibold text-[#00B295] mb-1">Different Opinions</h3>
+                             <p class="text-sm leading-relaxed">Player A might think a share is overpriced and wants to sell, while Player B thinks it's a bargain and wants to buy. The stock market is the place that matches these players so they can trade.</p>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="flex items-center justify-center">
+                     <div class="graph-placeholder">
+                        <svg viewBox="0 0 100 50">
+                            <polyline points="5,45 15,15 25,35 35,10 45,40 55,20 65,30 75,5 85,25 95,15" />
+                        </svg>
+                        <span class="question-mark">?</span>
+                     </div>
+                 </div>
+             </div>
+        </section>
+
+        <section class="mb-12 p-6 bg-white/50 rounded-lg shadow">
+             <h2 class="text-2xl font-bold mb-8 text-center text-[#294DFF]">How Do You Trade Shares?</h2>
+             <div class="grid md:grid-cols-2 gap-10 items-center">
+                 <div class="flex flex-col items-center gap-6">
+                     <div class="mascot-placeholder-game">
+                        <div class="glasses"><span></span></div>
+                        <div class="nose"></div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="exchange-icon">NSE</div>
+                        <div class="exchange-icon">BSE</div>
+                    </div>
+                 </div>
+                 <div class="space-y-5 text-base leading-relaxed">
+                     <div class="flex items-start gap-4">
+                         <div class="hexagon-icon flex-shrink-0 text-sm">1</div>
+                         <div>
+                             <h3 class="font-semibold text-[#00B295] mb-1">Choose Your Interface (Broker):</h3>
+                             <p>You need an account with a broker (like Zerodha, Groww, etc.). Think of the broker as your game launcher or trading interface.</p>
+                         </div>
+                     </div>
+                     <div class="flex items-start gap-4">
+                         <div class="hexagon-icon flex-shrink-0 text-sm">2</div>
+                         <div>
+                             <h3 class="font-semibold text-[#00B295] mb-1">Place Your Order:</h3>
+                             <p>You tell your broker, "I want to buy 10 shares of Company XYZ" or "I want to sell 5 shares of Company ABC".</p>
+                         </div>
+                     </div>
+                     <div class="flex items-start gap-4">
+                         <div class="hexagon-icon flex-shrink-0 text-sm">3</div>
+                         <div>
+                             <h3 class="font-semibold text-[#00B295] mb-1">Go to the Arena (Stock Exchange):</h3>
+                             <p>Your broker sends your order to the main game arena, the stock exchange (like the NSE or BSE in India).</p>
+                         </div>
+                     </div>
+                     <div class="flex items-start gap-4">
+                         <div class="hexagon-icon flex-shrink-0 text-sm">4</div>
+                         <div>
+                             <h3 class="font-semibold text-[#00B295] mb-1">Find a Match:</h3>
+                             <p>The exchange's system automatically finds another player whose order matches yours (someone selling if you're buying, or buying if you're selling).</p>
+                         </div>
+                     </div>
+                      <div class="flex items-start gap-4">
+                         <div class="hexagon-icon flex-shrink-0 text-sm">5</div>
+                         <div>
+                             <h3 class="font-semibold text-[#00B295] mb-1">Trade Complete!</h3>
+                             <p>The shares are transferred. If you bought, they appear in your Demat account (think of this as your secure player inventory where you keep your shares).</p>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+        </section>
+
+        <section class="text-center mt-12 mb-6">
+             <p class="text-3xl md:text-4xl font-bold text-[#161616] mb-6">
+                 Now... <br> Why don't <span class="text-[#294DFF]">you</span> give it a go?
+             </p>
+             <a href="#game-setup" class="btn-primary inline-block text-lg">
+                 Setup Your Game!
+             </a>
+             <a href="courses.html" class="block mt-4 text-[#00B295] hover:underline">
+                 Or start learning with Courses
+             </a>
+        </section>
+
+        <section id="game-setup" class="mt-16 mb-12 p-8 md:p-10 border-2 border-[#00B295] rounded-xl max-w-2xl mx-auto bg-white/60 shadow-lg scroll-mt-20">
+             <h2 class="text-3xl font-bold mb-8 text-center text-[#00B295]">Game Setup</h2>
+             <form action="Trade.html" method="GET"> <div class="mb-5">
+                     <label for="playerName" class="block text-sm font-medium mb-1 text-[#161616]">Your Name</label>
+                     <input type="text" id="playerName" name="playerName" class="setup-input" placeholder="Enter your name" required>
+                 </div>
+
+                 <div class="mb-5">
+                     <label for="experience" class="block text-sm font-medium mb-1 text-[#161616]">Trading Experience</label>
+                     <select id="experience" name="experience" class="setup-select" required>
+                         <option value="" disabled selected>Select your experience level</option>
+                         <option value="beginner">Beginner (No prior experience)</option>
+                         <option value="intermediate">Intermediate (Know the basics)</option>
+                         <option value="advanced">Advanced (Experienced trader)</option>
+                     </select>
+                 </div>
+
+                 <div class="mb-6">
+                     <label for="initialAmount" class="block text-sm font-medium mb-1 text-[#161616]">Initial Investment Amount</label>
+                     <input type="number" id="initialAmount" name="initialAmount" class="setup-input" placeholder="e.g., 50000" min="1000" max="1000000" required>
+                     <p class="text-xs text-gray-600 mt-1">(Choose an amount between ₹1,000 to ₹1,000,000)</p>
+                 </div>
+
+                 <div class="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+                    <a href="Trade.html" class="button primary">Start trading</a>
+                    <a href="Trade.html" class="btn-teal-outline w-full sm:w-auto text-center"> Back Home
+                     </a>
+                 </div>
+             </form>
+        </section>
+        </main>
+
+    <footer class="bg-[#161616] text-[#EDEDED] py-4 mt-auto">
+        <div class="container mx-auto px-6 text-center text-xs">
+             &copy; 2025 FinPlay. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        // Basic Mobile Menu Toggle (Same as homepage)
+        const menuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu if clicking on a link (optional)
+        mobileMenu.addEventListener('click', (event) => {
+            if (event.target.tagName === 'A') {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+    </script>
+    <div id="chat-modal" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center hidden z-50">
+        <div class="bg-white w-full max-w-md rounded-lg shadow-lg p-4 flex flex-col">
+          <div class="flex justify-between items-center border-b pb-2 mb-4">
+            <h2 class="text-lg font-bold text-[#161616]">Finbot</h2>
+            <button id="close-chat" class="text-gray-500 hover:text-gray-800 text-2xl">&times;</button>
+          </div>
+          <div id="chat-output" class="flex-1 overflow-y-auto mb-4 max-h-64 text-sm text-[#161616]">
+            <!-- Messages will appear here -->
+          </div>
+          <div class="flex space-x-2">
+            <input id="user-input" type="text" placeholder="Ask me anything..." class="flex-1 px-3 py-2 border rounded-md focus:outline-none focus:ring">
+            <button id="send-btn" class="bg-[#294DFF] text-white px-4 py-2 rounded-md hover:bg-[#1a3fdb]">Send</button>
+          </div>
+        </div>
+      </div>
+    
+    <script src="chatbot.js" defer></script>
+
+</body>
+</html>

@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level Infinity - Real World Scenarios - FinPlay Course</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+         @font-face {
+            font-family: 'Gilroy';
+            src: url("fonts/fonnts.com-Gilroy-Heavy.ttf") format('truetype'); 
+            font-weight: bolder;
+            font-style: normal; 
+        }
+        @font-face {
+            font-family: 'Mortise Bold';
+            src: url("fonts/mortisetest-bold.otf") format('opentype');
+            font-weight: bold;
+            font-style: normal; 
+        }
+         @font-face {
+            font-family: 'Mortise Medium';
+            src: url("fonts/mortisetest-medium.otf") format('opentype'); 
+            font-weight: 500; 
+            font-style: normal;
+        }
+
+        body {
+            /* Using 'Gilroy' first if loaded, otherwise Tailwind's default sans-serif */
+            font-family: 'Gilroy', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            background-color: #EDEDED; /* Light grey background (acts as fallback) */
+
+            /* --- Background Image Setup --- */
+            /* IMPORTANT: Replace 'images/Asset 126.jpg' with the correct path to your image file */
+            background-image: url('images/Asset\ 126.png');
+
+            /* How the background image repeats */
+            background-repeat: repeat; /* Use 'repeat' if you want the image to tile */
+                                       /* Use 'no-repeat' if you want it to show only once */
+
+            /* How the background image is sized */
+            /* background-size: cover; */ /* Stretches image to cover the entire area */
+            /* background-size: contain; */ /* Scales image to fit without cropping */
+             background-size: cover; /* Displays the image at its original size */
+
+            /* Starting position of the background image */
+            background-position: center center; /* Centers the image */
+
+            /* Whether the background scrolls with the page or stays fixed */
+            background-attachment: fixed; /* Keeps the background fixed during scroll */
+                                         /* Use 'scroll' to make it scroll with content */
+        }
+
+        /* --- Custom Font Classes --- */
+        .font-heading {
+            /* Use 'Gilroy' (Bold) if loaded, otherwise fallback */
+            font-family: 'Gilroy', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+             /* Ensure font-weight matches the loaded font if needed */
+             /* font-weight: 700; */
+        }
+
+        .font-subheading {
+             /* Use 'Mortise Bold' if loaded, otherwise fallback */
+             font-family: 'Mortise Bold', 'Segoe UI Semibold', 'Helvetica Neue', sans-serif;
+             /* Ensure font-weight matches the loaded font if needed */
+             /* font-weight: 700; */
+        }
+
+        .font-body-text {
+             /* Use 'Mortise Medium' if loaded, otherwise fallback */
+             font-family: 'Mortise Medium', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+             /* Ensure font-weight matches the loaded font if needed */
+             /* font-weight: 500; */
+        }
+        /* --- End Custom Font Classes --- */ 
+
+        /* Header styles */
+        header {
+            background-color: rgba(237, 237, 237, 0.8); /* Semi-transparent background */
+            backdrop-filter: blur(5px); /* Blur effect */
+        }
+
+        /* Ensure main content takes up available space */
+        main {
+            flex-grow: 1;
+        }
+
+        /* Style for content boxes */
+        .content-box {
+             background-color: rgba(255, 255, 255, 0.6); /* Slightly transparent white */
+             padding: 1.5rem; /* p-6 */
+             border-radius: 0.75rem; /* rounded-xl */
+             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-md */
+             margin-bottom: 2rem; /* mb-8 */
+        }
+
+        /* Scenario Box Styling */
+        .scenario-box {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem; /* space-y-6 */
+            margin-bottom: 2.5rem; /* mb-10 */
+        }
+        @media (min-width: 768px) { /* md breakpoint */
+             .scenario-box {
+                flex-direction: row;
+                gap: 2rem; /* space-x-8 */
+             }
+        }
+
+        .scenario-number {
+            font-size: 6rem; /* text-9xl */
+            font-weight: 900; /* font-black */
+            color: #294DFF; /* Blue color */
+            line-height: 1;
+            flex-shrink: 0;
+            text-align: center;
+        }
+        @media (min-width: 768px) {
+             .scenario-number {
+                 font-size: 8rem; /* Larger on medium screens */
+                 width: 100px; /* Fixed width */
+             }
+        }
+
+
+        .scenario-content {
+            flex-grow: 1;
+        }
+        .scenario-content h3 { /* Scenario Title */
+            font-size: 1.5rem; /* text-2xl */
+            font-weight: 700; /* bold */
+            color: #161616; /* Dark text */
+            margin-bottom: 1rem; /* mb-4 */
+        }
+        .scenario-content h4 { /* Situation/Decision Title */
+             font-size: 1.125rem; /* text-lg */
+             font-weight: 600; /* semibold */
+             color: #00B295; /* Teal */
+             margin-bottom: 0.5rem; /* mb-2 */
+             border-bottom: 1px solid #00B295; /* Teal underline */
+             padding-bottom: 0.25rem;
+        }
+        .scenario-content p { /* Text content */
+             font-size: 0.875rem; /* text-sm */
+             line-height: 1.6; /* leading-relaxed */
+             margin-bottom: 1rem; /* mb-4 */
+        }
+
+
+        /* Custom button styles */
+         .btn-blue {
+            background-color: #294DFF; /* Primary blue */
+            color: #EDEDED;
+            padding: 0.6rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            text-align: center;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .btn-blue:hover {
+            background-color: #1a3fdb; /* Darker blue on hover */
+        }
+        .btn-teal {
+            background-color: #00B295; /* Teal background */
+            color: #FFFFFF; /* White text */
+            padding: 0.6rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            text-align: center;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .btn-teal:hover {
+            background-color: #008a75; /* Darker teal on hover */
+        }
+
+        /* Info Button Grid */
+        .info-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Responsive grid */
+            gap: 0.75rem; /* gap-3 */
+            margin-top: 1rem; /* mt-4 */
+        }
+
+
+    </style>
+</head>
+<body class="text-[#161616]">
+
+    <header class="sticky top-0 z-50 shadow-md">
+        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold flex items-center text-[#161616]">
+                 <svg class="w-10 h-10 mr-2" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#294DFF;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#00B295;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <path fill="url(#grad1)" d="M10 10 H 90 V 90 H 10 Z M 20 20 H 80 V 80 H 20 Z M 50 30 L 70 50 L 50 70 L 30 50 Z" />
+                    <text x="50" y="60" font-family="Arial, sans-serif" font-size="30" fill="#EDEDED" text-anchor="middle" dy=".3em">FP</text>
+                </svg>
+            </a>
+
+            <div class="hidden md:flex space-x-6 items-center">
+                <a href="index.html#about-section" class="text-[#161616] hover:text-[#294DFF] transition duration-300">About</a>
+                <a href="game.html" class="text-[#161616] hover:text-[#294DFF] transition duration-300">Game</a>
+                <a href="profile.html" class="text-[#161616] hover:text-[#294DFF] transition duration-300">Profile</a>
+                <button class="bg-[#00B295] text-white p-2 rounded-full hover:bg-opacity-80 transition duration-300" aria-label="AI Chat">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                    </svg>
+                </button>
+            </div>
+
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-[#161616] focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </button>
+            </div>
+        </nav>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-white bg-opacity-90">
+            <a href="index.html#about-section" class="block px-4 py-2 text-[#161616] hover:bg-[#294DFF] hover:text-white">About</a>
+            <a href="game.html" class="block px-4 py-2 text-[#161616] hover:bg-[#294DFF] hover:text-white">Game</a>
+            <a href="profile.html" class="block px-4 py-2 text-[#161616] hover:bg-[#294DFF] hover:text-white">Profile</a>
+             <button class="w-full text-left px-4 py-2 text-[#161616] hover:bg-[#00B295] hover:text-white flex items-center space-x-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                </svg>
+                <span>AI Chat</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+
+        <h1 class="text-4xl md:text-5xl font-bold text-[#00B295] mb-6 text-center"> Level Infinity
+        </h1>
+        <h2 class="text-2xl md:text-3xl font-semibold text-[#161616] mb-10 text-center">
+            Real World Decision Scenarios
+        </h2>
+
+        <section class="content-box text-center max-w-3xl mx-auto">
+             <p class="text-lg leading-relaxed mb-4">
+                Welcome to Level Infinity, where the challenges are no longer simulations - this is where real-world knowledge becomes your ultimate tool.
+             </p>
+              <p class="text-base leading-relaxed">
+                To help you think like an investor facing real events, here are three historic scenarios. Each one ends with a decision-making question to make you reflect on your instincts and choices.
+             </p>
+        </section>
+
+        <section class="scenario-box">
+            <div class="scenario-number">1</div>
+            <div class="scenario-content content-box">
+                <h3>The 2008 Financial Crisis</h3>
+                <h4>Situation:</h4>
+                <p>
+                    It's September 2008. The news is filled with panic: Lehman Brothers has collapsed, banks are failing, and the US stock market just suffered its biggest one-day drop in history - down 774 points (almost 7%) in a single day. Over the next months, the market would lose about half its value, and unemployment would reach 10%. Your investment portfolio has already lost 30% of its value, and every day brings more bad news. Many people are selling everything and moving to cash.
+                </p>
+                <h4>Decision Question:</h4>
+                <p>
+                    If you were watching your savings shrink rapidly during the 2008 crash, would you have sold your investments to avoid further losses, or would you have held on or even bought more while everyone else was panicking? What would you do if you didn't know how long the crisis would last?
+                </p>
+                </div>
+        </section>
+
+        <section class="scenario-box">
+             <div class="scenario-number">2</div>
+             <div class="scenario-content content-box">
+                <h3>COVID-19 Crash (March 2020)</h3>
+                <h4>Situation:</h4>
+                <p>
+                    In March 2020, the world is hit by the COVID-19 pandemic. Stock markets around the globe plunge - US markets fall over 30% in just a few weeks. Cities are locking down, businesses are closing, and no one knows how long the pandemic will last or how bad it will get. Governments and central banks are trying to calm markets, but fear is everywhere. Some investors are selling in a panic, while others see this as a rare chance to buy stocks at a discount.
+                </p>
+                <h4>Decision Question:</h4>
+                <p>
+                    When faced with a sudden, unpredictable crisis like COVID-19, would you have followed the crowd and sold your investments to avoid more losses, or would you have seen the crash as an opportunity to buy, trusting that markets would recover? How would you decide when to act?
+                </p>
+                 </div>
+        </section>
+
+        <section class="scenario-box">
+             <div class="scenario-number">3</div>
+             <div class="scenario-content content-box">
+                <h3>Bitcoin's Rise and Volatility</h3>
+                <h4>Situation:</h4>
+                <p>
+                    It's late 2017. Bitcoin has exploded from under $1,000 at the start of the year to nearly $20,000 by December. Everyone is talking about cryptocurrencies - some people are becoming millionaires overnight, while others warn it's a bubble. In the following months, Bitcoin crashes, losing more than 80% of its value by the end of 2018. Years later, it will rise again, reaching new highs, but the journey is full of wild swings.
+                </p>
+                <h4>Decision Question:</h4>
+                <p>
+                    If you saw Bitcoin's rapid rise and all the hype in 2017, would you have jumped in to ride the wave, or stayed out, fearing a bubble? If you had bought and then watched your investment drop by 80%, would you have held on, sold in panic, or bought more? How do you handle the fear of missing out versus the risk of big losses?
+                </p>
+                 </div>
+        </section>
+
+        <section class="content-box border-t-4 border-[#00B295]"> <h3 class="text-xl font-semibold text-[#00B295] mb-3 text-center">Reflect:</h3>
+            <p class="text-sm leading-relaxed text-center">
+                These scenarios are very subjective and don't have easy answers. They are designed to make you question your reactions, risk tolerance, and long-term thinking. In Level Infinity, your real-world knowledge, emotional control, and decision-making skills are what set you apart.
+            </p>
+        </section>
+
+        <section class="content-box">
+            <h3 class="text-xl font-semibold text-[#161616] mb-4 text-center">For more info:</h3>
+            <div class="info-buttons">
+                <a href="#" class="btn-blue">Getting Started Guide</a>
+                <a href="#" class="btn-blue">Introduction to Stocks</a>
+                <a href="#" class="btn-blue">Stock Trading Basics</a>
+                <a href="#" class="btn-blue">Managing a Portfolio</a>
+                <a href="#" class="btn-blue">Stock Research</a>
+                </div>
+        </section>
+
+        <section class="content-box text-center">
+             <p class="text-lg leading-relaxed mb-4">
+                Level up your trading game - take this challenge to see if you've got what it takes to master the market!
+             </p>
+             <a href="quiz.html" class="btn-teal">Go Live!</a> </section>
+        <nav class="mt-10 flex justify-between items-center">
+            <a href="level 5.html" class="btn-blue inline-flex items-center"> <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+                </svg>
+                Level 5
+            </a>
+            <a href="courses.html" class="btn-teal inline-flex items-center"> Finish Course
+                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                     <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                 </svg>
+            </a>
+        </nav>
+
+    </main>
+
+    <footer class="bg-[#161616] text-[#EDEDED] py-4 mt-16">
+        <div class="container mx-auto px-6 text-center text-xs">
+             &copy; 2025 FinPlay. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        // Basic Mobile Menu Toggle
+        const menuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu if clicking on a link
+        mobileMenu.addEventListener('click', (event) => {
+            if (event.target.tagName === 'A') {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+    </script>
+     <!-- AI Chat Modal -->
+ <div id="chat-modal" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center hidden z-50">
+    <div class="bg-white w-full max-w-md rounded-lg shadow-lg p-4 flex flex-col">
+      <div class="flex justify-between items-center border-b pb-2 mb-4">
+        <h2 class="text-lg font-bold text-[#161616]">Finbot</h2>
+        <button id="close-chat" class="text-gray-500 hover:text-gray-800 text-2xl">&times;</button>
+      </div>
+      <div id="chat-output" class="flex-1 overflow-y-auto mb-4 max-h-64 text-sm text-[#161616]">
+        <!-- Messages will appear here -->
+      </div>
+      <div class="flex space-x-2">
+        <input id="user-input" type="text" placeholder="Ask me anything..." class="flex-1 px-3 py-2 border rounded-md focus:outline-none focus:ring">
+        <button id="send-btn" class="bg-[#294DFF] text-white px-4 py-2 rounded-md hover:bg-[#1a3fdb]">Send</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="chatbot.js" defer></script>
+
+</body>
+</html>

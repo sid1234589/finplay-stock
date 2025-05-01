@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses - Level Up! - FinPlay</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+         @font-face {
+            font-family: 'Gilroy';
+            src: url("fonts/fonnts.com-Gilroy-Heavy.ttf") format('truetype'); 
+            font-weight: bolder;
+            font-style: normal; 
+        }
+        @font-face {
+            font-family: 'Mortise Bold';
+            src: url("fonts/mortisetest-bold.otf") format('opentype');
+            font-weight: bold;
+            font-style: normal; 
+        }
+         @font-face {
+            font-family: 'Mortise Medium';
+            src: url("fonts/mortisetest-medium.otf") format('opentype'); 
+            font-weight: 500; 
+            font-style: normal;
+        }
+
+        body {
+            /* Using 'Gilroy' first if loaded, otherwise Tailwind's default sans-serif */
+            font-family: 'Gilroy', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            background-color: #EDEDED; /* Light grey background (acts as fallback) */
+
+            /* --- Background Image Setup --- */
+            /* IMPORTANT: Replace 'images/Asset 126.jpg' with the correct path to your image file */
+            background-image: url('images/Asset\ 126.png');
+
+            /* How the background image repeats */
+            background-repeat: repeat; /* Use 'repeat' if you want the image to tile */
+                                       /* Use 'no-repeat' if you want it to show only once */
+
+            /* How the background image is sized */
+            /* background-size: cover; */ /* Stretches image to cover the entire area */
+            /* background-size: contain; */ /* Scales image to fit without cropping */
+             background-size: cover; /* Displays the image at its original size */
+
+            /* Starting position of the background image */
+            background-position: center center; /* Centers the image */
+
+            /* Whether the background scrolls with the page or stays fixed */
+            background-attachment: fixed; /* Keeps the background fixed during scroll */
+                                         /* Use 'scroll' to make it scroll with content */
+        }
+
+        /* --- Custom Font Classes --- */
+        .font-heading {
+            /* Use 'Gilroy' (Bold) if loaded, otherwise fallback */
+            font-family: 'Gilroy', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+             /* Ensure font-weight matches the loaded font if needed */
+             /* font-weight: 700; */
+        }
+
+        .font-subheading {
+             /* Use 'Mortise Bold' if loaded, otherwise fallback */
+             font-family: 'Mortise Bold', 'Segoe UI Semibold', 'Helvetica Neue', sans-serif;
+             /* Ensure font-weight matches the loaded font if needed */
+             /* font-weight: 700; */
+        }
+
+        .font-body-text {
+             /* Use 'Mortise Medium' if loaded, otherwise fallback */
+             font-family: 'Mortise Medium', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+             /* Ensure font-weight matches the loaded font if needed */
+             /* font-weight: 500; */
+        }
+        /* --- End Custom Font Classes --- */ 
+
+        /* Header styles */
+        header {
+            background-color: rgba(237, 237, 237, 0.8); /* Semi-transparent background */
+            backdrop-filter: blur(5px); /* Blur effect */
+        }
+
+        /* Ensure main content takes up available space */
+        main {
+            flex-grow: 1;
+        }
+
+        /* Hexagon button style */
+        .hexagon-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: #161616; /* Default text color */
+            transition: transform 0.2s ease-in-out;
+        }
+        .hexagon-link:hover {
+            transform: scale(1.05); /* Slight zoom on hover */
+        }
+
+        .hexagon-button {
+            width: 150px; /* Adjust size as needed */
+            height: 173px; /* Height for hexagon = width * sqrt(3)/2 * 1.15 approx */
+            background-color: #294DFF; /* Primary blue */
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            color: #EDEDED; /* Light text/icons inside */
+            margin-bottom: 0.5rem; /* Space between hexagon and text */
+            border: 3px solid #161616; /* Dark border */
+        }
+        .hexagon-button .level-text {
+            font-weight: bold;
+            margin-top: 0.5rem;
+            color: #161616; /* Dark text for level labels */
+        }
+
+        /* Placeholder styles for mascot faces inside hexagons */
+        .mascot-face {
+            width: 60%; /* Adjust size relative to hexagon */
+            height: 60%;
+            border: 3px solid #EDEDED; /* Light border for face outline */
+            border-radius: 10px; /* Slightly rounded face */
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden; /* Hide parts outside the face */
+        }
+
+        /* Specific face styles (simple placeholders) */
+        .face-level-1 .eye { /* Closed sad eyes */
+            position: absolute;
+            width: 8px;
+            height: 12px;
+            border: 2px solid #EDEDED;
+            border-color: transparent transparent #EDEDED transparent;
+            border-radius: 50%;
+            top: 35%;
+        }
+        .face-level-1 .eye.left { left: 30%; transform: rotate(15deg); }
+        .face-level-1 .eye.right { right: 30%; transform: rotate(-15deg); }
+        .face-level-1 .mouth { /* Simple line */
+             position: absolute;
+             width: 30%;
+             height: 2px;
+             background-color: #EDEDED;
+             bottom: 25%;
+             left: 35%;
+        }
+
+        .face-level-2 .eye { /* Closed neutral eyes */
+            position: absolute;
+            width: 20%;
+            height: 2px;
+            background-color: #EDEDED;
+            top: 40%;
+        }
+        .face-level-2 .eye.left { left: 25%; }
+        .face-level-2 .eye.right { right: 25%; }
+         .face-level-2 .mouth { /* Simple line */
+             position: absolute;
+             width: 30%;
+             height: 2px;
+             background-color: #EDEDED;
+             bottom: 25%;
+             left: 35%;
+        }
+
+        .face-level-3 .eye { /* Closed happy eyes */
+            position: absolute;
+            width: 8px;
+            height: 12px;
+            border: 2px solid #EDEDED;
+            border-color: #EDEDED transparent transparent transparent;
+            border-radius: 50%;
+            top: 40%;
+        }
+        .face-level-3 .eye.left { left: 30%; transform: rotate(-15deg); }
+        .face-level-3 .eye.right { right: 30%; transform: rotate(15deg); }
+        .face-level-3 .mouth { /* Simple smile */
+             position: absolute;
+             width: 30%;
+             height: 15%;
+             border: 2px solid transparent;
+             border-bottom-color: #EDEDED;
+             border-radius: 0 0 50% 50% / 0 0 100% 100%;
+             bottom: 20%;
+             left: 35%;
+        }
+
+        .face-level-4 .glasses { /* Sunglasses like game page */
+            position: absolute;
+            top: 35%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70%;
+            height: 25px;
+            background: #EDEDED; /* Light glasses */
+            border-radius: 12px 12px 5px 5px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .face-level-4 .glasses::before, .face-level-4 .glasses::after {
+            content: ''; width: 25px; height: 25px; background: #EDEDED; border-radius: 50%; position: absolute; top: 0;
+        }
+        .face-level-4 .glasses::before { left: 10px; }
+        .face-level-4 .glasses::after { right: 10px; }
+        .face-level-4 .glasses span { /* Bridge */
+             width: 10px; height: 5px; background: #EDEDED; position: absolute; left: 50%; transform: translateX(-50%); top: 10px; border-radius: 2px;
+        }
+         .face-level-4 .nose { /* Simple nose */
+            width: 15px; height: 10px; background: #EDEDED; border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; position: absolute; top: 65%; left: 50%; transform: translateX(-50%);
+        }
+
+        .face-level-5 .eye { /* Dollar sign eyes */
+            position: absolute;
+            top: 35%;
+            font-size: 1.8rem; /* Adjust size */
+            font-weight: bold;
+            color: #00B295; /* Teal color for dollar */
+            line-height: 1;
+        }
+        .face-level-5 .eye.left { left: 25%; }
+        .face-level-5 .eye.right { right: 25%; }
+        .face-level-5 .mouth { /* Simple smile */
+             position: absolute; width: 30%; height: 15%; border: 2px solid transparent; border-bottom-color: #EDEDED; border-radius: 0 0 50% 50% / 0 0 100% 100%; bottom: 20%; left: 35%;
+        }
+
+        .face-level-inf .question-mark { /* Question Mark */
+             font-size: 4rem; /* Large question mark */
+             font-weight: bold;
+             color: #EDEDED;
+        }
+
+    </style>
+</head>
+<body class="text-[#161616]">
+
+    <header class="sticky top-0 z-50 shadow-md">
+        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold flex items-center text-[#161616]">
+                 <svg class="w-10 h-10 mr-2" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#294DFF;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#00B295;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <path fill="url(#grad1)" d="M10 10 H 90 V 90 H 10 Z M 20 20 H 80 V 80 H 20 Z M 50 30 L 70 50 L 50 70 L 30 50 Z" />
+                    <text x="50" y="60" font-family="Arial, sans-serif" font-size="30" fill="#EDEDED" text-anchor="middle" dy=".3em">FP</text>
+                </svg>
+            </a>
+
+            <div class="hidden md:flex space-x-6 items-center">
+                <a href="index.html#about-section" class="text-[#161616] hover:text-[#294DFF] transition duration-300">About</a>
+                <a href="game.html" class="text-[#161616] hover:text-[#294DFF] transition duration-300">Game</a>
+                <a href="profile.html" class="text-[#161616] hover:text-[#294DFF] transition duration-300">Profile</a>
+                <button class="bg-[#00B295] text-white p-2 rounded-full hover:bg-opacity-80 transition duration-300" aria-label="AI Chat">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                    </svg>
+        </button>
+            </div>
+
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-[#161616] focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </button>
+            </div>
+        </nav>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-white bg-opacity-90">
+            <a href="index.html#about-section" class="block px-4 py-2 text-[#161616] hover:bg-[#294DFF] hover:text-white">About</a>
+            <a href="game.html" class="block px-4 py-2 text-[#161616] hover:bg-[#294DFF] hover:text-white">Game</a>
+            <a href="profile.html" class="block px-4 py-2 text-[#161616] hover:bg-[#294DFF] hover:text-white">Profile</a>
+             <button class="w-full text-left px-4 py-2 text-[#161616] hover:bg-[#00B295] hover:text-white flex items-center space-x-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                </svg>
+                <span>AI Chat</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-12 flex flex-col items-center">
+
+        <h1 class="text-4xl md:text-5xl font-bold text-[#161616] mb-12 text-center">
+            Level UP!
+        </h1>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-12 justify-items-center max-w-4xl w-full">
+
+            <a href="level 1.html" class="hexagon-link">
+                <div class="hexagon-button">
+                    <div class="mascot-face face-level-1">
+                        <div class="eye left"></div>
+                        <div class="eye right"></div>
+                        <div class="mouth"></div>
+                    </div>
+                </div>
+                <span class="level-text font-semibold">Level 1</span>
+            </a>
+
+            <a href="level 2.html" class="hexagon-link">
+                <div class="hexagon-button">
+                     <div class="mascot-face face-level-2">
+                        <div class="eye left"></div>
+                        <div class="eye right"></div>
+                        <div class="mouth"></div>
+                    </div>
+                </div>
+                <span class="level-text font-semibold">Level 2</span>
+            </a>
+
+            <a href="level 3.html" class="hexagon-link">
+                <div class="hexagon-button">
+                    <div class="mascot-face face-level-3">
+                        <div class="eye left"></div>
+                        <div class="eye right"></div>
+                        <div class="mouth"></div>
+                    </div>
+                </div>
+                <span class="level-text font-semibold">Level 3</span>
+            </a>
+
+            <a href="level 4.html" class="hexagon-link sm:col-start-1 md:col-start-auto"> <div class="hexagon-button">
+                     <div class="mascot-face face-level-4">
+                         <div class="glasses"><span></span></div>
+                         <div class="nose"></div>
+                     </div>
+                 </div>
+                 <span class="level-text font-semibold">Level 4</span>
+             </a>
+
+            <a href="level 5.html" class="hexagon-link">
+                <div class="hexagon-button">
+                    <div class="mascot-face face-level-5">
+                        <div class="eye left">$</div>
+                        <div class="eye right">$</div>
+                        <div class="mouth"></div>
+                    </div>
+                </div>
+                <span class="level-text font-semibold">Level 5</span>
+            </a>
+
+            <a href="Level I.html" class="hexagon-link col-span-1 sm:col-span-2 md:col-span-3 flex justify-center w-full">
+                 <div class="hexagon-button">
+                     <div class="mascot-face face-level-inf">
+                         <span class="question-mark">?</span>
+                     </div>
+                 </div>
+                 <span class="level-text font-semibold">Level ∞</span>
+            </a>
+
+        </div>
+
+    </main>
+
+    <footer class="bg-[#161616] text-[#EDEDED] py-4 mt-16"> <div class="container mx-auto px-6 text-center text-xs">
+             &copy; 2025 FinPlay. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        // Basic Mobile Menu Toggle (Same as homepage)
+        const menuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu if clicking on a link (optional)
+        mobileMenu.addEventListener('click', (event) => {
+            if (event.target.tagName === 'A') {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+    </script>
+    <!-- AI Chat Modal -->
+ <div id="chat-modal" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center hidden z-50">
+    <div class="bg-white w-full max-w-md rounded-lg shadow-lg p-4 flex flex-col">
+      <div class="flex justify-between items-center border-b pb-2 mb-4">
+        <h2 class="text-lg font-bold text-[#161616]">Finbot</h2>
+        <button id="close-chat" class="text-gray-500 hover:text-gray-800 text-2xl">&times;</button>
+      </div>
+      <div id="chat-output" class="flex-1 overflow-y-auto mb-4 max-h-64 text-sm text-[#161616]">
+        <!-- Messages will appear here -->
+      </div>
+      <div class="flex space-x-2">
+        <input id="user-input" type="text" placeholder="Ask me anything..." class="flex-1 px-3 py-2 border rounded-md focus:outline-none focus:ring">
+        <button id="send-btn" class="bg-[#294DFF] text-white px-4 py-2 rounded-md hover:bg-[#1a3fdb]">Send</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="chatbot.js" defer></script>
+</body>
+</html>

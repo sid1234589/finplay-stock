@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 212.55 386">
+  <defs>
+    <style>
+      .cls-1 {
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .cls-1, .cls-2 {
+        fill: #294dff;
+        stroke: #ededed;
+        stroke-width: 2px;
+      }
+
+      .cls-2 {
+        stroke-miterlimit: 10;
+      }
+    </style>
+  </defs>
+  <g id="Layer_2-2" data-name="Layer 2">
+    <g>
+      <rect class="cls-2" x="1.17" y="159.55" width="210.38" height="225.45" rx="12.26" ry="12.26"/>
+      <rect class="cls-2" x="11.13" y="1" width="52.85" height="190.72" rx="12.26" ry="12.26"/>
+      <rect class="cls-2" x="63.98" y="132.74" width="46.72" height="98.55" rx="12.26" ry="12.26"/>
+      <rect class="cls-2" x="111.47" y="132.74" width="46.72" height="86.81" rx="12.26" ry="12.26"/>
+      <rect class="cls-2" x="158.96" y="132.74" width="46.72" height="73.53" rx="12.26" ry="12.26"/>
+      <path class="cls-1" d="M135.55,171.04v28.34c-.53,1.39-3.91,9.77-12.26,12.25-2.45.73-4.7.77-6.47.6-22.36-.2-44.72-.4-67.08-.6,48.14,59.21,47.19,125.97,17.38,151.4-20.92,17.84-53.17,12.9-65.87,10.21-.09-57.96-.17-115.91-.26-173.87v-28.34c0-6.77,5.49-12.26,12.26-12.26h110.04c6.77,0,12.26,5.49,12.26,12.26Z"/>
+    </g>
+  </g>
+</svg>

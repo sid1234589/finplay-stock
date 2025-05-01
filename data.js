@@ -1,0 +1,22 @@
+const stockData = [
+    { symbol: 'AAPL', name: 'Apple Inc.', price: 175.43, change: 2.5 },
+    { symbol: 'MSFT', name: 'Microsoft Corporation', price: 338.11, change: 1.8 },
+    { symbol: 'GOOGL', name: 'Alphabet Inc.', price: 142.65, change: -0.5 },
+    { symbol: 'AMZN', name: 'Amazon.com Inc.', price: 145.24, change: 1.2 },
+    { symbol: 'META', name: 'Meta Platforms Inc.', price: 334.92, change: 3.1 },
+    { symbol: 'TSLA', name: 'Tesla Inc.', price: 193.57, change: -2.1 },
+    { symbol: 'NVDA', name: 'NVIDIA Corporation', price: 476.57, change: 4.2 },
+    { symbol: 'JPM', name: 'JPMorgan Chase & Co.', price: 147.85, change: 0.8 },
+    { symbol: 'V', name: 'Visa Inc.', price: 252.34, change: 1.5 },
+    { symbol: 'JNJ', name: 'Johnson & Johnson', price: 158.97, change: -0.3 },
+    { symbol: 'WMT', name: 'Walmart Inc.', price: 164.58, change: 0.9 },
+    { symbol: 'PG', name: 'Procter & Gamble Co.', price: 153.42, change: 0.4 },
+    { symbol: 'MA', name: 'Mastercard Inc.', price: 428.76, change: 2.3 },
+    { symbol: 'UNH', name: 'UnitedHealth Group Inc.', price: 512.34, change: -1.2 },
+    { symbol: 'HD', name: 'The Home Depot Inc.', price: 347.89, change: 1.7 },
+    { symbol: 'COST', name: 'Costco Wholesale Corp.', price: 571.23, change: 0.6 },
+    { symbol: 'DIS', name: 'The Walt Disney Co.', price: 93.45, change: -1.8 },
+    { symbol: 'MCD', name: "McDonald's Corp.", price: 291.67, change: 1.1 },
+    { symbol: 'NFLX', name: 'Netflix Inc.', price: 485.89, change: 3.4 },
+    { symbol: 'PYPL', name: 'PayPal Holdings Inc.', price: 62.34, change: -2.4 }
+];
