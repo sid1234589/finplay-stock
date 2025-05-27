@@ -32,7 +32,7 @@
 
             /* --- Background Image Setup --- */
             /* IMPORTANT: Replace 'images/Asset 126.jpg' with the correct path to your image file */
-            background-image: url('images/Asset\ 126.png');
+            background-image: url('images/Asset\ 129.png');
 
             /* How the background image repeats */
             background-repeat: repeat; /* Use 'repeat' if you want the image to tile */
@@ -88,9 +88,9 @@
         .disclaimer-box {
             background-color: #294DFF; /* Black background */
             color: #EDEDED; /* Light text */
-            padding: 2rem;
-            margin-bottom: 2rem;
-            font-size: 0.875rem; /* Smaller text */
+            padding: 5rem;
+            margin-bottom: 4rem; 
+            font-size: 1rem; /* Smaller text */
             line-height: 1.5;
         }
 
@@ -388,18 +388,18 @@
     <main class="container mx-auto px-6 py-12">
 
         <section class="disclaimer-box">
-            <h2 class="text-lg font-semibold mb-2 text-center text-[#ffffff] ">DISCLAIMER:</h2>
-            <p class= font-heading-text>
+            <h2 class="text-5xl font-subheading mb-2 text-center text-[#ffffff] ">DISCLAIMER:</h2><br>
+            <p class= "font-subheading text-3xl text-center">
                 I am not a SEBI-registered Investment Advisor. All content on this website is strictly for educational purposes and should not be construed as investment advice, financial recommendations, or guarantees of returns. Users are advised to consult a certified financial professional before making any investment decisions.
             </p>
         </section>
 
         <section class="mb-8 p-6 bg-white/50 rounded-lg shadow relative overflow-hidden">
             <div class="relative z-0">
-                <h2 class="text-2xl font-bold mb-4 text-center text-[#294DFF] font-subheading">What is Stock Market?</h2>
+                <h2 class="text-3xl font-bold mb-4 text-center text-[#294DFF] font-subheading">What is Stock Market?</h2>
         
                 <div class="absolute inset-0 flex items-center justify-center z-10 pointer-events-none" aria-hidden="true">
-                    <span class="text-[80pt] font-bold text-[#294DFF] leading-none whitespace-nowrap font-heading">
+                    <span class="text-[100pt] font-bold text-[#294DFF] leading-none whitespace-nowrap font-heading">
                         BLAH BLAH BLAH...
                     </span>
                 </div>
@@ -421,30 +421,26 @@
             </h2>
         </section>
 
-        <section class="mt-8 mb-12 p-6 bg-white/50 rounded-lg shadow">
-            <img src="images/Asset 73.svg" class="w-60 h-60 mr-auto"></img>
-            <h3 class="text-2xl font-bold mb-4 text-[#161616] text-center font-body-text">
+        <section class="mt-8 mb-12 p-24 bg-white/50 rounded-lg shadow">
+            <div class="flex justify-between items-center">
+            <h3 class="text-4xl mb-4 text-[#161616] text-left font-body-text">
                 Welcome to the Stock Market Arena! <br> Think of it as a <span class="text-[#294DFF]">GAME</span>.
             </h3>
-            <div class="space-y-4 text-[10pt] text-[#161616] text-left font-body-text">
+            <img src="images/Asset 73.svg" class="w-60 h-60 ml-auto"></img><br>
+            </div>
+            <div class="space-y-4 text-[15pt] text-[#161616] text-left font-body-text">
                 <p>
                     You wouldn't go into a boss fight without upgrading your gear, right?
                 <p>
                     The same goes for life - if you don't invest, your <span class="font-semibold text-[#294DFF] text-[20pt]">financial health</span><br> stays stuck at Level 1.
-                 <p>
+                <p>
                     If you want to beat <span class="font-semibold text-[#294DFF] text-[20pt]">inflation</span> and secure your future, investing is the ultimate power-up!
             </div>
         </section>
 
         <section class="mb-12 p-6 bg-white/50 rounded-lg shadow flex flex-col md:flex-row items-center gap-6">
-            <div class="flex-shrink-0 flex flex-col items-center gap-4">
-                 <div class="mascot-placeholder-game">
-                    <div class="glasses"><span></span></div>
-                    <div class="nose"></div>
-                </div>
-                <div class="hexagon-icon">M</div>
-            </div>
-            <div class="text-[#161616] text-base leading-relaxed">
+            <img src="images/Asset 127.png" class="w-80 h-60 ml-auto"></img>
+            <div class="text-[#161616] font-body-text text-lg leading-relaxed">
                 <p class="mb-2">The Stock market is a digital battlefield where shares are bought and sold, just like trading rare items in a game.</p>
                 <p class="mb-2"><span class="font-semibold text-[#294DFF]">Players:</span> Include everyday people like you and me, big investors like banks or funds, and even companies themselves. Some players hold onto their stocks for a long time, hoping the value grows over time (long-term investing). Others trade frequently, trying to make quick profits by buying low and selling high (like flipping rare items in the game).</p>
                 <p>It works a bit like a strategy game: sometimes you <span class="font-semibold text-[#00B295]">WIN</span>, sometimes you <span class="font-semibold text-red-600">LOSE</span>, but with knowledge and patience, you can improve your chances over time.</p>
@@ -452,106 +448,89 @@
         </section>
 
         <section class="mb-12 p-6 bg-white/50 rounded-lg shadow">
-             <h2 class="text-2xl font-bold mb-6 text-center text-[#294DFF]">Why Do Share Prices Change?</h2>
+             <h2 class="text-4xl font-bold mb-6 text-center text-[#294DFF]">Why Do Share Prices Change?</h2>
              <p class="text-center text-lg mb-6">Just like the value of a rare game item can go up or down, the price of a company's shares changes based on many things:</p>
              <div class="grid md:grid-cols-2 gap-8">
                  <div class="space-y-6">
                      <div class="flex items-start gap-4">
-                         <div class="arrow-icon flex-shrink-0">📈</div> <div>
-                             <h3 class="font-semibold text-[#00B295] mb-1">Player Mood (Investor Emotion)</h3>
-                             <p class="text-sm leading-relaxed">Sometimes players get really excited (greedy) and buy a lot, pushing prices up. Other times, they get scared (fearful) and sell, pushing prices down.</p>
+                        <img src="images/Asset 79.png" class="w-20 h-20 ml-auto"></img><div>
+                             <h3 class="font-body-text font-bold text-[#00B295] mb-1">Player Mood (Investor Emotion):</h3>
+                             <p class="text-sm font-body-text leading-relaxed">Sometimes players get really excited (greedy) and buy a lot, pushing prices up. Other times, they get scared (fearful) and sell, pushing prices down.</p>
                          </div>
                      </div>
                       <div class="flex items-start gap-4">
-                         <div class="arrow-icon flex-shrink-0">📰</div> <div>
-                             <h3 class="font-semibold text-[#00B295] mb-1">Game News (Company News)</h3>
-                             <p class="text-sm leading-relaxed">Did the company announce amazing profits? The share price might go up. Did something bad happen, like the CEO quitting? The price might drop.</p>
+                        <img src="images/Asset 79.png" class="w-20 h-20 ml-auto"></img><div>
+                             <h3 class="font-body-text font-semibold text-[#00B295] mb-1">Game News (Company News):</h3>
+                             <p class="text-sm font-body-text leading-relaxed">Did the company announce amazing profits? The share price might go up. Did something bad happen, like the CEO quitting? The price might drop.</p>
                          </div>
                      </div>
                       <div class="flex items-start gap-4">
-                         <div class="arrow-icon flex-shrink-0">🌍</div> <div>
-                             <h3 class="font-semibold text-[#00B295] mb-1">World Events (Global Events)</h3>
-                             <p class="text-sm leading-relaxed">Big events outside the company, like changes in government rules, oil prices, or even wars, can affect the whole market - like a game-wide event changing item values.</p>
+                        <img src="images/Asset 79.png" class="w-20 h-20 ml-auto"></img><div>
+                             <h3 class="font-body-text font-semibold text-[#00B295] mb-1">World Events (Global Events)::</h3>
+                             <p class="text-sm font-body-text leading-relaxed">Big events outside the company, like changes in government rules, oil prices, or even wars, can affect the whole market - like a game-wide event changing item values.</p>
                          </div>
                      </div>
                       <div class="flex items-start gap-4">
-                         <div class="arrow-icon flex-shrink-0">🤔</div> <div>
-                             <h3 class="font-semibold text-[#00B295] mb-1">Different Opinions</h3>
-                             <p class="text-sm leading-relaxed">Player A might think a share is overpriced and wants to sell, while Player B thinks it's a bargain and wants to buy. The stock market is the place that matches these players so they can trade.</p>
+                         <img src="images/Asset 79.png" class="w-20 h-20 ml-auto"></img><div>
+                             <h3 class="font-body-text font-semibold text-[#00B295] mb-1">Different Opinions:</h3>
+                             <p class="text-sm font-body-text leading-relaxed">Player A might think a share is overpriced and wants to sell, while Player B thinks it's a bargain and wants to buy. The stock market is the place that matches these players so they can trade.</p>
                          </div>
                      </div>
                  </div>
                  <div class="flex items-center justify-center">
-                     <div class="graph-placeholder">
-                        <svg viewBox="0 0 100 50">
-                            <polyline points="5,45 15,15 25,35 35,10 45,40 55,20 65,30 75,5 85,25 95,15" />
-                        </svg>
-                        <span class="question-mark">?</span>
-                     </div>
+                     <img src="images/Asset 80.svg" class="w-90 h-90 ml-auto"></img>
                  </div>
              </div>
         </section>
 
         <section class="mb-12 p-6 bg-white/50 rounded-lg shadow">
-             <h2 class="text-2xl font-bold mb-8 text-center text-[#294DFF]">How Do You Trade Shares?</h2>
-             <div class="grid md:grid-cols-2 gap-10 items-center">
-                 <div class="flex flex-col items-center gap-6">
-                     <div class="mascot-placeholder-game">
-                        <div class="glasses"><span></span></div>
-                        <div class="nose"></div>
-                    </div>
-                    <div class="flex gap-4">
-                        <div class="exchange-icon">NSE</div>
-                        <div class="exchange-icon">BSE</div>
-                    </div>
-                 </div>
-                 <div class="space-y-5 text-base leading-relaxed">
-                     <div class="flex items-start gap-4">
-                         <div class="hexagon-icon flex-shrink-0 text-sm">1</div>
-                         <div>
-                             <h3 class="font-semibold text-[#00B295] mb-1">Choose Your Interface (Broker):</h3>
-                             <p>You need an account with a broker (like Zerodha, Groww, etc.). Think of the broker as your game launcher or trading interface.</p>
-                         </div>
-                     </div>
-                     <div class="flex items-start gap-4">
-                         <div class="hexagon-icon flex-shrink-0 text-sm">2</div>
-                         <div>
-                             <h3 class="font-semibold text-[#00B295] mb-1">Place Your Order:</h3>
-                             <p>You tell your broker, "I want to buy 10 shares of Company XYZ" or "I want to sell 5 shares of Company ABC".</p>
-                         </div>
-                     </div>
-                     <div class="flex items-start gap-4">
-                         <div class="hexagon-icon flex-shrink-0 text-sm">3</div>
-                         <div>
-                             <h3 class="font-semibold text-[#00B295] mb-1">Go to the Arena (Stock Exchange):</h3>
-                             <p>Your broker sends your order to the main game arena, the stock exchange (like the NSE or BSE in India).</p>
-                         </div>
-                     </div>
-                     <div class="flex items-start gap-4">
-                         <div class="hexagon-icon flex-shrink-0 text-sm">4</div>
-                         <div>
-                             <h3 class="font-semibold text-[#00B295] mb-1">Find a Match:</h3>
-                             <p>The exchange's system automatically finds another player whose order matches yours (someone selling if you're buying, or buying if you're selling).</p>
-                         </div>
-                     </div>
-                      <div class="flex items-start gap-4">
-                         <div class="hexagon-icon flex-shrink-0 text-sm">5</div>
-                         <div>
-                             <h3 class="font-semibold text-[#00B295] mb-1">Trade Complete!</h3>
-                             <p>The shares are transferred. If you bought, they appear in your Demat account (think of this as your secure player inventory where you keep your shares).</p>
-                         </div>
-                     </div>
-                 </div>
-             </div>
-        </section>
+    <h2 class="text-4xl font-bold mb-8 text-center text-[#294DFF]">How Do You Trade Shares?</h2>
+    <div class="grid md:grid-cols-2 gap-x-10 gap-y-8 items-start">
+
+        <div class="flex flex-row items-center gap-4">
+            <img src="images/Asset 88.svg" class="w-40 h-40 flex-shrink-0" alt="Broker Interface Icon">
+            <div class="text-base leading-relaxed text-left flex-grow">
+                <h3 class="font-body-text text-2xl text-[#00B295] mb-1">Choose Your Interface (Broker):</h3>
+                <p class="font-body-text text-1xl">You need an account with a broker (like Zerodha, Groww, etc.). Think of the broker as your game launcher or trading interface.</p>
+            </div>
+        </div>
+
+        <div class="flex flex-row-reverse items-center gap-4">
+            <img src="images/Asset 85.svg" class="w-40 h-40 flex-shrink-0" alt="Place Order Icon">
+            <div class="text-base leading-relaxed text-right flex-grow">
+                <h3 class="font-body-text text-2xl text-[#00B295] mb-1">Place Your Order:</h3>
+                <p class="font-body-text text-1xl">You tell your broker, "I want to buy 10 shares of Company XYZ" or "I want to sell 5 shares of Company ABC".</p>
+            </div>
+        </div>
+
+        <div class="flex flex-row items-center gap-4">
+            <img src="images/Asset 84.svg" class="w-40 h-40 flex-shrink-0" alt="Stock Exchange Icon">
+            <div class="text-base leading-relaxed text-left flex-grow">
+                <h3 class="font-body-text text-2xl text-[#00B295] mb-1">Go to the Arena (Stock Exchange):</h3>
+                <p class="font-body-text text-1xl">Your broker sends your order to the main game arena, the stock exchange (like the NSE or BSE in India).</p>
+            </div>
+        </div>
+
+        <div class="flex flex-row-reverse items-center gap-4">
+            <img src="images/Asset 128.png" class="w-50 h-40 flex-shrink-0" alt="Find Match Icon">
+            <div class="text-base leading-relaxed text-right flex-grow">
+                <h3 class="font-body-text text-2xl text-[#00B295] mb-1">Find a Match:</h3>
+                <p class="font-body-text text-1xl">The exchange's system automatically finds another player whose order matches yours (someone selling if you're buying, or buying if you're selling).</p>
+            </div>
+        </div>
+
+        <div class="md:col-span-2 text-base leading-relaxed text-left">
+            <h3 class="font-subheading font-bold text-center text-4xl text-[#00B295] mb-1">Trade Complete!</h3>
+            <p class="font-body-text text-center text-3xl">The shares are transferred. If you bought, they appear in your Demat account (think of this as your secure player inventory where you keep your shares).</p>
+        </div>
+
+    </div>
+</section>
 
         <section class="text-center mt-12 mb-6">
-             <p class="text-3xl md:text-4xl font-bold text-[#161616] mb-6">
+             <p class="text-3xl md:text-5xl font-bold text-[#161616] mb-6">
                  Now... <br> Why don't <span class="text-[#294DFF]">you</span> give it a go?
              </p>
-             <a href="#game-setup" class="btn-primary inline-block text-lg">
-                 Setup Your Game!
-             </a>
              <a href="courses.html" class="block mt-4 text-[#00B295] hover:underline">
                  Or start learning with Courses
              </a>
@@ -577,14 +556,13 @@
                  <div class="mb-6">
                      <label for="initialAmount" class="block text-sm font-medium mb-1 text-[#161616]">Initial Investment Amount</label>
                      <input type="number" id="initialAmount" name="initialAmount" class="setup-input" placeholder="e.g., 50000" min="1000" max="1000000" required>
-                     <p class="text-xs text-gray-600 mt-1">(Choose an amount between ₹1,000 to ₹1,000,000)</p>
+                     <p class="text-xs text-gray-600 mt-1">(Choose an amount between $1,000 to $1,000,000)</p>
                  </div>
 
                  <div class="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-                    <a href="Trade.html" class="button primary">Start trading</a>
-                    <a href="Trade.html" class="btn-teal-outline w-full sm:w-auto text-center"> Back Home
-                     </a>
-                 </div>
+                    <button type="button" id="startGameBtn" class="btn-primary w-full sm:w-auto text-center">Start trading</button>
+                    <a href="index.html" class="btn-teal-outline w-full sm:w-auto text-center">Back Home</a>
+                </div>
              </form>
         </section>
         </main>
@@ -628,6 +606,23 @@
       </div>
     
     <script src="chatbot.js" defer></script>
-
+    <script>
+        document.getElementById("startGameBtn").addEventListener("click", function () {
+            const name = document.getElementById("playerName").value.trim();
+            const experience = document.getElementById("experience").value;
+            const investment = parseFloat(document.getElementById("initialAmount").value);
+        
+            if (!name || !experience || isNaN(investment) || investment < 1000 || investment > 1000000) {
+                alert("Please fill out all fields correctly.");
+                return;
+            }
+        
+            localStorage.setItem("playerName", name);
+            localStorage.setItem("experience", experience);
+            localStorage.setItem("initialInvestment", investment.toFixed(2));
+        
+            window.location.href = "Trade.html"; // redirect
+        });
+        </script>
 </body>
 </html>

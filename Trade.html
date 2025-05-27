@@ -6,14 +6,31 @@
     <title>Stock Market Simulator</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .btn-primary-finplay
+        {
+            display: block;
+            justify-content: center;
+            background-color: #294DFF; /* FinPlay Primary blue */
+            color: #EDEDED; /* Light text */
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem; /* Rounded corners */
+            font-family: 'Gilroy', sans-serif; /* Or your preferred button font */
+            font-weight: 600; /* semibold */
+            text-align: center;
+            text-decoration: none; /* Remove underline from link */
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        .btn-primary-finplay:hover {
+            background-color: #1a3fdb; /* Darker blue on hover */
+        }
+    </style>
 </head>
 <body>
     <nav>
         <div class="logo">Stock Market Simulator</div>
-        <div class="nav-links">
-            <a href="signup.html">Sign Up</a>
-            <a href="login.html">Login</a>
-        </div>
         <div class="nav-balance">Available Cash: $<span id="userBalance">100000.00</span></div>
     </nav>
 
@@ -28,7 +45,7 @@
         <div class="portfolio">
             <h2>Your Investment Portfolio</h2>
             <div class="portfolio-summary">
-                <div class="total-value">Total Portfolio Value: $<span id="portfolioValue">0.00</span></div>
+                <div class="total-value">Total Portfolio Value: <span id="portfolioValue">0.00</span></div>
                 <div class="total-gain">Total Gain/Loss: <span id="totalGain">0.00</span>%</div>
             </div>
             <div class="portfolio-list" id="portfolioList">
@@ -54,7 +71,21 @@
         </div>
     </div>
 
+    <div class="content-wrapper text-center max-w-2xl mx-auto">
+        <a href="courses.html" class="btn-primary-finplay">Next</a>
+    </div>
+
     <script src="data.js"></script>
     <script src="script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => { 
+            const balanceElement = document.getElementById("userBalance");
+            const storedBalance = localStorage.getItem("initialInvestment");
+        
+            if (storedBalance) {
+                balanceElement.textContent = parseFloat(storedBalance).toFixed(2);
+            }
+        });
+        </script>
 </body>
 </html>

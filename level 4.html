@@ -32,7 +32,7 @@
 
             /* --- Background Image Setup --- */
             /* IMPORTANT: Replace 'images/Asset 126.jpg' with the correct path to your image file */
-            background-image: url('images/Asset\ 126.png');
+            background-image: url('images/Asset\ 129.png');
 
             /* How the background image repeats */
             background-repeat: repeat; /* Use 'repeat' if you want the image to tile */
@@ -91,6 +91,27 @@
              border-radius: 0.75rem; /* rounded-xl */
              box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-md */
              margin-bottom: 2rem; /* mb-8 */
+        }
+
+        .main-text-content-left {
+            max-width: 100ch;
+            margin-left: 10ch;
+            margin-right: 30ch;
+            text-align: left;
+        }
+
+        .main-text-content-right {
+            max-width: 100ch;
+            margin-left: 30ch;
+            margin-right: 10ch;
+            text-align: right;
+        }
+
+        .main-text-content-center {
+            max-width: 100ch;
+            margin-left: 15ch;
+            margin-right: 15ch;
+            text-align: center;
         }
 
         /* Style for definition terms */
@@ -272,7 +293,7 @@
     <header class="sticky top-0 z-50 shadow-md">
         <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
             <a href="index.html" class="text-2xl font-bold flex items-center text-[#161616]">
-                 <svg class="w-10 h-10 mr-2" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                 <img src="images/Asset 121.png" alt="FinPlay Logo" class="w-10 h-10 mr-2">
                     <defs>
                         <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
                         <stop offset="0%" style="stop-color:#294DFF;stop-opacity:1" />
@@ -319,70 +340,51 @@
 
     <main class="container mx-auto px-6 py-12">
 
-        <h1 class="text-4xl md:text-5xl font-bold text-[#00B295] mb-6 text-center"> Level Four
+        <h1 class="text-7xl md:text-7xl font-bold text-[#00B295] mb-10 text-center"> Level Four
         </h1>
-        <h2 class="text-2xl md:text-3xl font-semibold text-[#161616] mb-10 text-center">
+        <h2 class="text-5xl font-bold font-subheading text-[#294DFF] mb-4 text-center">
             Understanding IPOs
         </h2>
 
-        <section class="content-box">
-            <div class="flex flex-col md:flex-row items-center gap-6">
-                <div class="flex-grow">
-                    <h3 class="text-2xl font-semibold text-[#294DFF] mb-3">What's an IPO?</h3>
-                    <p class="text-base leading-relaxed mb-3 font-semibold">(A New Player Enters the Game!)</p>
-                    <p class="text-sm leading-relaxed mb-3">
-                        Imagine a really cool character or item developed outside the main game world. Now, the creators want to bring it into the main game arena (the stock market) for everyone to trade.
-                    </p>
-                    <p class="text-sm leading-relaxed">
-                        An <span class="font-semibold">Initial Public Offering (IPO)</span> is exactly that! It's when a private company (one whose shares aren't traded publicly) decides to sell its shares to the public (that's us!) for the very first time. After the IPO, the company becomes publicly traded, and its shares can be bought and sold freely in the stock market arena.
-                    </p>
-                </div>
-                 <div class="ipo-visual flex-shrink-0">
-                    <div class="mascot-placeholder-sm"></div>
-                    <div class="arrow">→</div>
-                    <div class="hexagon-placeholder-sm"></div>
-                 </div>
-            </div>
-        </section>
+        <div>
+            <img src="images/level 4.png"></img>
+        </div><br><br>
 
-        <section class="content-box">
-             <h3 class="text-2xl font-semibold text-[#294DFF] mb-4">How Do Companies Grow Before an IPO? <br class="sm:hidden">(Leveling Up in Private)</h3>
-             <p class="text-sm leading-relaxed mb-4">
+        <section class="main-text-content-center">
+             <h3 class="text-5xl font-bold font-subheading text-[#294DFF] mb-4 text-center">How Do Companies Grow Before an IPO? <br class="sm:hidden">(Leveling Up in Private)</h3>
+             <p class="text-center font-body-text text-2xl md:text-xl leading-relaxed mb-4">
                  Before a company is big or famous enough for an IPO, it needs funding to grow, just like a game character needs resources to level up:
-             </p>
+             </p><br>
              <dl>
-                 <div class="term-box">
-                     <dt>1. Seed Funding:</dt>
-                     <dd>The founders use their own money or get small amounts from friends, family, or <span class="font-semibold">Angel Investors</span> (wealthy individuals who invest in brand new ideas), like sponsoring a rookie player. Risk is high here!</dd>
-                 </div>
-                  <div class="term-box">
-                     <dt>2. Venture Capital (VC) Funding:</dt>
-                     <dd>Once the company proves its idea works a bit, <span class="font-semibold">Venture Capital firms</span> (groups specializing in funding growing companies) invest larger amounts for a piece of the company (equity). They're like professional team scouts investing in promising talent.</dd>
-                 </div>
-                  <div class="term-box">
-                     <dt>3. Private Equity (PE) Funding:</dt>
-                     <dd>When the company is more established but needs big money to expand significantly, <span class="font-semibold">Private Equity firms</span> might invest very large sums, often taking a bigger chunk of ownership. They act like major league team owners.</dd>
-                 </div>
-                  <div class="term-box">
-                     <dt>4. Bank Loans:</dt>
-                     <dd>Companies can also borrow money, but they have to pay it back with interest.</dd>
+                 <div class="main-text-content-center">
+                     <dt class="text-4xl font-bold font-subheading text-[#294DFF] mb-4 text-center">1. Seed Funding:</dt>
+                     <dd class="text-center font-body-text text-2xl md:text-xl leading-relaxed mb-4">The founders use their own money or get small amounts from friends, family, or <span class="font-semibold">Angel Investors</span> (wealthy individuals who invest in brand new ideas), like sponsoring a rookie player. Risk is high here!</dd>
+                 </div><br>
+                  <div class="main-text-content-center">
+                     <dt class="text-4xl font-bold font-subheading text-[#294DFF] mb-4 text-center">2. Venture Capital (VC) Funding:</dt>
+                     <dd class="text-center font-body-text text-2xl md:text-xl leading-relaxed mb-4">Once the company proves its idea works a bit, <span class="font-semibold">Venture Capital firms</span> (groups specializing in funding growing companies) invest larger amounts for a piece of the company (equity). They're like professional team scouts investing in promising talent.</dd>
+                 </div><br>
+                  <div class="main-text-content-center">
+                     <dt class="text-4xl font-bold font-subheading text-[#294DFF] mb-4 text-center">3. Private Equity (PE) Funding:</dt>
+                     <dd class="text-center font-body-text text-2xl md:text-xl leading-relaxed mb-4">When the company is more established but needs big money to expand significantly, <span class="font-semibold">Private Equity firms</span> might invest very large sums, often taking a bigger chunk of ownership. They act like major league team owners.</dd>
+                 </div><br>
+                  <div class="main-text-content-center">
+                     <dt class="text-4xl font-bold font-subheading text-[#294DFF] mb-4 text-center">4. Bank Loans:</dt>
+                     <dd class="text-center font-body-text text-2xl md:text-xl leading-relaxed mb-4">Companies can also borrow money, but they have to pay it back with interest.</dd>
                  </div>
              </dl>
         </section>
 
-        <section class="content-box border-l-4 border-[#294DFF]">
-            <h4 class="text-lg font-semibold text-[#294DFF] mb-2">Example:</h4>
-            <p class="text-sm italic leading-relaxed">
-                A small startup making eco-friendly T-shirts might get initial money from an Angel Investor. If it grows, a VC firm might invest millions to help it scale up production. Later, needing much more for international expansion, finally needing huge funds, the company decides to launch an IPO.
-            </p>
-        </section>
+        <div>
+            <img src="images/l4 ex.png" class="main-text-content-center"></img>
+        </div><br><br>
 
-        <section class="content-box">
-             <h3 class="text-2xl font-semibold text-[#294DFF] mb-4">Why Go Public? <br class="sm:hidden">(Why Join the Main Game Arena?)</h3>
-             <p class="text-sm leading-relaxed mb-4">
+        <section class="main-text-content-center"">
+             <h3 class="text-5xl font-bold font-subheading text-[#294DFF] mb-4 text-center">Why Go Public? <br class="sm:hidden">(Why Join the Main Game Arena?)</h3>
+             <p class="text-center font-body-text text-2xl md:text-xl leading-relaxed mb-4">
                  Companies launch IPOs for several reasons:
              </p>
-              <ol class="list-decimal list-inside space-y-2 text-sm leading-relaxed">
+              <ol class="list-decimal list-inside space-y-2 text-center font-body-text text-2xl md:text-xl leading-relaxed mb-4 text-sm leading-relaxed">
                   <li><span class="font-semibold">Raise Capital (Get Resources):</span> To get a large amount of money to build new factories, develop new products, buy other companies, or expand globally.</li>
                   <li><span class="font-semibold">Reduce Debt (Pay Off Loans):</span> Using IPO money to pay back loans means no more interest payments.</li>
                   <li><span class="font-semibold">Liquidity for Early Investors (Let Sponsors Cash Out):</span> The Angel, VC, and PE investors who funded the company early on can now sell their shares to the public (via the IPO or later in the market) and make a profit on their investment.</li>
@@ -391,7 +393,11 @@
               </ol>
         </section>
 
-        <section class="content-box">
+        <div>
+            <img src="images/11.jpg" ></img>
+        </div><br><br>
+
+        <!-- <section class="content-box">
              <h3 class="text-2xl font-semibold text-[#294DFF] mb-4 text-center">The IPO Process: Step-by-Step Launch Sequence</h3>
              <p class="text-sm leading-relaxed mb-6 text-center">
                  Launching an IPO is a complex process, like planning a major game character release:
@@ -434,38 +440,39 @@
                  <div class="hidden md:block">
                      </div>
              </div>
-        </section>
+        </section> -->
 
-        <section class="content-box border-t-4 border-[#00B295]">
-             <h3 class="text-xl font-semibold text-[#00B295] mb-3">Key IPO Terms:</h3>
-             <ul class="key-terms-list">
+        <section class="main-text-content-left">
+             <h3 class="text-5xl font-bold font-subheading text-[#294DFF] mb-4 text-center">Key IPO Terms:</h3>
+             <ul class="text-left font-body-text text-2xl md:text-xl leading-relaxed mb-4">
                  <li><strong>Under Subscription:</strong> Not enough players wanted to buy the shares offered. Bad sign.</li>
                  <li><strong>Over Subscription:</strong> Way more players wanted shares than were available. Good sign (high demand!).</li>
                  <li><strong>Green Shoe Option:</strong> If demand is very high, the company might sell a few extra shares than originally planned.</li>
                  <li><strong>Fixed Price IPO:</strong> Sometimes, shares are offered at just one single price, not a price band.</li>
                  <li><strong>Price Band & Cut-Off Price:</strong> The range you bid in (e.g., ₹100-120) and the final price everyone pays (e.g., ₹115).</li>
              </ul>
-        </section>
+        </section><br><br>
 
-        <section class="content-box">
-            <h3 class="text-2xl font-semibold text-[#294DFF] mb-4 text-center">What Happens After the IPO?</h3>
-            <p class="text-sm leading-relaxed mb-4">
+        <section class="main-text-content-right">
+            <h3 class="text-5xl font-bold font-subheading text-[#294DFF] mb-4 text-center">What Happens After the IPO?</h3>
+            <p class="text-left font-body-text text-2xl md:text-xl leading-relaxed mb-4">
                 Once the shares are listed and trading in the secondary market:
             </p>
-            <ul class="list-disc list-inside space-y-2 text-sm leading-relaxed">
+            <ul class="text-left font-body-text text-2xl md:text-xl leading-relaxed mb-4">
                 <li>The share price will go up and down based on market demand, company performance, news, and player sentiment.</li>
                 <li>Players who got shares in the IPO can decide to sell them quickly (maybe for a listing pop profit) or hold them for the long term if they believe in the company.</li>
             </ul>
-        </section>
+        </section><bR><br>
 
-        <section class="content-box border-l-4 border-[#294DFF]"> <h3 class="text-xl font-semibold text-[#294DFF] mb-3">Quick Recap:</h3>
-             <ul class="recap-list">
+        <section class="main-text-content-left"> 
+            <h3 class="text-5xl font-bold font-subheading text-[#294DFF] mb-4 text-left">Quick Recap:</h3>
+             <ul class="text-left font-body-text text-2xl md:text-xl leading-relaxed mb-4">
                  <li>IPO = Private company selling shares to the public for the first time.</li>
                  <li>Companies do IPOs to raise money, pay debt, reward early investors, etc.</li>
                  <li>The process involves bankers, detailed documents (DRHP), SEBI approval, bidding (book building), and finally listing on the exchange.</li>
                  <li>After listing, shares trade freely in the secondary market.</li>
              </ul>
-        </section>
+        </section><br>
         <nav class="mt-10 flex justify-between items-center">
             <a href="level 3.html" class="btn-black inline-flex items-center"> <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />

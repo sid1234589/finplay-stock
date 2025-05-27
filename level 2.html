@@ -32,7 +32,7 @@
 
             /* --- Background Image Setup --- */
             /* IMPORTANT: Replace 'images/Asset 126.jpg' with the correct path to your image file */
-            background-image: url('images/Asset\ 126.png');
+            background-image: url('images/Asset\ 129.png');
 
             /* How the background image repeats */
             background-repeat: repeat; /* Use 'repeat' if you want the image to tile */
@@ -94,6 +94,34 @@
              margin-bottom: 2rem; /* mb-8 */
         }
 
+        .main-text-content-left {
+            max-width: 100ch;
+            margin-left: 10ch;
+            margin-right: 30ch;
+            text-align: left;
+        }
+
+        .main-text-content-right {
+            max-width: 100ch;
+            margin-left: 30ch;
+            margin-right: 10ch;
+            text-align: right;
+        }
+
+        .main-text-content-center {
+            max-width: 100ch;
+            margin-left: 15ch;
+            margin-right: 15ch;
+            text-align: center;
+        }
+
+        .box-content-center {
+            max-width: 100ch;
+            margin-left: 30ch;
+            margin-right: 30ch;
+            text-align: center;
+        }
+
         /* Style for investment type boxes */
         .investment-box {
             background-color: #EDEDED; /* Light background */
@@ -131,19 +159,18 @@
             position: absolute;
             top: 0;
             bottom: 0;
-            width: 80px; /* Adjust width */
+            width: 200px; /* Adjust width */
             display: flex;
             flex-direction: column;
             justify-content: space-around;
             align-items: center;
-            opacity: 0.7; /* Make them slightly transparent */
         }
-        .mascot-border.left { left: 10px; }
-        .mascot-border.right { right: 10px; }
+        .mascot-border.left { left: 60px; }
+        .mascot-border.right { right: 60px; }
 
         .mascot-border-item {
-            width: 60px; /* Size of the icon */
-            height: 60px;
+            width: 100px; /* Size of the icon */
+            height: 100px;
             background-color: #EDEDED; /* Light background */
             border: 2px solid #161616; /* Dark border */
             border-radius: 10px; /* Rounded square */
@@ -207,7 +234,7 @@
     <header class="sticky top-0 z-50 shadow-md">
         <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
             <a href="index.html" class="text-2xl font-bold flex items-center text-[#161616]">
-                 <svg class="w-10 h-10 mr-2" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                 <img src="images/Asset 121.png" alt="FinPlay Logo" class="w-10 h-10 mr-2">
                     <defs>
                         <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
                         <stop offset="0%" style="stop-color:#294DFF;stop-opacity:1" />
@@ -254,109 +281,111 @@
 
     <main class="container mx-auto px-6 py-12">
 
-        <h1 class="text-4xl md:text-5xl font-bold text-[#00B295] mb-10 text-center"> Level Two
-        </h1>
+        <h1 class="text-7xl md:text-7xl font-bold text-[#00B295] mb-10 text-center"> Level Two </h1>
 
-        <section class="content-box">
-            <h2 class="text-3xl font-bold text-[#294DFF] mb-4 text-center">Why You NEED to Invest!</h2>
-            <p class="text-base leading-relaxed mb-4">
-                Think of your financial life like leveling up a character in a game. Just saving money in a bank account is like staying at Level 1 forever. Why? Because of a sneaky monster called <span class="font-semibold text-[#E63946]">Inflation</span>. </p>
-            <p class="text-base leading-relaxed mb-4 bg-[#EDEDED] p-4 rounded-md border-l-4 border-[#E63946]"> <span class="font-semibold">Inflation</span> means that over time, the same amount of money buys you less stuff. Prices for everyday things go up. If your savings don't grow faster than inflation, you're actually losing purchasing power - your gold coins become less valuable! If you just save cash for 20 years, inflation might eat away so much value that your savings won't last long after you stop working (Retirement). <span class="font-bold text-xl text-[#E63946]">Game Over!</span>
-            </p>
-            <p class="text-base leading-relaxed mb-6">
-                Investing is how you make your money work for you and grow faster, hopefully beating inflation. It's like equipping powerful gear or learning skills that boost your character's stats.
-            </p>
+        <section> <h2 class="text-5xl font-bold font-subheading text-[#294DFF] mb-4 text-center"> Why You NEED to Invest!</h2><br><br>
+            
+            <div class="main-text-content-left">
+                <p class="text-base font-body-text text-2xl md:text-2xl leading-relaxed mb-4">
+                    Think of your financial life like leveling up a character in a game. Just saving money in a bank account is like staying at Level 1 forever. Why? Because of a sneaky monster called Inflation.
+                </p>
+            </div><br>
 
-             <div class="grid md:grid-cols-2 gap-6 text-center">
-                 <div class="bg-[#EDEDED] p-4 rounded-lg border border-gray-300">
-                     <h3 class="text-xl font-semibold mb-2 text-[#161616]">Without Investing:</h3>
-                     <p class="text-sm">Your pile of gold grows slowly.</p>
-                 </div>
-                 <div class="bg-[#EDEDED] p-4 rounded-lg border border-gray-300">
-                     <h3 class="text-xl font-semibold mb-2 text-[#00B295]">With Investing:</h3>
-                     <p class="text-sm">You put that gold into assets that can grow (like shares). Even a decent growth rate (like 12% per year) can make your final treasure chest significantly bigger over many years!</p>
-                 </div>
-             </div>
-        </section>
+            <div class="main-text-content-right">
+                <p class="text-base font-body-text text-2xl md:text-2xl leading-relaxed mb-4">
+                    <span class="font-subheading font-bold text-4xl md:text-4xl text-[#294DFF]">Inflation</span> means that over time, the same amount of money buys you less stuff. Prices for everyday things go up. If your savings don't grow faster than inflation, you're actually losing purchasing power - your gold coins become less valuable! 
+                    If you just save cash for 20 years, inflation might eat away so much value that your savings won't last long after you stop working (Retirement).  <span class="font-bold text-4xl md:text-4xl text-[#294DFF]">Game Over!</span>
+                </p>
+            </div><br>
 
-        <section class="content-box">
-            <h2 class="text-3xl font-bold text-[#294DFF] mb-6 text-center">Where Can You Invest? <br class="sm:hidden">(Choosing Your Gear & Strategy)</h2>
-            <p class="text-center text-base leading-relaxed mb-8">
+            <div class="main-text-content-left">
+                <p class="text-base font-body-text text-2xl md:text-2xl leading-relaxed mb-4">
+                    Think of your financial life like leveling up a character in a game. Just saving money in a bank account is like staying at Level 1 forever. Why? Because of a sneaky monster called Inflation.
+                </p>
+            </div><br><br>
+
+            <div class="grid md:grid-cols-2 gap-6 text-center mt-8">
+                <div> <h3 class="text-left-align font-subheading font-bold text-4xl md:text-4xl text-[#294DFF]">Without Investing:</h3>
+                    <p class="text-base font-body-text text-2xl md:text-2xl leading-relaxed mb-4 text-left-align">Your pile of gold grows slowly.</p>
+                </div>
+                <div> <h3 class="text-left-align font-subheading font-bold text-4xl md:text-4xl text-[#294DFF]">With Investing:</h3>
+                    <p class="text-base font-body-text text-2xl md:text-2xl leading-relaxed mb-4 text-left-align">You put that gold into assets that can grow (like shares). Even a decent growth rate (like 12% per year) can make your final treasure chest significantly bigger over many years!</p>
+                </div>
+            </div>
+        </section><br><br>
+
+        <section class="main-text-content-center ">
+            <h2 class="text-4xl md:text-4xl font-subheading text-[#294DFF] mb-6 ">Where Can You Invest? <br class="sm:hidden">(Choosing Your Gear & Strategy)</h2>
+            <p class="text-center font-body-text text-2xl md:text-2xl text-base leading-relaxed mb-8">
                 There are different types of investments, like different types of game gear, each with its own risk and potential reward:
-            </p>
+            </p><br><br>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="main-text-content-left">
+                    <h3 class="text-4xl md:text-4xl font-subheading text-[#294DFF]">Fixed Income</h3>
+                    <p class="font-body-text text-2xl md:text-xl">Things like Fixed Deposits (FDs) in banks or Bonds.</p>
+                    <p class="font-body-text text-2xl md:text-xl"><span class="label">Risk:</span> Low (your money is relatively safe)</p>
+                    <p class="font-body-text text-2xl md:text-xl"><span class="label">Reward:</span> Low to Medium (like 6-11% per year). Might not always beat inflation.</p>
+                    <p class="font-subheading text-2xl md:text-xl text-[#00B295]"><span class="label">Game Analogy:</span> Sturdy shield and armor. Reliable, but won't win the battle quickly.</p>
+                </div><br>
 
-                <div class="investment-box">
-                    <h3>Fixed Income</h3>
-                    <p class="text-sm mb-3">Things like Fixed Deposits (FDs) in banks or Bonds.</p>
-                    <p class="text-sm mb-1"><span class="label">Risk:</span> Low (your money is relatively safe)</p>
-                    <p class="text-sm mb-3"><span class="label">Reward:</span> Low to Medium (like 6-11% per year). Might not always beat inflation.</p>
-                    <p class="text-sm mt-auto pt-2 border-t border-gray-300"><span class="label">Game Analogy:</span> Sturdy shield and armor. Reliable, but won't win the battle quickly.</p>
-                </div>
+                <div class="main-text-content-right">
+                    <h3 class="text-4xl md:text-4xl font-subheading text-[#294DFF]">Equity</h3>
+                    <p class="font-body-text text-2xl md:text-xl">Buying shares (stocks) of companies.</p>
+                    <p class="font-body-text text-2xl md:text-xl"><span class="label">Risk:</span> High (prices can go up or down a lot)</p>
+                    <p class="font-body-text text-2xl md:text-xl"><span class="label">Reward:</span> Potentially High (historically around 14-15% per year over the long term). Best chance to beat inflation significantly.</p>
+                    <p class="font-subheading text-2xl md:text-xl text-[#00B295]"><span class="label">Game Analogy:</span> Powerful magic sword. Can deliver big hits, but you might miss or take damage yourself. Requires skill and patience.</p>
+                </div><br>
 
-                <div class="investment-box">
-                    <h3>Equity</h3>
-                    <p class="text-sm mb-3">Buying shares (stocks) of companies.</p>
-                    <p class="text-sm mb-1"><span class="label">Risk:</span> High (prices can go up or down a lot)</p>
-                    <p class="text-sm mb-3"><span class="label">Reward:</span> Potentially High (historically around 14-15% per year over the long term). Best chance to beat inflation significantly.</p>
-                    <p class="text-sm mt-auto pt-2 border-t border-gray-300"><span class="label">Game Analogy:</span> Powerful magic sword. Can deliver big hits, but you might miss or take damage yourself. Requires skill and patience.</p>
-                </div>
+                <div class="main-text-content-left">
+                    <h3 class="text-4xl md:text-4xl font-subheading text-[#294DFF]">Real Estate</h3>
+                    <p class="font-body-text text-2xl md:text-xl">Buying property (land, houses, shops).</p>
+                    <p class="font-body-text text-2xl md:text-xl"><span class="label">Risk:</span> Medium to High (needs lots of money, selling can be slow)</p>
+                    <p class="font-body-text text-2xl md:text-xl"><span class="label">Reward:</span> Medium (rent income + property value increase)</p>
+                    <p class="font-subheading text-2xl md:text-xl text-[#00B295]"><span class="label">Game Analogy:</span> Constructing a fortress. Takes time and resources, hard to move quickly, but provides steady benefits.</p>
+                </div><br>
 
-                <div class="investment-box">
-                    <h3>Real Estate</h3>
-                    <p class="text-sm mb-3">Buying property (land, houses, shops).</p>
-                    <p class="text-sm mb-1"><span class="label">Risk:</span> Medium to High (needs lots of money, selling can be slow)</p>
-                    <p class="text-sm mb-3"><span class="label">Reward:</span> Medium (rent income + property value increase)</p>
-                    <p class="text-sm mt-auto pt-2 border-t border-gray-300"><span class="label">Game Analogy:</span> Constructing a fortress. Takes time and resources, hard to move quickly, but provides steady benefits.</p>
-                </div>
-
-                <div class="investment-box">
-                    <h3>Gold / Silver</h3>
-                    <p class="text-sm mb-3">Buying precious metals.</p>
-                    <p class="text-sm mb-1"><span class="label">Risk:</span> Low to Medium (prices fluctuate, but generally safe)</p>
-                    <p class="text-sm mb-3"><span class="label">Reward:</span> Low to Medium (historically around 8% per year). Good for protecting wealth during uncertain times.</p>
-                    <p class="text-sm mt-auto pt-2 border-t border-gray-300"><span class="label">Game Analogy:</span> A protective amulet. Doesn't offer attack power, but holds its value and provides safety.</p>
+                <div class="main-text-content-right">
+                    <h3 class="text-4xl md:text-4xl font-subheading text-[#294DFF]">Gold / Silver</h3>
+                    <p class="font-body-text text-2xl md:text-xl">Buying precious metals.</p>
+                    <p class="font-body-text text-2xl md:text-xl"><span class="label">Risk:</span> Low to Medium (prices fluctuate, but generally safe)</p>
+                    <p class="font-body-text text-2xl md:text-xl"><span class="label">Reward:</span> Low to Medium (historically around 8% per year). Good for protecting wealth during uncertain times.</p>
+                    <p class="font-subheading text-2xl md:text-xl text-[#00B295]"><span class="label">Game Analogy:</span> A protective amulet. Doesn't offer attack power, but holds its value and provides safety.</p>
                 </div>
 
             </div>
-        </section>
+        </section><br><br>
 
-        <section class="content-box text-center border-t-4 border-[#00B295]">
-             <h2 class="text-2xl font-bold text-[#00B295] mb-3">Pro Strategy: Diversify!</h2>
-             <p class="text-base leading-relaxed">
+        <section class="main-text-content-center">
+             <h2 class="text-4xl font-subheading font-bold text-[#00B295] mb-3">Pro Strategy: Diversify!</h2><br>
+             <p class="font-body-text text-2xl md:text-xl">
                  Don't put all your money in just one type of investment. Mix it up! This is called <span class="font-semibold">diversification</span>. Like using a balanced set of gear in a game.
              </p>
-        </section>
+        </section><br><br>
 
         <section class="arena-section">
             <div class="mascot-border left" aria-hidden="true">
-                <div class="mascot-border-item"><span class="eye left">$</span><span class="eye right">$</span><div class="mouth"></div></div>
-                <div class="mascot-border-item"><span class="eye left">$</span><span class="eye right">$</span><div class="mouth"></div></div>
-                <div class="mascot-border-item"><span class="eye left">$</span><span class="eye right">$</span><div class="mouth"></div></div>
-                 <div class="mascot-border-item"><span class="eye left">$</span><span class="eye right">$</span><div class="mouth"></div></div>
-                  <div class="mascot-border-item"><span class="eye left">$</span><span class="eye right">$</span><div class="mouth"></div></div>
+                <img src="images/Asset 131.png"></img>
+                <img src="images/Asset 132.png"></img>
+                <img src="images/Asset 131.png"></img>
             </div>
              <div class="mascot-border right" aria-hidden="true">
-                <div class="mascot-border-item"><span class="eye left">$</span><span class="eye right">$</span><div class="mouth"></div></div>
-                <div class="mascot-border-item"><span class="eye left">$</span><span class="eye right">$</span><div class="mouth"></div></div>
-                <div class="mascot-border-item"><span class="eye left">$</span><span class="eye right">$</span><div class="mouth"></div></div>
-                 <div class="mascot-border-item"><span class="eye left">$</span><span class="eye right">$</span><div class="mouth"></div></div>
-                  <div class="mascot-border-item"><span class="eye left">$</span><span class="eye right">$</span><div class="mouth"></div></div>
+                <img src="images/Asset 132.png"></img>
+                <img src="images/Asset 131.png"></img> 
+                <img src="images/Asset 132.png"></img>
             </div>
 
-            <div class="relative z-10 max-w-3xl mx-auto px-4 text-center">
+            <div class="box-content-center">
                 <h2 class="text-3xl font-bold mb-8">The Stock Market Arena <br class="sm:hidden">& The Game Master</h2>
 
                 <div class="text-left space-y-6">
                     <div>
-                        <h3 class="text-xl font-semibold text-[#00B295] mb-2">The Arena: Where the Trading Happens</h3>
-                        <p class="text-sm leading-relaxed">As we said, the stock market is the big game arena. It's not a physical place anymore - it's all electronic. You access it through your broker platform (your game launcher) to buy and sell shares. The main arenas in India are the <span class="font-semibold">NSE</span> (National Stock Exchange) and <span class="font-semibold">BSE</span> (Bombay Stock Exchange). Think of them as the official game servers where all the trades are processed.</p>
+                        <h3 class="text-xl font-semibold text-[#161616] mb-2">The Arena: Where the Trading Happens</h3>
+                        <p class="font-body-text text-2xl md:text-xl">As we said, the stock market is the big game arena. It's not a physical place anymore - it's all electronic. You access it through your broker platform (your game launcher) to buy and sell shares. The main arenas in India are the <span class="font-semibold">NSE</span> (National Stock Exchange) and <span class="font-semibold">BSE</span> (Bombay Stock Exchange). Think of them as the official game servers where all the trades are processed.</p>
                     </div>
 
                     <div>
-                        <h3 class="text-xl font-semibold text-[#00B295] mb-2">Who Are the Players in the Arena?</h3>
-                        <ul class="list-disc list-inside text-sm leading-relaxed space-y-1">
+                        <h3 class="text-xl font-semibold text-[#161616] mb-2">Who Are the Players in the Arena?</h3>
+                        <ul class="font-body-text text-2xl md:text-xl">
                             <li><span class="font-semibold">Retail Investors:</span> Regular players like you and me.</li>
                             <li><span class="font-semibold">Domestic Institutional Investors (DIIs):</span> Indian organisations playing with large amounts of money (like insurance companies or big investment funds). Think of them as powerful local guilds.</li>
                              <li><span class="font-semibold">Mutual Funds / Asset Management Companies (AMCs):</span> These companies manage Mutual Funds - pooled money from many smaller players who prefer experts to manage things themselves. Think of them as professional player character (bots) that invest on behalf of many smaller players.</li>
@@ -365,32 +394,36 @@
                     </div>
 
                     <div>
-                        <h3 class="text-xl font-semibold text-[#00B295] mb-2">Why Do We Need a Referee? (Regulation)</h3>
-                        <p class="text-sm leading-relaxed">With so many players, big and small, driven by greed (wanting prices to rise) or fear (wanting to sell before prices fall), things could get chaotic. Some players might try to cheat or manipulate the game (like spreading false rumors to change prices). To keep the game fair and protect everyone, especially smaller players, we need a powerful referee or game master.</p>
+                        <h3 class="text-xl font-semibold text-[#161616] mb-2">Why Do We Need a Referee? (Regulation)</h3>
+                        <p class="font-body-text text-2xl md:text-xl">With so many players, big and small, driven by greed (wanting prices to rise) or fear (wanting to sell before prices fall), things could get chaotic. Some players might try to cheat or manipulate the game (like spreading false rumors to change prices). To keep the game fair and protect everyone, especially smaller players, we need a powerful referee or game master.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="content-box">
-            <h2 class="text-3xl font-bold text-[#294DFF] mb-6 text-center">The Game Master: SEBI</h2>
-            <p class="text-base leading-relaxed mb-6">
-                 In India, the main referee for the stock market game is <span class="font-semibold">SEBI (Securities and Exchange Board of India)</span>. Think of SEBI as the ultimate game moderator with strong anti-cheat systems.
-            </p>
+        <section class="main-text-content-center">
+            <h2 class="text-3xl md:text-5xl font-bold font-subheading text-[#294DFF] mb-6 text-center">The Game Master: SEBI</h2>
+            <p class="font-body-text text-2xl md:text-xl">
+                 In India, the main referee for the stock market game is <br><span class="font-body-text font-semibold text-3xl md:text-4xl text-[#294DFF]">SEBI (Securities and Exchange Board of India)</span><br>
+                Think of SEBI as the ultimate game moderator with strong anti-cheat systems.
+            </p><br><br>
 
-            <div class="bg-[#EDEDED] p-6 rounded-lg border border-gray-300 overflow-hidden"> <span class="thumbs-up-icon" aria-hidden="true">👍</span> <h3 class="text-xl font-semibold text-[#161616] mb-3 pt-1">SEBI's Job:</h3>
-                 <ul class="list-disc list-inside text-sm leading-relaxed space-y-1 ml-1 clear-left"> <li>Make sure the arenas (Stock Exchanges like NSE, BSE) run smoothly and fairly.</li>
-                     <li>Ensure brokers (the game interfaces) act honestly and don't exploit players.</li>
-                     <li>Stop companies from tricking players (preventing scams).</li>
-                     <li>Protect small retail players from being unfairly crushed by big players.</li>
-                     <li>Prevent market manipulation (like big players artificially pumping up or crashing prices).</li>
-                     <li>Help the overall market game grow and develop properly.</li>
-                 </ul>
-            </div>
-             <p class="text-base leading-relaxed mt-6 text-center">
+        <div class="flex items-start gap-4 md:gap-6">
+            <img src="images/Asset 106.svg" class="w-48 h-48 md:w-80 md:h-80 flex-shrink-0" alt="SEBI Icon"> <div class="flex-grow"> <h3 class="text-xl font-semibold text-[#161616] mb-3 pt-1">SEBI's Job:</h3>
+                <ul class="list-disc list-inside text-sm leading-relaxed space-y-1"> 
+                    <li class="font-body-text text-left text-2xl md:text-xl">Make sure the arenas (Stock Exchanges like NSE, BSE) run smoothly and fairly.</li>
+                    <li class="font-body-text text-left text-2xl md:text-xl">Ensure brokers (the game interfaces) act honestly and don't exploit players.</li>
+                    <li class="font-body-text text-left text-2xl md:text-xl">Stop companies from tricking players (preventing scams).</li>
+                    <li class="font-body-text text-left text-2xl md:text-xl">Protect small retail players from being unfairly crushed by big players.</li>
+                    <li class="font-body-text text-left text-2xl md:text-xl">Prevent market manipulation (like big players artificially pumping up or crashing prices).</li>
+                    <li class="font-body-text text-left text-2xl md:text-xl">Help the overall market game grow and develop properly.</li>
+                </ul>
+            </div><br>
+        </div>
+             <p class="text-base leading-relaxed mt-6 font-body-text text-left text-2xl md:text-xl text-center">
                  SEBI makes the rules and watches over everyone involved: the exchanges, brokers, companies selling shares, big investors, mutual funds, and others. They ensure everyone plays by the rules so the game is fair and trustworthy.
              </p>
-        </section>
+        </section><br>
 
         <nav class="mt-10 flex justify-between items-center">
             <a href="level 1.html" class="btn-blue inline-flex items-center">

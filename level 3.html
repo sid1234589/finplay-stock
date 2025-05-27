@@ -32,7 +32,7 @@
 
             /* --- Background Image Setup --- */
             /* IMPORTANT: Replace 'images/Asset 126.jpg' with the correct path to your image file */
-            background-image: url('images/Asset\ 126.png');
+            background-image: url('images/Asset\ 129.png');
 
             /* How the background image repeats */
             background-repeat: repeat; /* Use 'repeat' if you want the image to tile */
@@ -91,6 +91,27 @@
              border-radius: 0.75rem; /* rounded-xl */
              box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-md */
              margin-bottom: 2rem; /* mb-8 */
+        }
+
+        .main-text-content-left {
+            max-width: 100ch;
+            margin-left: 10ch;
+            margin-right: 30ch;
+            text-align: left;
+        }
+
+        .main-text-content-right {
+            max-width: 100ch;
+            margin-left: 30ch;
+            margin-right: 10ch;
+            text-align: right;
+        }
+
+        .main-text-content-center {
+            max-width: 100ch;
+            margin-left: 15ch;
+            margin-right: 15ch;
+            text-align: center;
         }
 
         /* Style for definition terms */
@@ -242,7 +263,7 @@
     <header class="sticky top-0 z-50 shadow-md">
         <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
             <a href="index.html" class="text-2xl font-bold flex items-center text-[#161616]">
-                 <svg class="w-10 h-10 mr-2" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                 <img src="images/Asset 121.png" alt="FinPlay Logo" class="w-10 h-10 mr-2">
                     <defs>
                         <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
                         <stop offset="0%" style="stop-color:#294DFF;stop-opacity:1" />
@@ -287,41 +308,43 @@
         </div>
     </header>
 
-    <main class="container mx-auto px-6 py-12 relative"> <div class="corner-mascot top-left hidden md:flex"> <div class="mascot-face face-level-5">
-                <span class="eye left">$</span><span class="eye right">$</span><div class="mouth"></div>
-            </div>
-        </div>
-        <div class="corner-mascot top-right hidden md:flex"> <div class="mascot-face face-level-5">
-                <span class="eye left">$</span><span class="eye right">$</span><div class="mouth"></div>
-            </div>
-        </div>
+    <main class="container mx-auto px-6 py-12 relative"> 
 
-
-        <h1 class="text-4xl md:text-5xl font-bold text-[#00B295] mb-6 text-center"> Level Three
+        <h1 class="text-7xl md:text-7xl font-bold text-[#00B295] mb-10 text-center"> Level Three
         </h1>
-        <h2 class="text-2xl md:text-3xl font-semibold text-[#161616] mb-10 text-center">
+        <h2 class="text-5xl font-bold font-subheading text-[#294DFF] mb-4 text-center">
             Learning the Lingo
-        </h2>
+        </h2><br>
 
-        <p class="text-center text-base leading-relaxed mb-10 max-w-2xl mx-auto">
+        <p class="text-center font-body-text text-2xl md:text-xl leading-relaxed mb-4">
             Okay, let's learn some common words you'll hear in the stock market game.
-        </p>
+        </p><br><br>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
 
-            <div class="term-box">
-                <dt>Bull Market (Bullish):</dt>
-                <dd>Imagine a bull charging upwards! This means the overall market is optimistic, and prices are generally going UP. If you think a specific share's price will go up, you are <span class="font-semibold">bullish</span> on it.</dd>
+        <div class="flex items-start gap-4 md:gap-4">
+            <div> <img src="images/Asset 133.png" class="w-100 md:w-100 h-auto flex-shrink-0" alt="Bull Market Icon">
             </div>
 
-            <div class="term-box">
-                <dt>Bear Market (Bearish):</dt>
-                <dd>Think of a bear swiping downwards. This means the market is pessimistic, and prices are generally going DOWN. If you expect a share's price to fall, you are <span class="font-semibold">bearish</span>.</dd>
+            <div class="main-text-content-left flex-grow"> <dl> <dt class="font-subheading font-bold text-2xl md:text-3xl text-[#294DFF]">Bull Market (Bullish):</dt> <dd class="text-base font-body-text md:text-lg leading-relaxed mt-1">Imagine a bull charging upwards! This means the overall market is optimistic, and prices are generally going UP. If you think a specific share's price will go up, you are <span class="font-semibold">bullish</span> on it.</dd>
+                </dl>
             </div>
+        </div>
 
-            <div class="term-box">
-                <dt>Trend:</dt>
-                <dd>
+        <div class="flex justify-end">
+            <div class="flex items-start gap-4 md:gap-6"> <div class="main-text-content-right text-right flex-grow"> <dl>
+                        <dt class="font-subheading font-bold text-2xl md:text-3xl text-[#294DFF]">Bear Market (Bearish):</dt> <dd class="text-base font-body-text md:text-lg leading-relaxed mt-1">Think of a bear swiping downwards. This means the market is pessimistic, and prices are generally going DOWN. If you expect a share's price to fall, you are <span class="font-semibold">bearish</span>.</dd>
+                    </dl>
+                </div>
+
+                <div> <img src="images/Asset 134.png" class="w-100 h-auto md:w-100 flex-shrink-0" alt="Bear Market Icon"> </div>
+
+            </div>
+        </div><br><br>
+        
+
+            <div class="main-text-content-left">
+                <dt class="text-4xl md:text-4xl font-subheading text-[#294DFF]">Trend:</dt>
+                <dd class="font-body-text text-2xl md:text-xl">
                     The general direction the market (or a specific share) is moving.
                     <ul>
                         <li><span class="font-semibold">Bullish Trend:</span> Moving mostly upwards.</li>
@@ -329,45 +352,46 @@
                         <li><span class="font-semibold">Sideways Trend:</span> Not really going up or down, just moving horizontally. Like the game is paused or in a stable state.</li>
                     </ul>
                 </dd>
-            </div>
+            </div><br><br>
 
-            <div class="term-box">
-                <dt>Face Value (FV):</dt>
-                <dd>The original price tag the company put on the share when it was first created. It's mostly used for technical company actions (like calculating dividends sometimes) and isn't the price you trade at. Think of it as the item's manufacturing cost, not its current market value.</dd>
-            </div>
+            <div class="main-text-content-right">
+                <dt class="text-4xl md:text-4xl font-subheading text-[#294DFF]">Face Value (FV):</dt>
+                <dd class="font-body-text text-2xl md:text-xl">The original price tag the company put on the share when it was first created. It's mostly used for technical company actions (like calculating dividends sometimes) and isn't the price you trade at. Think of it as the item's manufacturing cost, not its current market value.</dd>
+            </div><br><br>
 
-            <div class="term-box">
-                <dt>52-Week High / Low:</dt>
-                <dd>
+            <div class="main-text-content-left">
+                <dt class="text-4xl md:text-4xl font-subheading text-[#294DFF]">52-Week High / Low:</dt>
+                <dd class="font-body-text text-2xl md:text-xl">
                     <ul>
                         <li><span class="font-semibold">52-Week High:</span> The highest price a share reached in the last year (like the highest score achieved in the last season). Some players see this as a sign it might keep going up.</li>
                         <li><span class="font-semibold">52-Week Low:</span> The lowest price in the last year. Some players worry it might keep falling.</li>
                     </ul>
                 </dd>
-            </div>
+            </div><br><br>
 
-            <div class="term-box">
-                <dt>All-Time High / Low:</dt>
-                 <dd>
+            <div class="main-text-content-right">
+                <dt class="text-4xl md:text-4xl font-subheading text-[#294DFF]">All-Time High / Low:</dt>
+                 <dd class="font-body-text text-2xl md:text-xl">
                     <ul>
                         <li><span class="font-semibold">All-Time High:</span> The absolute highest price the share has ever reached in its history.</li>
                         <li><span class="font-semibold">All-Time Low:</span> The absolute lowest price it has ever reached.</li>
                     </ul>
                 </dd>
-            </div>
+            </div><br>
 
-            <div class="term-box">
-                <dt>Long Position (Going Long):</dt>
-                <dd>This is the most common move. You BUY a share because you are <span class="font-semibold">bullish</span> - you expect the price to go UP, so you can sell it later for a profit. Strategy: Buy Low, Sell High.</dd>
+            <div class="grid md:grid-cols-2 gap-6 text-center mt-8">
+                <div> <h3 class="text-left-align font-subheading font-bold text-4xl md:text-4xl text-[#294DFF]">Long Position (Going Long):</h3><br>
+                    <p class="text-base font-body-text text-2xl md:text-xl leading-relaxed mb-4 text-left-align">This is the most common move. You BUY a share because you are bullish- you expect the price to go UP, so you can sell it later for a profit. Strategy: Buy Low, Sell High.</p>
+                </div>
+                <div> <h3 class="text-left-align font-subheading font-bold text-4xl md:text-4xl text-[#294DFF]">Short Position (Going Short / Short Selling):</h3>
+                    <p class="text-base font-body-text text-2xl md:text-xl leading-relaxed mb-4 text-left-align">This is a more advanced move. You SELL a share first (even though you don't own it yet!) because you are bearish – you expect the price to go DOWN. If it does, you then BUY it back at the lower price to complete the trade and pocket the difference.</p>
+                    <br><p class="text-base font-subheading text-2xl md:text-xl leading-relaxed text-[#00B295] mb-4 text-left-align">Game Analogy: Imagine you know a rare item's price is about to drop in the game's auction house. You agree to sell it to someone now at the current high price. Then, when the price drops, you quickly buy it cheap and deliver it to the person you promised it to, keeping the profit.</p>
+                </div>
             </div>
+            <br>
 
-             <div class="term-box">
-                <dt>Short Position (Going Short / Short Selling):</dt>
-                <dd>This is a more advanced move. You SELL a share first (even though you don't own it yet!) because you are <span class="font-semibold">bearish</span> - you expect the price to go DOWN. If it does, you then BUY it back at the lower price to complete the trade and pocket the difference. (How? Your broker lends you the share to sell initially. You must buy it back later to return it to the lender).</dd>
-            </div>
-
-             <div class="term-box md:col-span-2"> <dt>Closing Your Trade (Squaring Off):</dt>
-                <dd>
+             <div class="main-text-content-center"> <dt class="text-4xl md:text-4xl font-subheading text-[#294DFF]">Closing Your Trade (Squaring Off):</dt>
+                <dd class="font-body-text text-2xl md:text-xl">
                     Squaring Off simply means closing whatever position you currently have open.
                      <ul>
                         <li>If you are Long (you bought shares), you need to <span class="font-semibold">Sell</span> them to square off.</li>
@@ -375,20 +399,20 @@
                     </ul>
                      <p class="mt-2 text-xs italic">Important: Squaring off is just exiting your current trade. It's not the same as starting a new long or short position.</p>
                 </dd>
-            </div>
+            </div><br><br>
 
         </div>
 
-        <h3 class="text-xl font-semibold text-center mt-10 mb-6 text-[#161616]">Other Important Terms</h3>
+        <h3 class="text-xl md:text-4xl font-subheading text-center mt-10 mb-6 text-[#161616]">Other Important Terms</h3>
 
          <div class="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-4 mb-10">
              <div class="term-box">
-                <dt>Intraday Trading:</dt>
-                <dd>Playing a mini-game within the main game. You buy AND sell the same share within the same trading day. You don't hold any position overnight.</dd>
+                <dt class="text-4xl md:text-4xl font-subheading text-[#294DFF]">Intraday Trading:</dt>
+                <dd class="font-body-text text-2xl md:text-xl">Playing a mini-game within the main game. You buy AND sell the same share within the same trading day. You don't hold any position overnight.</dd>
             </div>
              <div class="term-box">
-                <dt>OHLC (Open, High, Low, Close):</dt>
-                <dd>
+                <dt class="text-4xl md:text-4xl font-subheading text-[#294DFF]">OHLC (Open, High, Low, Close):</dt>
+                <dd class="font-body-text text-2xl md:text-xl">
                     These are the four key price points for a share during a single trading day:
                     <ul>
                         <li><span class="font-semibold">Open:</span> The price when the market game started for the day.</li>
@@ -399,30 +423,35 @@
                 </dd>
             </div>
              <div class="term-box">
-                <dt>Volume:</dt>
-                <dd>The total number of shares of a company that were traded (bought and sold) during the day. High volume means lots of players were actively trading that share - it was a popular item that day!</dd>
+                <dt class="text-4xl md:text-4xl font-subheading text-[#294DFF]">Volume:</dt>
+                <dd class="font-body-text text-2xl md:text-xl">The total number of shares of a company that were traded (bought and sold) during the day. High volume means lots of players were actively trading that share - it was a popular item that day!</dd>
             </div>
          </div>
 
-        <section class="arena-segment-section" id="arena-segment-container">
-            <div class="relative z-10 max-w-3xl mx-auto px-4 text-center">
-                <h3 class="text-3xl font-bold mb-6">Different Game Arenas <br class="sm:hidden">(Market Segments)</h3>
-                <p class="text-base leading-relaxed mb-8">
+        <div>
+        <img src="images/Asset 135.png"></img>
+        </div><br><br>
+
+        <section class="main-text-content-center">
+            <div>
+                <p class="font-body-text text-2xl md:text-xl">
                     The stock market isn't just one big room. Think of it as having different arenas or sections for different types of trading:
                 </p>
+        </section><br><br>
 
+        <section>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
                     <div class="segment-box">
-                        <h4>Capital Market (Equity Market):</h4>
-                        <p>This is the main arena we've been talking about, where regular company shares (stocks/equities) and similar things like ETFs (Exchange Traded Funds - baskets of shares) are traded.</p>
+                        <h4 class="text-4xl md:text-4xl font-subheading text-[#294DFF]">Capital Market (Equity Market):</h4>
+                        <p class="font-body-text text-2xl md:text-xl">This is the main arena we've been talking about, where regular company shares (stocks/equities) and similar things like ETFs (Exchange Traded Funds - baskets of shares) are traded.</p>
                     </div>
                      <div class="segment-box">
-                        <h4>Futures & Options (F&O) Market (Derivatives):</h4>
-                        <p>This is a more advanced, high-stakes arena. Players trade contracts based on the expected future price of shares or indices. It involves leverage (like using borrowed power), making it riskier but also offering potential for higher gains/losses. (We'll explore this arena later!).</p>
+                        <h4 class="text-4xl md:text-4xl font-subheading text-[#294DFF]">Futures & Options (F&O) Market (Derivatives):</h4>
+                        <p class="font-body-text text-2xl md:text-xl">This is a more advanced, high-stakes arena. Players trade contracts based on the expected future price of shares or indices. It involves leverage (like using borrowed power), making it riskier but also offering potential for higher gains/losses. (We'll explore this arena later!).</p>
                     </div>
                      <div class="segment-box">
-                        <h4>Wholesale Debt Market:</h4>
-                        <p>This arena is mostly for big players trading things like Bonds (loans to companies or governments) and other fixed-income items. Think of it as trading IOUs.</p>
+                        <h4 class="text-4xl md:text-4xl font-subheading text-[#294DFF]">Wholesale Debt Market:</h4>
+                        <p class="font-body-text text-2xl md:text-xl">This arena is mostly for big players trading things like Bonds (loans to companies or governments) and other fixed-income items. Think of it as trading IOUs.</p>
                     </div>
                 </div>
              </div>

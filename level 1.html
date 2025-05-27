@@ -32,7 +32,7 @@
 
             /* --- Background Image Setup --- */
             /* IMPORTANT: Replace 'images/Asset 126.jpg' with the correct path to your image file */
-            background-image: url('images/Asset\ 126.png');
+            background-image: url('images/Asset\ 129.png');
 
             /* How the background image repeats */
             background-repeat: repeat; /* Use 'repeat' if you want the image to tile */
@@ -94,16 +94,7 @@
              margin-bottom: 2rem; /* mb-8 */
         }
 
-        /* Style for the dollar hexagon background section */
-        .dollar-hex-background {
-            background-color: #294DFF; /* Primary blue */
-            color: #EDEDED; /* Light text */
-            padding: 2rem 1rem; /* p-8 */
-            border-radius: 0.75rem; /* rounded-xl */
-            position: relative;
-            overflow: hidden; /* Hide overflowing hexagons */
-            margin-bottom: 2rem; /* mb-8 */
-        }
+        
 
         /* Individual hexagon style for background pattern */
         .bg-hexagon {
@@ -146,7 +137,7 @@
             height: 100%; /* Make boxes equal height in grid */
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            justify-content: center;
         }
 
         /* Custom button styles */
@@ -185,7 +176,7 @@
     <header class="sticky top-0 z-50 shadow-md">
         <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
             <a href="index.html" class="text-2xl font-bold flex items-center text-[#161616]">
-                 <svg class="w-10 h-10 mr-2" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                 <img src="images/Asset 121.png" alt="FinPlay Logo" class="w-10 h-10 mr-2">
                     <defs>
                         <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
                         <stop offset="0%" style="stop-color:#294DFF;stop-opacity:1" />
@@ -232,56 +223,55 @@
 
     <main class="container mx-auto px-6 py-12">
 
-        <h1 class="text-4xl md:text-5xl font-bold text-[#161616] mb-10 text-center">
+        <h1 class="text-4xl md:text-7xl font-bold text-[#00B295] mb-10 text-center">
             Level One
         </h1>
 
-        <section class="content-box">
-            <h2 class="text-2xl font-semibold text-[#294DFF] mb-3">We know that</h2>
-            <p class="text-base leading-relaxed">
+        <section>
+            <h2 class="text-4xl md:text-4xl font-subheading text-[#294DFF] mb-3">We know that</h2>
+            <p class="text-center font-body-text text-2xl md:text-2xl">
                 The stock market operates like a multiplayer game where players trade shares (ownership pieces of companies). Prices shift based on real-world factors like company news, investor emotions, or global events - similar to how rare in-game items gain or lose value.
             </p>
             <br>
-            <p class="text-base leading-relaxed">
+            <p class="text-base text-3xl md:text-2xl font-body-text leading-relaxed">
                 To play, you use a broker (your "game interface") to place orders, which the stock exchange matches with other traders, moving shares into your secure "inventory" (Demat account). This blend of strategy, timing, and real-world dynamics makes it a high-stakes, ever-changing marketplace.
             </p>
-        </section>
+        </section><br><br><br>
 
-        <section class="content-box">
-            <h2 class="text-2xl font-semibold text-[#294DFF] mb-4">SO... What Happens After You Buy? <br class="sm:hidden"> (Holding Your Items)</h2>
-            <div class="space-y-3 text-base leading-relaxed">
-                <p>You keep the shares, hoping the company does well and the share price goes up.</p>
-                <p class="text-center font-semibold text-[#00B295]">OR</p>
-                <p>Some companies share a small part of their profits with their shareholders. This is like getting bonus points or rewards for holding an item (Dividends).</p>
-                 <p class="text-center font-semibold text-[#00B295]">OR</p>
-                <p>If the price goes up, you can sell your shares to another player for a profit.</p>
+        <section >
+            <h2 class="text-3xl md:text-3xl font-body-text text-[#294DFF] font-bold mb-4">SO... What Happens After You Buy? <br class="sm:hidden"> (Holding Your Items)</h2>
+            <div class="space-y-3 text-2xl md:text-2xl font-body-text text-base leading-relaxed">
+                <p class="font-body-text">You keep the shares, hoping the company does well and the share price goes up.</p>
+                <p class="text-center text-4xl md:text-4xl font-body-text text-[#00B295]">OR</p>
+                <p class="font-body-text">Some companies share a small part of their profits with their shareholders. This is like getting bonus points or rewards for holding an item (Dividends).</p>
+                 <p class="text-center text-4xl md:text-4xl font-body-text text-[#00B295]">OR</p>
+                <p class="font-body-text">If the price goes up, you can sell your shares to another player for a profit.</p>
             </div>
-        </section>
+        </section><br><br><br>
 
-        <section class="dollar-hex-background" id="dollar-hex-container">
-            <div class="game-plan-box">
-                <h2 class="text-3xl font-bold text-[#161616] mb-4">What's your Game Plan?</h2>
+    <section>
+        <img src="images/Asset 130.png"></img>
+    </section><br><br>
+
+    <section>
+        <div class="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-6 items-center max-w-4xl mx-auto px-4">
+            <div class="term-box">
+                <h3 class="text-4xl font-bold text-[#294DFF] mb-2">Short-Term</h3>
+                <p class="text-sm text-center text-2xl md:text-2xl font-body-text mb-2">Buys and sells shares relatively quickly (holding for less than a year).</p>
             </div>
 
-             <div class="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-6 items-center max-w-4xl mx-auto px-4">
-                 <div class="term-box">
-                     <h3 class="text-xl font-bold text-[#294DFF] mb-2">Short-Term</h3>
-                     <p class="text-sm mb-2">Buys and sells shares relatively quickly (holding for less than a year).</p>
-                 </div>
+            <div class="text-center text-5xl font-bold text-[#294DFF]"> V / S
+            </div>
 
-                 <div class="text-center text-3xl font-bold text-[#EDEDED]">
-                     V / S
-                 </div>
+            <div class="term-box">
+                <h3 class="text-4xl font-bold text-[#294DFF] mb-2">Long-Term</h3>
+                <p class="text-sm text-2xl md:text-2xl font-body-text mb-2">Buys shares and holds them for over a year, believing in the company's future growth. (Often, tax benefits for playing the long game).</p>
+            </div>
+        </div>
+    </section><br><br>
 
-                 <div class="term-box">
-                     <h3 class="text-xl font-bold text-[#294DFF] mb-2">Long-Term</h3>
-                     <p class="text-sm mb-2">Buys shares and holds them for over a year, believing in the company's future growth. (Often, tax benefits for playing the long game).</p>
-                 </div>
-             </div>
-        </section>
-
-         <section class="content-box text-center">
-             <p class="text-lg leading-relaxed">
+         <section >
+             <p class="text-sm text-6xl md:text-6xl text-[#00B295] text-center font-subheading text-lg leading-relaxed">
                 Are you a long-term strategist, patiently holding shares? Or a quick-moving trader looking for daily or weekly wins? Decide based on your goals and how much risk you're comfortable taking.
              </p>
         </section>

@@ -32,7 +32,7 @@
 
             /* --- Background Image Setup --- */
             /* IMPORTANT: Replace 'images/Asset 126.jpg' with the correct path to your image file */
-            background-image: url('images/Asset\ 126.png');
+            background-image: url('images/Asset\ 129.png');
 
             /* How the background image repeats */
             background-repeat: repeat; /* Use 'repeat' if you want the image to tile */
@@ -94,6 +94,34 @@
              margin-bottom: 2rem; /* mb-8 */
         }
 
+         .main-text-content-left {
+            max-width: 100ch;
+            margin-left: 10ch;
+            margin-right: 30ch;
+            text-align: left;
+        }
+
+        .main-text-content-right {
+            max-width: 100ch;
+            margin-left: 30ch;
+            margin-right: 10ch;
+            text-align: right;
+        }
+
+        .main-text-content-center {
+            max-width: 100ch;
+            margin-left: 15ch;
+            margin-right: 15ch;
+            text-align: center;
+        }
+
+        .sub-text-content-right {
+            max-width: 100ch;
+            margin-left: 20ch;
+            margin-right: 0ch;
+            text-align: right;
+        }
+
          /* Style for definition terms (reusing from level 3) */
         .term-box {
             background-color: #EDEDED; /* Light background */
@@ -136,14 +164,14 @@
             font-size: 0.875rem; /* text-sm */
         }
         .leaderboard-list li::before {
-            content: '🏆'; /* Trophy emoji */
+            content: '>'; /* Trophy emoji */
             position: absolute;
             left: -0.5rem;
             top: 0.1rem;
         }
          .leaderboard-list li strong {
             font-weight: 600; /* semibold */
-            color: #00B295; /* Teal */
+            color: #294DFF; /* Teal */
          }
 
         /* Playstyle list styling */
@@ -265,7 +293,7 @@
     <header class="sticky top-0 z-50 shadow-md">
         <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
             <a href="index.html" class="text-2xl font-bold flex items-center text-[#161616]">
-                 <svg class="w-10 h-10 mr-2" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <img src="images/Asset 121.png" alt="FinPlay Logo" class="w-10 h-10 mr-2">
                     <defs>
                         <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
                         <stop offset="0%" style="stop-color:#294DFF;stop-opacity:1" />
@@ -312,130 +340,131 @@
 
     <main class="container mx-auto px-6 py-12">
 
-        <h1 class="text-4xl md:text-5xl font-bold text-[#00B295] mb-6 text-center"> Level Five
+        <h1 class="text-7xl md:text-7xl font-bold text-[#00B295] mb-10 text-center"> Level Five
         </h1>
-        <h2 class="text-2xl md:text-3xl font-semibold text-[#161616] mb-10 text-center">
+        <h2 class="text-5xl font-bold font-subheading text-[#294DFF] mb-4 text-center">
             Using Leaderboards & Finding Your Playstyle
-        </h2>
+        </h2><br><br>
 
-        <section class="content-box">
-            <h3 class="text-2xl font-semibold text-[#294DFF] mb-4">Understanding Market Leaderboards <br class="sm:hidden">(Stock Indices Revisited)</h3>
-            <p class="text-sm leading-relaxed mb-4">
+        <section>
+            <div class="main-text-content-left">
+            <h3 class="text-3xl font-semibold font-body-text text-[#294DFF] mb-4 text-left">Understanding Market Leaderboards <br class="sm:hidden">(Stock Indices Revisited)</h3>
+            <p class="text-left font-body-text text-2xl md:text-xl leading-relaxed mb-4">
                 Remember the Stock Market Indices (like NIFTY 50, Sensex)? We called it the game's leaderboard earlier. Let's dive a bit deeper:
             </p>
-            <ul class="list-disc list-inside space-y-2 text-sm leading-relaxed mb-6">
+            <ul class="list-disc list-inside space-y-2 text-sm leading-relaxed text-left font-body-text text-2xl md:text-xl leading-relaxed mb-4 mb-6">
                 <li><span class="font-semibold">What it is:</span> A score calculated from a selected group of top stocks, giving a snapshot of the overall market's performance.</li>
                 <li><span class="font-semibold">Why we need it:</span> It quickly tells us the market's general direction (up, down, sideways), helps compare our own performance, and simplifies complex market movements. It's like checking the game's overall status screen.</li>
             </ul>
+            </div>
 
-            <h4 class="text-lg font-semibold text-[#161616] mb-3">Major Indian Leaderboards:</h4>
-            <ul class="leaderboard-list">
-                <li><strong>NIFTY 50 (NSE):</strong> Tracks 50 of the largest and most frequently traded stocks on the National Stock Exchange. Covers many different industries (banks, IT, energy, etc.).</li>
-                <li><strong>SENSEX (BSE):</strong> Tracks 30 large, financially strong companies on the Bombay Stock Exchange. It's the older index.</li>
+            <div class="main-text-content-right">
+            <h4 class="text-3xl font-semibold font-body-text text-[#294DFF] mb-4 text-left">Major Indian Leaderboards:</h4>
+            <ul class="text-left font-body-text text-2xl md:text-xl leading-relaxed mb-4">
+                <li class="text-left font-body-text text-2xl md:text-xl leading-relaxed mb-4"><strong>> </strong><strong class="text-2xl font-semibold font-body-text text-[#294DFF] mb-4 text-left">NIFTY 50 (NSE):</strong> Tracks 50 of the largest and most frequently traded stocks on the National Stock Exchange. Covers many different industries (banks, IT, energy, etc.).</li>
+                <li class="text-left font-body-text text-2xl md:text-xl leading-relaxed mb-4"><strong>> </strong><strong class="text-2xl font-semibold font-body-text text-[#294DFF] mb-4 text-left">SENSEX (BSE):</strong> Tracks 30 large, financially strong companies on the Bombay Stock Exchange. It's the older index.</li>
             </ul>
-             <h4 class="text-lg font-semibold text-[#161616] mt-4 mb-3">Other Important Leaderboards:</h4>
-             <ul class="leaderboard-list">
-                 <li><strong>NIFTY Next 50:</strong> Tracks the 50 companies just below the main NIFTY 50 - potential future stars.</li>
-                 <li><strong>NIFTY Midcap:</strong> Focuses on medium-sized companies.</li>
-                 <li><strong>NIFTY Bank / NIFTY IT / etc.:</strong> Sector-specific leaderboards tracking only banking or IT companies, etc.</li>
-             </ul>
-        </section>
+            <h4 class="text-left font-body-text text-2xl md:text-1xl leading-relaxed mb-4">Other Important Leaderboards:</h4>
+            <ul class="text-left font-body-text text-2xl md:text-xl leading-relaxed mb-4">
+                <li class="text-left font-body-text text-2xl md:text-xl leading-relaxed mb-4"><strong>> </strong><strong class="text-2xl font-semibold font-body-text text-[#294DFF] mb-4 text-left">NIFTY Next 50:</strong> Tracks the 50 companies just below the main NIFTY 50 - potential future stars.</li>
+                <li class="text-left font-body-text text-2xl md:text-xl leading-relaxed mb-4"><strong>> </strong><strong class="text-2xl font-semibold font-body-text text-[#294DFF] mb-4 text-left">NIFTY Midcap:</strong> Focuses on medium-sized companies.</li>
+                <li class="text-left font-body-text text-2xl md:text-xl leading-relaxed mb-4"><strong>> </strong><strong class="text-2xl font-semibold font-body-text text-[#294DFF] mb-4 text-left">NIFTY Bank / NIFTY IT / etc.:</strong> Sector-specific leaderboards tracking only banking or IT companies, etc.</li>
+            </ul>
+            </div>
+        </section><br><br>
 
-        <section class="content-box">
-             <h3 class="text-2xl font-semibold text-[#294DFF] mb-4">How Are Leaderboard Scores Calculated? <br class="sm:hidden">(Index Construction)</h3>
-             <p class="text-sm leading-relaxed mb-4">
-                 There are different ways, but the most common method used by NIFTY and Sensex is <span class="font-semibold">Market Capitalization Weighted</span>. The score is based on the total market value of each company in the index (Market Cap = Share Price x Total Shares).
-             </p>
-             <div class="term-box">
-                 <dt>Free-Float Adjustment:</dt>
-                 <dd>This is important! Instead of using all the company's shares, the calculation only uses the shares that are actually available for public trading (the <span class="font-semibold">free float</span>). It excludes shares held tightly by founders, governments, or other locked-in groups. This gives a more realistic picture of the market value that players can actually trade.
-                 <br><span class="italic text-xs">(Why? It prevents a company from looking overly influential on the index just because its founders hold a huge, non-tradable chunk of shares).</span></dd>
-             </div>
-              <p class="text-sm leading-relaxed mt-4 text-gray-700">
-                 (Other less common methods exist, like Price-Weighted where higher share prices matter more, or Equal-Weighted where every company counts the same regardless of size).
-             </p>
-        </section>
+        <section class="main-text-content-left">
+             <h4 class="text-3xl font-semibold font-body-text text-[#294DFF] mb-4 text-left">How Are Leaderboard Scores Calculated? <br class="sm:hidden">(Index Construction)</h4>
+             <ul class="text-left font-body-text text-2xl md:text-xl leading-relaxed mb-4 list-disc list-outside pl-4">
+                <li class="text-left font-body-text text-2xl md:text-xl leading-relaxed mb-4">There are different ways, but the most common method used by NIFTY and Sensex is:</li>
+                <ul class="text-left font-body-text text-2xl md:text-xl leading-relaxed mb-4 list-decimal list-outside pl-4">
+                    <li class="text-left font-body-text text-2xl md:text-xl leading-relaxed mb-4"><strong class="text-xl font-semibold font-body-text text-[#294DFF] mb-4 text-left">Market Capitalization-Weighted:</strong> The score is based on the total market value of each company in the index (Market Cap = Share Price x Total Shares).</li>
+                    <li class="text-left font-body-text text-2xl md:text-xl leading-relaxed mb-4"><strong class="text-xl font-semibold font-body-text text-[#294DFF] mb-4 text-left">Free-Float Adjustment:</strong>This is important! Instead of using all the company's shares, the calculation only uses the shares that are actually available for public trading (the free-float). It excludes shares held tightly by founders, governments, or other locked-in groups. This gives a more realistic picture of the market value that players can actually trade.</li>
+                </ul>
+                <li class="text-left font-body-text text-2xl md:text-xl leading-relaxed mb-4">Why? It prevents a company from looking overly influential on the index just because its founders hold a huge, non-tradable chunk of shares.</li>
+                <li class="text-left font-body-text text-2xl md:text-xl leading-relaxed mb-4">(Other less common methods exist, like Price-Weighted where higher share prices matter more, or Equal-Weighted where every company counts the same regardless of size).</li>
+            </ul>
+        </section><br><br><br>
 
-        <section class="content-box">
-            <h3 class="text-2xl font-semibold text-[#294DFF] mb-4">How Players Use Leaderboards <br class="sm:hidden">(Uses of Indices):</h3>
-            <ol class="list-decimal list-inside space-y-3 text-sm leading-relaxed">
-                <li><span class="font-semibold">Get Market Info:</span> Is the NIFTY up 1% today? It tells you the general mood and direction of the big players. Crossing a major milestone (like NIFTY 20,000) often signals strong confidence.</li>
-                <li><span class="font-semibold">Benchmark Performance:</span> Did your collection of shares (portfolio) go up 12% last year? How did that compare to the NIFTY 50, which maybe went up 14%? The index acts as a benchmark to see if your strategy is beating the average market return.</li>
-                <li><span class="font-semibold">Trading & Investment:</span>
-                    <ul class="list-disc list-inside pl-4 mt-1">
-                        <li><span class="font-semibold text-[#00B295]">Index Funds & ETFs:</span> You can actually invest in the index itself! These funds automatically buy shares of all the companies in the index (like NIFTY 50) in the correct proportions. It's a simple way to get average market returns, often with low fees. This is called <span class="italic">passive investing</span>.</li>
-                    </ul>
-                </li>
-                 <li><span class="font-semibold">Risk Management / Hedging:</span> Advanced players can use index-based tools (like Index Futures & Options in the F&O arena) to protect their portfolio. If they think the whole market might fall, they can place a bet that the index will go down. If it does, the profit from that bet can offset losses in their individual shares. It's like buying insurance for your game items.</li>
-            </ol>
-        </section>
+        <section class="main-text-content-right">
+            <h4 class="text-3xl font-semibold font-body-text text-[#294DFF] mb-4 text-left">How Players Use Leaderboards <br class="sm:hidden">(Uses of Indices):</h4>
+            <ul class="text-left font-body-text text-2xl md:text-xl leading-relaxed mb-4 list-decimal list-outside pl-4">
+                <li class="text-left font-body-text text-2xl md:text-xl leading-relaxed mb-4"><strong class="text-xl font-semibold font-body-text text-[#294DFF] mb-4 text-left">Get Market Info:</strong>  Is the NIFTY up 1% today? It tells you the general mood and direction of the big players. Crossing a major milestone (like NIFTY 20,000) often signals strong confidence.</li>
+                <li class="text-left font-body-text text-2xl md:text-xl leading-relaxed mb-4"><strong class="text-xl font-semibold font-body-text text-[#294DFF] mb-4 text-left">Benchmark Performance:</strong>Did your collection of shares (portfolio) go up 12% last year? How did that compare to the NIFTY 50, which maybe went up 14%? The index acts as a benchmark to see if your strategy is beating the average market return.</li>
+                <li class="text-left font-body-text text-2xl md:text-xl leading-relaxed mb-4"><strong class="text-xl font-semibold font-body-text text-[#294DFF] mb-4 text-left">Trading & Investment: Index Funds & ETFs - </strong>You can actually invest in the index itself! These funds automatically buy shares of all the companies in the index (like NIFTY 50) in the correct proportions. It's a simple way to get average market returns, often with low fees. This is called passive investing.</li>
+                <li class="text-left font-body-text text-2xl md:text-xl leading-relaxed mb-4"><strong class="text-xl font-semibold font-body-text text-[#294DFF] mb-4 text-left"> Risk Management (Hedging): </strong>Advanced players can use index-based tools (like Index Futures & Options in the F&O arena) to protect their portfolio. If they think the whole market might fall, they can place a bet that the index will go down. If it does, the profit from that bet can offset losses in their individual shares. It's like buying insurance for your game items.</li>
+            </ul>
+        </section><br><br>
 
-        <section class="content-box">
-            <h3 class="text-2xl font-semibold text-[#294DFF] mb-3 text-center">Finding Your Playstyle: Trader vs. Investor</h3>
-            <p class="text-sm leading-relaxed text-center mb-6">
+        <section class="main-text-content-center">
+            <h4 class="text-3xl font-semibold font-body-text text-[#294DFF] mb-4 text-left">Finding Your Playstyle: Trader vs. Investor</h4>
+            <p class="text-left font-body-text text-2xl md:text-xl leading-relaxed mb-4">
                 Now that you know the basics, think about how you want to play the stock market game. There are two main styles:
             </p>
 
-            <ol class="playstyle-list">
+            <ol class="text-left font-body-text text-2xl md:text-xl leading-relaxed mb-4">
                 <li>
-                    <h4>1. The Trader: The Fast-Paced Player</h4>
-                    <ul>
+                    <h4 class="text-3xl font-semibold font-body-text text-[#00B295] mb-4 text-left">1. The Trader: The Fast-Paced Player</h4>
+                    <ul class="text-left font-body-text text-2xl md:text-xl leading-relaxed mb-4 list-disc list-outside pl-4">
                         <li><strong>Goal:</strong> Make profits from short-term price movements.</li>
                         <li><strong>Time Horizon:</strong> Short (minutes, hours, days, maybe weeks).</li>
                         <li><strong>Focus:</strong> Predicting the next price move, technical chart patterns, market news.</li>
                         <li><strong>Activity:</strong> Buys and sells frequently, needs to be alert during market hours.</li>
+                        <p class="text-[#00B295]"><strong>Game Analogy:</strong> A fast-action player in a shooter or racing game, relying on quick reflexes and predicting the opponent's next move.</p>
                     </ul>
-                    <h5 class="text-base font-semibold text-[#161616] mt-4 mb-2 ml-4">Types of Traders:</h5>
-                    <ul class="types-list">
-                        <li><strong>Day Trader:</strong> Buys and sells within the same day. Closes all positions before the market shuts. Like playing one intense game round.</li>
-                        <li><strong>Scalper:</strong> Makes tons of super-fast trades, aiming for tiny profits on each. High frequency, low profit per trade. Like landing many small hits very quickly.</li>
-                        <li><strong>Swing Trader:</strong> Holds positions for a few days or weeks, trying to capture a price "swing" up or down. More patient than a day trader. Like planning a move over several game turns.</li>
-                    </ul>
-                </li>
+                    <section class="sub-text-content-right">
+                         <h5 class="text-2xl font-semibold font-body-text text-[#294DFF] mb-4 text-left">Types of Traders:</h5>
+                        <ul class="text-left font-body-text text-2xl md:text-xl leading-relaxed mb-4 list-disc list-outside pl-4">
+                            <li><strong>Day Trader:</strong> Buys and sells within the same day. Closes all positions before the market shuts. Like playing one intense game round.</li>
+                            <li><strong>Scalper:</strong> Makes tons of super-fast trades, aiming for tiny profits on each. High frequency, low profit per trade. Like landing many small hits very quickly.</li>
+                            <li><strong>Swing Trader:</strong> Holds positions for a few days or weeks, trying to capture a price "swing" up or down. More patient than a day trader. Like planning a move over several game turns.</li>
+                        </ul>
+                    </section>
+                </li><br><br>
                  <li>
-                    <h4>2. The Investor: The Patient Strategist</h4>
+                    <h4 class="text-3xl font-semibold font-body-text text-[#00B295] mb-4 text-left">2. The Investor: The Patient Strategist</h4>
                      <ul>
-                        <li><strong>Goal:</strong> Build wealth gradually over the long term.</li>
-                        <li><strong>Time Horizon:</strong> Long (years, decades).</li>
-                        <li><strong>Focus:</strong> Company's fundamental health, long-term growth potential, management quality.</li>
-                        <li><strong>Activity:</strong> Buys and holds, less frequent trading, less need for constant monitoring.</li>
-                    </ul>
-                    <h5 class="text-base font-semibold text-[#161616] mt-4 mb-2 ml-4">Types of Investors:</h5>
-                    <ul class="types-list">
+                        <li><strong>Growth Investor:</strong>  Looks for companies expected to grow much faster than average (e.g., in new technology). Willing to pay a higher price now for expected future growth. Like betting on a rookie player with huge potential.</li>
+                        <li><strong>Value Investor:</strong> Looks for solid, established companies whose shares seem temporarily cheap or undervalued by the market. Buys good quality on sale. Like finding a powerful item overlooked by others in the auction house.</li>
+                    </ul><br>
+                    <section class="sub-text-content-right">
+                    <h5 class="text-2xl font-semibold font-body-text text-[#294DFF] mb-4 text-left">Types of Investors:</h5>
+                    <ul class="text-left font-body-text text-2xl md:text-xl leading-relaxed mb-4 list-disc list-outside pl-4">
                         <li><strong>Growth Investor:</strong> Looks for companies expected to grow much faster than average (e.g., in new technology). Willing to pay a higher price now for expected future growth. Like betting on a rookie player with huge potential.</li>
                         <li><strong>Value Investor:</strong> Looks for solid, established companies whose shares seem temporarily cheap or undervalued by the market. Buys good quality on sale. Like finding a powerful item overlooked by others in the auction house.</li>
                     </ul>
+                    </section>
                 </li>
             </ol>
-        </section>
+        </section><br><br>
 
-        <section class="content-box">
-             <h3 class="text-2xl font-semibold text-[#294DFF] mb-4">Calculating Your Score (Returns Revisited):</h3>
+        <section class="main-text-content-left">
+             <h3 class="text-3xl font-semibold font-body-text text-[#00B295] mb-4 text-left">Calculating Your Score (Returns Revisited):</h3>
              <dl>
-                 <div class="term-box">
-                     <dt>Absolute Return:</dt>
-                     <dd>Simple gain percentage: [(Sell Price - Buy Price) / Buy Price] x 100. Good for single trades.</dd>
+                 <div>
+                     <dt class="text-2xl font-semibold font-body-text text-[#294DFF] mb-4 text-left">Absolute Return:</dt>
+                     <dd class="text-left font-body-text text-2xl md:text-xl leading-relaxed mb-4 list-disc list-outside pl-4">Simple gain percentage: [(Sell Price - Buy Price) / Buy Price] x 100. Good for single trades.</dd>
                  </div>
-                 <div class="term-box">
-                     <dt>CAGR (Compounded Annual Growth Rate):</dt>
-                     <dd>Calculates the average annual growth rate over multiple years, considering the effect of compounding (earning returns on your returns!). Much better for comparing long-term investments.</dd>
+                 <div>
+                     <dt class="text-2xl font-semibold font-body-text text-[#294DFF] mb-4 text-left">CAGR (Compounded Annual Growth Rate):</dt>
+                     <dd class="text-left font-body-text text-2xl md:text-xl leading-relaxed mb-4 list-disc list-outside pl-4">Calculates the average annual growth rate over multiple years, considering the effect of compounding (earning returns on your returns!). Much better for comparing long-term investments.</dd>
                  </div>
              </dl>
         </section>
 
-        <section class="content-box">
-            <h3 class="text-2xl font-semibold text-[#294DFF] mb-4">Tips for Beginners</h3>
-            <ul class="tips-list">
+        <section class="main-text-content-center">
+            <h3 class="text-3xl font-semibold font-body-text text-[#00B295] mb-4 text-left">Tips for Beginners</h3>
+            <ul class="text-left font-body-text text-2xl md:text-xl leading-relaxed mb-4 list-disc list-outside pl-4">
                 <li><strong>Know Yourself:</strong> Are you patient or impatient? How much risk makes you uncomfortable?</li>
                 <li><strong>Start Small:</strong> Don't jump in with all your savings. Learn with smaller amounts.</li>
                 <li><strong>Learn Continuously:</strong> Read, watch videos, understand what you're buying.</li>
                 <li><strong>Don't Panic:</strong> Markets go up and down. Avoid emotional decisions.</li>
                 <li><strong>Diversify:</strong> Don't put all your eggs (money) in one basket (share).</li>
             </ul>
-        </section>
+        </section><br><br>
 
-        <section class="final-advice">
-            The stock market is a learning journey. Whether you become a trader, an investor, or a mix of both, your strategy will evolve as you gain experience and knowledge. Good luck in the game!
+        <section class="text-center text-bold text-left font-body-text text-2xl md:text-3xl text-[#00B295]">
+            The stock market is a learning journey. Whether you become a trader, an investor, or a mix of both, your strategy will evolve as you gain experience and knowledge. <br>Good luck in the game!
         </section>
         <nav class="mt-10 flex justify-between items-center">
             <a href="level 4.html" class="btn-blue inline-flex items-center"> <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -443,7 +472,7 @@
                 </svg>
                 Level 4
             </a>
-            <a href="quiz.html" class="btn-teal inline-flex items-center"> Quiz Time!
+            <a href="Level I.html" class="btn-teal inline-flex items-center"> Level ∞
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
                 </svg>

@@ -32,7 +32,7 @@
 
             /* --- Background Image Setup --- */
             /* IMPORTANT: Replace 'images/Asset 126.jpg' with the correct path to your image file */
-            background-image: url('images/Asset\ 126.png');
+            background-image: url('images/Asset\ 129.png');
 
             /* How the background image repeats */
             background-repeat: repeat; /* Use 'repeat' if you want the image to tile */
@@ -92,6 +92,13 @@
              border-radius: 0.75rem; /* rounded-xl */
              box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-md */
              margin-bottom: 2rem; /* mb-8 */
+        }
+
+        .main-text-content-center {
+            max-width: 100ch;
+            margin-left: 15ch;
+            margin-right: 15ch;
+            text-align: center;
         }
 
         /* Scenario Box Styling */
@@ -192,7 +199,7 @@
     <header class="sticky top-0 z-50 shadow-md">
         <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
             <a href="index.html" class="text-2xl font-bold flex items-center text-[#161616]">
-                 <svg class="w-10 h-10 mr-2" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <img src="images/Asset 121.png" alt="FinPlay Logo" class="w-10 h-10 mr-2">
                     <defs>
                         <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
                         <stop offset="0%" style="stop-color:#294DFF;stop-opacity:1" />
@@ -238,96 +245,53 @@
     </header>
 
     <main class="container mx-auto px-6 py-12">
-
-        <h1 class="text-4xl md:text-5xl font-bold text-[#00B295] mb-6 text-center"> Level Infinity
+        <h1 class="text-7xl md:text-7xl font-bold text-[#00B295] mb-10 text-center"> Level Infinity
         </h1>
-        <h2 class="text-2xl md:text-3xl font-semibold text-[#161616] mb-10 text-center">
+        <h2 class="text-5xl font-bold font-subheading text-[#294DFF] mb-4 text-center">
             Real World Decision Scenarios
-        </h2>
-
-        <section class="content-box text-center max-w-3xl mx-auto">
-             <p class="text-lg leading-relaxed mb-4">
+        </h2><br>
+        <section class="main-text-content-center">
+             <p class="text-center text-bold text-left font-body-text text-2xl md:text-3xl text-[#00B295]">
                 Welcome to Level Infinity, where the challenges are no longer simulations - this is where real-world knowledge becomes your ultimate tool.
-             </p>
-              <p class="text-base leading-relaxed">
+             </p><br>
+              <p class="text-center text-bold text-left font-body-text text-2xl md:text-3xl text-[#00B295]">
                 To help you think like an investor facing real events, here are three historic scenarios. Each one ends with a decision-making question to make you reflect on your instincts and choices.
-             </p>
+             </p><br><br><br>
         </section>
+        
+        <img src="images/one.png" class="main-text-content-center"><br>
+        <img src="images/two.png" class="main-text-content-center"><br>
+        <img src="images/three.png" class="main-text-content-center"><br>
 
-        <section class="scenario-box">
-            <div class="scenario-number">1</div>
-            <div class="scenario-content content-box">
-                <h3>The 2008 Financial Crisis</h3>
-                <h4>Situation:</h4>
-                <p>
-                    It's September 2008. The news is filled with panic: Lehman Brothers has collapsed, banks are failing, and the US stock market just suffered its biggest one-day drop in history - down 774 points (almost 7%) in a single day. Over the next months, the market would lose about half its value, and unemployment would reach 10%. Your investment portfolio has already lost 30% of its value, and every day brings more bad news. Many people are selling everything and moving to cash.
-                </p>
-                <h4>Decision Question:</h4>
-                <p>
-                    If you were watching your savings shrink rapidly during the 2008 crash, would you have sold your investments to avoid further losses, or would you have held on or even bought more while everyone else was panicking? What would you do if you didn't know how long the crisis would last?
-                </p>
-                </div>
-        </section>
-
-        <section class="scenario-box">
-             <div class="scenario-number">2</div>
-             <div class="scenario-content content-box">
-                <h3>COVID-19 Crash (March 2020)</h3>
-                <h4>Situation:</h4>
-                <p>
-                    In March 2020, the world is hit by the COVID-19 pandemic. Stock markets around the globe plunge - US markets fall over 30% in just a few weeks. Cities are locking down, businesses are closing, and no one knows how long the pandemic will last or how bad it will get. Governments and central banks are trying to calm markets, but fear is everywhere. Some investors are selling in a panic, while others see this as a rare chance to buy stocks at a discount.
-                </p>
-                <h4>Decision Question:</h4>
-                <p>
-                    When faced with a sudden, unpredictable crisis like COVID-19, would you have followed the crowd and sold your investments to avoid more losses, or would you have seen the crash as an opportunity to buy, trusting that markets would recover? How would you decide when to act?
-                </p>
-                 </div>
-        </section>
-
-        <section class="scenario-box">
-             <div class="scenario-number">3</div>
-             <div class="scenario-content content-box">
-                <h3>Bitcoin's Rise and Volatility</h3>
-                <h4>Situation:</h4>
-                <p>
-                    It's late 2017. Bitcoin has exploded from under $1,000 at the start of the year to nearly $20,000 by December. Everyone is talking about cryptocurrencies - some people are becoming millionaires overnight, while others warn it's a bubble. In the following months, Bitcoin crashes, losing more than 80% of its value by the end of 2018. Years later, it will rise again, reaching new highs, but the journey is full of wild swings.
-                </p>
-                <h4>Decision Question:</h4>
-                <p>
-                    If you saw Bitcoin's rapid rise and all the hype in 2017, would you have jumped in to ride the wave, or stayed out, fearing a bubble? If you had bought and then watched your investment drop by 80%, would you have held on, sold in panic, or bought more? How do you handle the fear of missing out versus the risk of big losses?
-                </p>
-                 </div>
-        </section>
-
-        <section class="content-box border-t-4 border-[#00B295]"> <h3 class="text-xl font-semibold text-[#00B295] mb-3 text-center">Reflect:</h3>
-            <p class="text-sm leading-relaxed text-center">
+        <section class="content-box border-t-4 border-[#00B295]"> 
+            <h3 class="text-3xl font-semibold font-body-text text-[#00B295] mb-4 text-left">Reflect:</h3>
+            <p class="text-left font-body-text text-2xl md:text-xl leading-relaxed mb-4 list-disc list-outside pl-4">
                 These scenarios are very subjective and don't have easy answers. They are designed to make you question your reactions, risk tolerance, and long-term thinking. In Level Infinity, your real-world knowledge, emotional control, and decision-making skills are what set you apart.
             </p>
         </section>
 
-        <section class="content-box">
-            <h3 class="text-xl font-semibold text-[#161616] mb-4 text-center">For more info:</h3>
+        <section>
+            <h3 class="text-3xl font-semibold text-center font-body-text text-[#00B295] mb-4 ">For more info:</h3>
             <div class="info-buttons">
-                <a href="#" class="btn-blue">Getting Started Guide</a>
-                <a href="#" class="btn-blue">Introduction to Stocks</a>
-                <a href="#" class="btn-blue">Stock Trading Basics</a>
-                <a href="#" class="btn-blue">Managing a Portfolio</a>
-                <a href="#" class="btn-blue">Stock Research</a>
+                <a href="https://youtu.be/Xn7KWR9EOGQ?si=CU2_WNm0z_S7pyJ9" class="btn-blue">Getting Started Guide</a>
+                <a href="https://youtu.be/p7HKvqRI_Bo?si=VQcGchxzvkqKTb9n" class="btn-blue">Introduction to Stocks</a>
+                <a href="https://youtu.be/ZCFkWDdmXG8?si=UYNNYXeQjQb2boSD" class="btn-blue">Stock Trading Basics</a>
+                <a href="https://youtu.be/ZCFkWDdmXG8?si=wBYkpUnxZF501Agp" class="btn-blue">Managing a Portfolio</a>
+                <a href="https://youtu.be/KfDB9e_cO4k?si=ZYh9bMEWEV1LDh9s" class="btn-blue">Stock Research</a>
                 </div>
-        </section>
+        </section><br><br>
 
-        <section class="content-box text-center">
-             <p class="text-lg leading-relaxed mb-4">
+        <section>
+             <p class="text-center text-bold text-left font-body-text text-2xl md:text-3xl text-[#00B295]">
                 Level up your trading game - take this challenge to see if you've got what it takes to master the market!
              </p>
-             <a href="quiz.html" class="btn-teal">Go Live!</a> </section>
         <nav class="mt-10 flex justify-between items-center">
             <a href="level 5.html" class="btn-blue inline-flex items-center"> <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
                 </svg>
                 Level 5
             </a>
-            <a href="courses.html" class="btn-teal inline-flex items-center"> Finish Course
+            <a href="quiz.html" class="btn-teal inline-flex items-center"> Quiz Time!
                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                      <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                  </svg>

@@ -1,5 +1,5 @@
 // Initialize user's portfolio and balance
-let userBalance = 100000;
+let userBalance = parseFloat(localStorage.getItem("initialInvestment")) || 100000;
 let portfolio = [];
 
 // DOM elements

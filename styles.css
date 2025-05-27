@@ -1,64 +1,138 @@
+@font-face {
+            font-family: 'Gilroy';
+            src: url("fonts/fonnts.com-Gilroy-Heavy.ttf") format('truetype'); 
+            font-weight: bolder;
+            font-style: normal; 
+        }
+@font-face {
+            font-family: 'Mortise Medium';
+            src: url("fonts/mortisetest-medium.otf") format('opentype'); 
+            font-weight: 500; 
+            font-style: normal;
+         }
+        
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Oswald', -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    /* Apply Gilroy as the primary font, with fallbacks */
+    font-family: 'Gilroy', 'YourOtherFontName', 'Inter', -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
 }
 
 body {
-    background-color: #f2f6f9;
-    color: #231745;
+    background-color: #EDEDED; /* Light grey background from FinPlay theme */
+    color: #161616; /* Default dark text color from FinPlay theme */
+    /* FinPlay Grid background effect */
+    background-image: url('images/Asset 129.png'); /* Ensure this path is correct! */
+
+    /* --- How the background image should behave --- */
+    background-repeat: repeat;     /* This will tile the image if it's smaller than the screen */
+    background-size: contain;         /* Use 'auto' if you want the image at its original size and tiled.
+                                       Or use 'cover' to make it fill the screen (might crop parts).
+                                       Or 'contain' to show the whole image (might leave empty space).
+                                       For a grid, 'auto' or a specific pixel size like '20px 20px' (if your image is designed for that) is common. */
+    background-position: top left; /* Start tiling from the top left. Or 'center center'. */
+    background-attachment: fixed;  /* Makes the background stay fixed when the page content scrolls. Remove if you want it to scroll with content. */
+
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 nav {
-    background-color: #231745;
-    color: white;
-    padding: 1rem 2rem;
+    /* Keep original nav styles if they are distinct, or adjust to match FinPlay if needed */
+    /* For FinPlay theme, a semi-transparent light background was used */
+    background-color: rgba(237, 237, 237, 0.8); /* Semi-transparent background from FinPlay */
+    color: #161616; /* Dark text for nav items */
+    padding: 0.75rem 1.5rem; /* Adjust padding as needed */
     display: flex;
     justify-content: space-between;
     align-items: center;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: sticky; /* Make header sticky like other FinPlay pages */
+    top: 0;
+    z-index: 50;
+    backdrop-filter: blur(5px); /* Blur effect like other FinPlay pages */
 }
 
 .logo {
     font-size: 1.8rem;
     font-weight: bold;
-    color: white;
+    color: #161616; /* Dark logo text to match nav */
+    /* If using an image logo, style the <a> or <img> tag */
 }
+
+/* Style for navigation links if they exist (not in provided HTML snippet but common) */
+nav a {
+    color: #161616; /* Dark text for links */
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+}
+nav a:hover {
+    color: #294DFF; /* Blue hover from FinPlay */
+}
+
 
 .nav-balance {
     font-size: 1.2rem;
     font-weight: bold;
-    color: #00f9d4;
+    color: #00B295; /* Teal color from FinPlay theme for accents */
 }
 
 .container {
-    max-width: 1400px;
+    max-width: 1200px; /* Keep or adjust as needed */
     margin: 2rem auto;
     padding: 0 1rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
+    /* display: grid; - The grid definition here might be too general.
+                       It's often better to apply grids to specific sections.
+                       If your main layout is always two columns, keep it.
+                       Otherwise, consider removing or making it more specific. */
+    /* grid-template-columns: 1fr 1fr; */
+    /* gap: 2rem; */
+    flex-grow: 1; /* Ensure main content pushes footer down */
 }
 
+/* Styling the sections to look like FinPlay's .content-box */
 .market-overview, .portfolio, .trading-panel {
-    background-color: white;
-    border-radius: 8px;
-    padding: 1.5rem;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent white like FinPlay */
+    border-radius: 0.75rem; /* FinPlay's rounded-xl */
+    padding: 1.5rem;      /* FinPlay's p-6 */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* FinPlay's shadow-lg */
+    margin-bottom: 2rem; /* Added for spacing between sections */
 }
 
+/* If .market-overview needs to span columns and is inside a grid container */
+/* This rule is fine if the PARENT of .market-overview is the .container with display:grid */
 .market-overview {
-    grid-column: 1 / -1;
+    grid-column: 1 / -1; /* Spans all columns if its parent is a grid */
 }
 
+/* General h2 styling for section titles */
 h2 {
-    color: #231745;
+    color: #294DFF; /* Blue color for main section titles like FinPlay */
     margin-bottom: 1.5rem;
-    font-size: 1.5rem;
-    text-transform: uppercase;
+    font-size: 1.75rem; /* text-2xl from FinPlay */
+    text-transform: uppercase; /* Original style, keep if desired */
     font-weight: bold;
+    text-align: center; /* Ensure titles are centered if that's the style */
 }
+
+/* Specific h3 styling within sections like .market-overview */
+.market-overview h3, .portfolio h3, .trading-panel h3 {
+    color: #00B295; /* Teal color for subheadings like FinPlay */
+    font-weight: 600; /* semibold */
+    font-size: 1.125rem; /* text-lg */
+    margin-bottom: 0.5rem;
+}
+
+/* Paragraph text color within these sections */
+.market-overview p, .portfolio p, .trading-panel p {
+    color: #161616; /* Default dark text */
+    font-size: 0.875rem; /* text-sm */
+    line-height: 1.6;
+}
+
 
 .stock-list, .portfolio-list {
     display: grid;
@@ -69,23 +143,24 @@ h2 {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     padding: 1rem;
-    border: 1px solid #e1e8ed;
-    border-radius: 4px;
+    border: 1px solid #d1d5db; /* Lighter border color */
+    border-radius: 0.375rem; /* rounded-md */
     align-items: center;
     transition: background-color 0.2s;
+    background-color: #EDEDED; /* Match card internal backgrounds */
 }
 
-.stock-item:hover {
-    background-color: #f8f9fa;
+.stock-item:hover, .portfolio-item:hover {
+    background-color: #e0e0e0; /* Slightly darker hover */
 }
 
 .price-up {
-    color: #2ecc71;
+    color: #00B295; /* FinPlay Teal for up */
     font-weight: bold;
 }
 
 .price-down {
-    color: #e74c3c;
+    color: #e74c3c; /* Original danger color, suitable for down */
     font-weight: bold;
 }
 
@@ -95,16 +170,19 @@ h2 {
 }
 
 select, input {
-    padding: 0.8rem;
-    border: 2px solid #e1e8ed;
-    border-radius: 4px;
+    padding: 0.75rem; /* Slightly more padding for better feel */
+    border: 1px solid #ccc; /* Lighter border */
+    border-radius: 0.375rem; /* rounded-md */
     font-size: 1rem;
     width: 100%;
+    background-color: #FFFFFF; /* White background for inputs */
+    color: #161616; /* Dark text for input */
 }
 
 select:focus, input:focus {
     outline: none;
-    border-color: #f99200;
+    border-color: #00B295; /* Teal focus border */
+    box-shadow: 0 0 0 2px rgba(0, 178, 149, 0.3); /* Teal focus shadow */
 }
 
 .trade-buttons {
@@ -113,36 +191,347 @@ select:focus, input:focus {
     gap: 1rem;
 }
 
+/* General button styling to match FinPlay, can be made more specific */
 button {
-    padding: 0.8rem 1.5rem;
+    padding: 0.75rem 1.5rem;
     border: none;
-    border-radius: 4px;
-    color: white;
+    border-radius: 0.5rem; /* FinPlay's rounded-lg */
+    color: #FFFFFF; /* White text */
     cursor: pointer;
     font-size: 1rem;
-    font-weight: bold;
+    font-weight: 600; /* semibold */
     text-transform: uppercase;
-    transition: opacity 0.2s;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
-.trade-buttons button:first-child {
-    background-color: #f99200;
+/* Making trade buttons match FinPlay's primary and an alternative */
+.trade-buttons button:first-child { /* Buy button */
+    background-color: #00B295; /* Teal */
+}
+.trade-buttons button:first-child:hover {
+    background-color: #008a75; /* Darker Teal */
 }
 
-.trade-buttons button:last-child {
-    background-color: #e74c3c;
+.trade-buttons button:last-child { /* Sell button */
+    background-color: #e74c3c; /* Keep original danger red for sell */
+}
+.trade-buttons button:last-child:hover {
+    background-color: #c63d2f; /* Darker red */
 }
 
-.trade-buttons button:hover {
-    opacity: 0.9;
-}
 
 @media (max-width: 768px) {
     .container {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; /* This makes container a single column on mobile */
     }
     
     .market-overview, .portfolio, .trading-panel {
         padding: 1rem;
     }
+
+    nav {
+        padding: 1rem; /* Adjust nav padding for mobile */
+        flex-direction: column; /* Stack logo and links on mobile */
+        gap: 0.5rem;
+    }
+    .nav-balance {
+        margin-top: 0.5rem;
+    }
 }
+
+/* * {
+
+    margin: 0;
+
+    padding: 0;
+
+    box-sizing: border-box;
+
+    font-family: 'Oswald', -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+
+}
+
+
+
+body {
+
+    background-color: #f2f6f9;
+
+    color: #231745;
+
+}
+
+
+
+nav {
+
+    background-color: #231745;
+
+    color: white;
+
+    padding: 1rem 2rem;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+
+}
+
+
+
+.logo {
+
+    font-size: 1.8rem;
+
+    font-weight: bold;
+
+    color: white;
+
+}
+
+
+
+.nav-balance {
+
+    font-size: 1.2rem;
+
+    font-weight: bold;
+
+    color: #00f9d4;
+
+}
+
+
+
+.container {
+
+    max-width: 1400px;
+
+    margin: 2rem auto;
+
+    padding: 0 1rem;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 2rem;
+
+}
+
+
+
+.market-overview, .portfolio, .trading-panel {
+
+    background-color: white;
+
+    border-radius: 8px;
+
+    padding: 1.5rem;
+
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+
+}
+
+
+
+.market-overview {
+
+    grid-column: 1 / -1;
+
+}
+
+
+
+h2 {
+
+    color: #231745;
+
+    margin-bottom: 1.5rem;
+
+    font-size: 1.5rem;
+
+    text-transform: uppercase;
+
+    font-weight: bold;
+
+}
+
+
+
+.stock-list, .portfolio-list {
+
+    display: grid;
+
+    gap: 1rem;
+
+}
+
+
+
+.stock-item, .portfolio-item {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr 1fr;
+
+    padding: 1rem;
+
+    border: 1px solid #e1e8ed;
+
+    border-radius: 4px;
+
+    align-items: center;
+
+    transition: background-color 0.2s;
+
+}
+
+
+
+.stock-item:hover {
+
+    background-color: #f8f9fa;
+
+}
+
+
+
+.price-up {
+
+    color: #2ecc71;
+
+    font-weight: bold;
+
+}
+
+
+
+.price-down {
+
+    color: #e74c3c;
+
+    font-weight: bold;
+
+}
+
+
+
+.trade-form {
+
+    display: grid;
+
+    gap: 1rem;
+
+}
+
+
+
+select, input {
+
+    padding: 0.8rem;
+
+    border: 2px solid #e1e8ed;
+
+    border-radius: 4px;
+
+    font-size: 1rem;
+
+    width: 100%;
+
+}
+
+
+
+select:focus, input:focus {
+
+    outline: none;
+
+    border-color: #f99200;
+
+}
+
+
+
+.trade-buttons {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 1rem;
+
+}
+
+
+
+button {
+
+    padding: 0.8rem 1.5rem;
+
+    border: none;
+
+    border-radius: 4px;
+
+    color: white;
+
+    cursor: pointer;
+
+    font-size: 1rem;
+
+    font-weight: bold;
+
+    text-transform: uppercase;
+
+    transition: opacity 0.2s;
+
+}
+
+
+
+.trade-buttons button:first-child {
+
+    background-color: #f99200;
+
+}
+
+
+
+.trade-buttons button:last-child {
+
+    background-color: #e74c3c;
+
+}
+
+
+
+.trade-buttons button:hover {
+
+    opacity: 0.9;
+
+}
+
+
+
+@media (max-width: 768px) {
+
+    .container {
+
+        grid-template-columns: 1fr;
+
+    }
+
+   
+
+    .market-overview, .portfolio, .trading-panel {
+
+        padding: 1rem;
+
+    }
+
+} */
