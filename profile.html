@@ -32,7 +32,7 @@
 
             /* --- Background Image Setup --- */
             /* IMPORTANT: Replace 'images/Asset 126.jpg' with the correct path to your image file */
-            background-image: url('images/Asset\ 126.png');
+            background-image: url('images/Asset\ 129.png');
 
             /* How the background image repeats */
             background-repeat: repeat; /* Use 'repeat' if you want the image to tile */
@@ -98,6 +98,13 @@
             color: #EDEDED; /* Light text/icons inside */
             border: 3px solid #161616; /* Dark border */
         }
+        .main-text-content-center {
+            max-width: 100ch;
+            margin-left: 15ch;
+            margin-right: 15ch;
+            text-align: center;
+        }
+
         /* Mascot face inside hexagon (reusing from level 5) */
         .mascot-face {
             width: 60%; height: 60%; border: 3px solid #EDEDED; border-radius: 10px; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden;
@@ -174,7 +181,7 @@
     <header class="sticky top-0 z-50 shadow-md">
         <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
             <a href="index.html" class="text-2xl font-bold flex items-center text-[#161616]">
-                 <svg class="w-10 h-10 mr-2" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <img src="images/Asset 121.png" alt="FinPlay Logo" class="w-10 h-10 mr-2">
                     <defs>
                         <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
                         <stop offset="0%" style="stop-color:#294DFF;stop-opacity:1" />
@@ -218,47 +225,45 @@
         </div>
     </header>
 
-    <main class="container mx-auto px-6 py-12">
+    <main class="main-text-content-center">
 
-        <h1 class="text-4xl md:text-5xl font-bold text-[#294DFF] mb-12 text-center"> Profile
-        </h1>
+        <h1 class="text-4xl md:text-5xl font-bold text-[#294DFF] mb-12 text-center"> Profile </h1>
 
         <section class="flex flex-col md:flex-row items-center justify-center md:justify-start gap-8 mb-10">
-            <div class="hexagon-mascot flex-shrink-0">
-                 <div class="mascot-face face-level-5"> <span class="eye left">$</span><span class="eye right">$</span><div class="mouth"></div>
-                </div>
+            <div >
+                <img src="images/Asset 71.png"></img>
             </div>
 
             <div class="text-center md:text-left">
-                <div class="mb-4">
-                    <label class="block text-lg font-semibold mb-1 text-[#161616]">User Name:</label>
+                <div>
+                    <label class="block text-lg font-subheading font-semibold mb-1 text-3xl md:text-2xl text-[#161616]">User Name:</label>
                     <div class="username-display inline-block">Beary_vibe 256</div>
-                </div>
-                <p class="text-base leading-relaxed max-w-md text-[#161616]">
+                </div><br><br>
+                <p class="text-base font-body-text text-2xl md:text-2xl leading-relaxed max-w-md text-[#161616]">
                     Don't leave us in a bear market - roll the dice and let us know what you think about our website!
                 </p>
             </div>
         </section>
 
         <section class="contact-form-box max-w-3xl mx-auto">
-            <h2 class="text-2xl font-semibold text-[#161616] mb-6 text-center">Contact us</h2>
+            <h2 class="text-2xl font-semibold font-subheading text-[#161616] mb-6 text-center">Contact us</h2>
             <form action="/your-feedback-handler" method="POST">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
                     <div>
-                        <label for="first-name" class="block text-sm font-medium mb-1 text-gray-700">First name</label>
+                        <label for="first-name" class="block text-sm font-body-text mb-1 text-gray-700">First name</label>
                         <input type="text" id="first-name" name="first_name" class="form-input" placeholder="Enter first name" required>
                     </div>
                      <div>
-                        <label for="last-name" class="block text-sm font-medium mb-1 text-gray-700">Last name</label>
+                        <label for="last-name" class="block text-sm font-body-text mb-1 text-gray-700">Last name</label>
                         <input type="text" id="last-name" name="last_name" class="form-input" placeholder="Enter last name" required>
                     </div>
                 </div>
                  <div class="mb-4">
-                    <label for="email" class="block text-sm font-medium mb-1 text-gray-700">Email*</label>
+                    <label for="email" class="block text-sm font-body-text  mb-1 text-gray-700">Email*</label>
                     <input type="email" id="email" name="email" class="form-input" placeholder="Enter your email" required>
                 </div>
                  <div class="mb-6">
-                    <label for="message" class="block text-sm font-medium mb-1 text-gray-700">Message / Feedback*</label>
+                    <label for="message" class="block text-sm font-body-text  mb-1 text-gray-700">Message / Feedback*</label>
                     <textarea id="message" name="message" rows="4" class="form-textarea" placeholder="Speak your mind..." required></textarea>
                 </div>
                 <div class="text-center">
